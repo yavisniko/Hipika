@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import "../../less/Landing-styles/style.css"
+import "../../less/Landing-styles/land-style.css"
 
 const Landing = () => {
     const blogWords: string[] = ['Blogs', 'Posts']
@@ -17,7 +17,7 @@ const Landing = () => {
     })
 
     return (
-        <div className="container">
+        <div className="containerr">
             <div className="start-text">
                 <div className="wrapper">
                     <h1>Create your</h1>
