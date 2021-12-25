@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const userAuth = require('./routes/log/signup')
 const Login = require('./routes/log/login')
+const getUser = require('./routes/dashboard/getUser')
+const uploadBlog = require('./routes/blogs/uploadBlog')
 
 const mongoose = require('mongoose')
 const cors = require('cors')
@@ -20,5 +22,7 @@ mongoose.connect(dbURL, { useNewUrlParser: true })
 
 app.use('/', userAuth)
 app.use('/', Login)
+app.use('/dashboard', getUser)
+app.use('/blog', uploadBlog )
  
 app.listen(5000)
