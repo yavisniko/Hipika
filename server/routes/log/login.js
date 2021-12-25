@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const UserLogin = require('../../models/loginSchema')
+const userAuth = require('../../models/register')
 
 router.post('/login', async (req, res) => {
     const {
@@ -8,35 +8,31 @@ router.post('/login', async (req, res) => {
         password
     } = req.body 
 
-    let data;
 
-    if(email.length > 0 && password.length > 0) {
-        data = {
-            email: email,
-            passowrd: password
-        }
-    }
-
-    await UserLogin.findOne(data, (err, user) => {
+    await userAuth.findOne({email: email}, (err, user) => {
         if(err){
-            res.json({
+            res.send({
                 status: 0,
                 msg: err
             })
         }
         if(!user){
-            res.json({
+            res.send({
                 status: 0,
                 msg: "user not found"
             })
-        }else {
-            res.json({
+        }else if(user.password !== password){
+            res.send({
+                status: 0,
+                msg: "password is incorrect"
+            })
+        }else{
+            res.send({
                 status: 200,
-                id: user.__id,
-                message: "success"
+                user_info: user
             })
         }
-    })
+    }).clone().catch(err => console.log(err))
 })
 
 module.exports = router
