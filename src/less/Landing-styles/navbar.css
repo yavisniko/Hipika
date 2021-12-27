@@ -30,3 +30,38 @@ body {
   background: #1f1f1f;
   min-height: 100vh;
 }
+nav {
+  display: flex;
+  z-index: 100;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  position: fixed;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(22, 24, 53, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+nav .blog-btn {
+  border: none;
+  height: 30px;
+  background: #ff4d4d;
+  color: #FFF;
+  width: 120px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+nav .user-profile {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border: 1px solid #ff4d4d;
+  border-radius: 50%;
+  overflow: hidden;
+}
+nav .user-profile img {
+  width: 100%;
+}

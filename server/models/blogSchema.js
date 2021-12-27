@@ -4,9 +4,10 @@ const { Schema } = require('mongoose')
 const BlogSchema = new Schema({
   userID: {type: String, required: true},
   blog: {
-    file: {type: String},
-    title: {type: String},
-    mainContent: {type: String}
+    _id: mongoose.Schema.Types.ObjectId, 
+    file: {type: String, required: true},
+    title: {type: String, required: true},
+    mainContent: {type: String, required: true}
   }
 })
 

@@ -16,6 +16,11 @@ const Landing = () => {
         return () => clearInterval(interval)
     })
 
+    useEffect(() => {
+        const userAuth: string = localStorage.getItem('authToken')!
+        if(userAuth !== null) navigate('/dashboard')
+    }, [])
+
     return (
         <div className="containerr">
             <div className="start-text">

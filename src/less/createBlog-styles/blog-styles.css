@@ -1,0 +1,116 @@
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf) format('truetype');
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+}
+body {
+  background: #1f1f1f;
+  min-height: 100vh;
+}
+.createBlog-container {
+  display: flex;
+  justify-content: none;
+  align-items: none;
+  padding-top: 100px;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+}
+.createBlog-container .blog-edit {
+  width: 100%;
+  margin-top: 100px;
+}
+.createBlog-container .blog-edit .banner-img {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 270px;
+  background: #000;
+  transition: 0.1s;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+}
+.createBlog-container .blog-edit .banner-img input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.createBlog-container .blog-edit .banner-img img {
+  width: 100%;
+}
+.createBlog-container .blog-edit .banner-img:hover {
+  background: #181818;
+  border: 3px solid #ff4d4d;
+}
+.createBlog-container .blog-edit input[type="text"] {
+  width: 100%;
+  height: 50px;
+  background: #111111;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 7px;
+  margin-top: 5px;
+}
+.createBlog-container .blog-edit input[type="text"]:focus {
+  outline: 3px solid #ff4d4d;
+}
+.createBlog-container .blog-edit textarea {
+  margin-top: 10px;
+  resize: vertical;
+  width: 100%;
+  outline: none;
+  border: none;
+  background: #111;
+  border-radius: 7px;
+  height: 500px;
+  color: #fff;
+}
+.createBlog-container .blog-edit textarea:focus {
+  outline: 3px solid #ff4d4d;
+}
+.createBlog-container .upload {
+  width: 200px;
+  height: 50px;
+  margin-top: 10px;
+  background: #474747;
+  border-radius: 5px;
+  border: none;
+  font-size: 1.2rem;
+  cursor: not-allowed;
+}
+.createBlog-container .upload.allowed {
+  background: #ff4d4d;
+  cursor: pointer;
+}

@@ -24,5 +24,5 @@ app.use('/', userAuth)
 app.use('/', Login)
 app.use('/dashboard', getUser)
 app.use('/blog', uploadBlog )
- 
+
 app.listen(5000)

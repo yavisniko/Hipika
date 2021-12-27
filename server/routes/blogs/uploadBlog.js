@@ -1,62 +1,44 @@
 const express = require('express')
 const router = express.Router()
+const mongoose = require('mongoose')
 const UploadBlog = require('../../models/blogSchema')
 const multer = require('multer')
-const uuid = require('uuid')
-
-const DIR = './public/';
 
 const storage = multer.diskStorage({
-  destination: (req, res, cb) => {
-    cb(null, DIR)
+  //where to store
+  destination: async(req, file, cb) => {
+     cb(null,'./uploads/')
   },
   filename: (req, file, cb) => {
-    const fileName = file.originalname.toLowerCase().split(' ').join("-")
-    cb(null, uuid() + '-' + fileName)
+    //in which format to save
+    cb(null, String(new Date().getTime() + "-" + file.originalname))
   }
 })
 
-const upload = multer({
-  storage: storage,
-    fileFilter: (req, file, cb) => {
-        if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
-            cb(null, true);
-        } else {
-            cb(null, false);
-            return cb(new Error('Only .png, .jpg and .jpeg format allowed!'));
-        }
-    }
+//TODO: reject file upload
+const fileUpload = (req, file, cb) => {
+  if(file.mimeType = "image/jpeg" || file.mimeType === "image/png") {
+    cb(null, true)
+  }else cb(null, false)
+}
+
+const upload = multer({storage: storage, limits: {
+  fileSize: 1024 * 1024 * 5 //5MB
+}})
+
+router.post('/upload/:id', upload.single('file'),(req, res) => {
+    const {id} = req.params
+    const blogObject = req.body
+
+    const uploadBlog = new UploadBlog({
+      userID: id,
+      blog: {
+        _id: mongoose.Types.ObjectId(),
+        file: req.file.path,
+        title: blogObject.title,
+        mainContent: blogObject.mainContent
+      }
+    })
 })
 
-router.post('/upload-blog/:id', upload.single('blogImg'),async (req, res) => {
-  const {id} = req.params
-  const blogData = req.body
-
-  const url = req.protocol + '://' + req.get('host')
-
-  console.log({
-    id: id,
-    file: req.file
-  })
-
-  // const blog = new UploadBlog({
-  //   userId: id,
-  //   blog: {
-  //     image: url + '/public/' + req.file.name, 
-  //     title: blogData.title,
-  //     mainContent: blogData.mainContent
-  //   }
-  // })
-
-  // user.save().
-  // then(result=> {
-  //   res.send({
-  //     success: true,
-  //     msg: "blog uploaded successfully"
-  //   })
-  // }).clone().catch(err => {
-  //   console.log(err)
-  // })
-})
-
-module.exports = router
+module.exports = router 
