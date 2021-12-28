@@ -4,18 +4,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImages } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios';
 
+const authToken: string = JSON.parse(localStorage.getItem('authToken')!)
+console.log(authToken)
+
 interface BlogProps {
   image?: string;
   title: string;
   mainContent: string;
-  file: any
+  userId: string,
+  actualFile: File | null,
+  file: string
 }
 
 const defaultSchema: BlogProps = {
-  file: {},
   image: "",
   title: "",
   mainContent: "",
+  file: '',
+  actualFile: null,
+  userId: authToken
 }
 
 
@@ -31,7 +38,10 @@ const CreateBlog = () => {
   }
   
   useEffect(() => {
-    const blogValues = Object.values(blogContent).slice(1)
+
+    const blogValues = Object.values(blogContent)
+    .slice(1)
+    .slice(0, -2)
 
     for(let i=0; i < blogValues.length; i++) {
       if(blogValues[i].trim() === ""){
@@ -43,22 +53,26 @@ const CreateBlog = () => {
   }, [blogContent])
 
   const imageUploadHandler = (e: any) => {
+    const dateId = new Date().getTime()
     const objectURL = URL.createObjectURL(e.target.files[0])
-    setBlogContent({...blogContent, image: objectURL, file: e.target.files[0]})
+    setBlogContent({...blogContent, image: objectURL, file: e.target.files[0].name, actualFile: e.target.files[0]})
   }
 
-  const uploadBlog = async () => {
-    const userAuth: string = JSON.parse(localStorage.getItem('authToken')!)
- 
+  const uploadBlog = async () => { 
     if(!allowToUpload) return
     else{ 
       const formatData = new FormData()
+      formatData.append('file', blogContent.actualFile!)
 
-      formatData.append('file', blogContent.file)
-      await axios.post(`http://localhost:5000/blog/upload/${userAuth}`, formatData)
-      .then(response => {
-        console.log(response)
-      }).catch(err => console.log(err))
+      const id: string = String(new Date().getTime())
+
+      await axios.post(`http://localhost:5000/blog/upload/image/${id}/${authToken}`, formatData)
+      .then(response => console.log(response))
+      .catch(err => console.log(err))
+
+      await axios.post(`http://localhost:5000/blog/upload/user/${id}`, blogContent)
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
   }
 }
   return (
@@ -77,7 +91,7 @@ const CreateBlog = () => {
           }
         </div>
         <input type="text" value={blogContent.title} placeholder="Blog Title" onChange={inputHandler} name="title"/>
-        <textarea value={blogContent.mainContent} name="mainContent" placeholder="MainContent" onChange={inputHandler}/>
+        <textarea value={blogContent.mainContent} name="mainContent" placeholder="mainContent" onChange={inputHandler}/>
       </div>
       <button className={allowToUpload ? "upload allowed" : "upload"} onClick={() => uploadBlog()}>Upload</button>
     </div>

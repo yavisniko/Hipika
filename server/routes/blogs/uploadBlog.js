@@ -1,44 +1,29 @@
 const express = require('express')
 const router = express.Router()
-const mongoose = require('mongoose')
-const UploadBlog = require('../../models/blogSchema')
 const multer = require('multer')
+const fs = require('fs')
 
 const storage = multer.diskStorage({
   //where to store
-  destination: async(req, file, cb) => {
-     cb(null,'./uploads/')
-  },
+  destination: async(req, res, cb) => {
+    //user id
+      const {token} = req.params
+    //specific user directory
+      const path = `../public/uploads/${token}` 
+
+      fs.mkdirSync(path, { recursive: true })
+      cb(null,path)
+    },
   filename: (req, file, cb) => {
     //in which format to save
-    cb(null, String(new Date().getTime() + "-" + file.originalname))
+    const pathName = `${req.params.id}-${file.originalname}` 
+    cb(null, pathName)
   }
+
 })
 
-//TODO: reject file upload
-const fileUpload = (req, file, cb) => {
-  if(file.mimeType = "image/jpeg" || file.mimeType === "image/png") {
-    cb(null, true)
-  }else cb(null, false)
-}
+const upload = multer({storage: storage})
 
-const upload = multer({storage: storage, limits: {
-  fileSize: 1024 * 1024 * 5 //5MB
-}})
+router.post('/upload/image/:id/:token', upload.single('file'))
 
-router.post('/upload/:id', upload.single('file'),(req, res) => {
-    const {id} = req.params
-    const blogObject = req.body
-
-    const uploadBlog = new UploadBlog({
-      userID: id,
-      blog: {
-        _id: mongoose.Types.ObjectId(),
-        file: req.file.path,
-        title: blogObject.title,
-        mainContent: blogObject.mainContent
-      }
-    })
-})
-
-module.exports = router 
+module.exports = router
