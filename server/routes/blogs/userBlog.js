@@ -13,7 +13,8 @@ router.post('/upload/user/:id', async (req, res) => {
       _id: mongoose.Types.ObjectId(),
       file: `${userId}/${id}-${file}`,
       title: title,
-      mainContent: mainContent
+      mainContent: mainContent,
+      likes: []
     }
   })
 

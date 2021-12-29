@@ -8,6 +8,7 @@ const BlogSchema = new Schema({
     file: {type: String, required: true},
     title: {type: String, required: true},
     mainContent: {type: String, required: true},
+    likes: [{userId: String}]
   }
 })
 
