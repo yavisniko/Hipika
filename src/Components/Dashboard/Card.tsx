@@ -2,31 +2,66 @@ import { FC, useState, useEffect } from "react";
 import "../../less/dashboard-style/dashbaord.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import axios from 'axios'
+import axios from "axios";
 
+export const tokenAuth: string = JSON.parse(localStorage.getItem("authToken")!);
 interface CardPorps {
   title: string;
   img: string;
-  author: string;
   mainContent: string;
-  liked: string[];
-  authorID: string
+  liked: { _id: string }[];
+  authorID: string;
+  blogId: string;
+  likeSystem: (authorID: string, blogId: string) => void;
+  cancelLike: () => void
 }
 
-const Card: FC<CardPorps> = ({ title, img, author, liked, mainContent, authorID }) => {
-  const [blogAuthor, setBlogAuthor] = useState({
+const Card: FC<CardPorps> = ({
+  title,
+  img,
+  liked,
+  mainContent,
+  authorID,
+  blogId,
+  likeSystem,
+  cancelLike
+}) => {
+  const [blogAuthor, setBlogAuthor] = useState<any>({
     id: "",
     name: "",
     image: "",
   });
+  const [isLiked, setIstLiked] = useState(false);
+
+  const cancelToken = axios.CancelToken;
+  const source = cancelToken.source();
 
   useEffect(() => {
-    if(authorID === "") return
+    for (let i = 0; i < liked.length; i++) {
+      if (liked[i]._id === tokenAuth) setIstLiked(true);
+    }
 
-    axios.get(`http://localhost:5000/user/${authorID}`)
-    .then(response => setBlogAuthor(response.data))
-    .catch(err => console.log(err))
-  }, [])
+    if (authorID === "") return;
+
+    axios
+      .get(`http://localhost:5000/user/${authorID}`)
+      .then((response) => setBlogAuthor(response.data))
+      .catch((err) => {
+        console.log(err);
+      });
+    return () => setBlogAuthor({});
+  }, []);
+
+  const likeBlog = () => {
+    axios
+      .put(`http://localhost:5000/blog/${blogId}/liked/${tokenAuth}`)
+      .then((response) => response)
+      .catch((err) => {
+        console.log(err);
+
+        return () => source.cancel("axios request cancelled");
+      });
+  };
 
   return (
     <div className="card">
@@ -36,9 +71,9 @@ const Card: FC<CardPorps> = ({ title, img, author, liked, mainContent, authorID 
         <h2>{title}</h2>
         <div className="blog-author">
           <div className="img-wrapper">
-            <img src={blogAuthor.image} alt="" />
+            <img src={blogAuthor!.image} alt="" />
           </div>
-          <p>{blogAuthor.name}</p>
+          <p>{blogAuthor!.name}</p>
         </div>
         <p className="mainContent">
           {mainContent.length > 60
@@ -46,9 +81,16 @@ const Card: FC<CardPorps> = ({ title, img, author, liked, mainContent, authorID 
             : mainContent}
         </p>
       </div>
-      <div className="like-wrapper">
+      <div
+        className="like-wrapper" 
+        onClick={() => {
+          cancelLike()
+          likeBlog();
+          likeSystem(tokenAuth, blogId);
+        }}
+      >
         <p style={{ color: "#FFF" }}>{liked.length}</p>
-        <FontAwesomeIcon icon={faHeart} color={"#FFF"} />
+        <FontAwesomeIcon icon={faHeart} color={isLiked ? "#ff3737" : "#FFF"} />
       </div>
     </div>
   );

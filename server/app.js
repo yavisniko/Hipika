@@ -7,6 +7,7 @@ const getUser = require('./routes/dashboard/getUser')
 const uploadBlog = require('./routes/blogs/uploadBlog')
 const uploadUser = require('./routes/blogs/userBlog')
 const Users = require('./routes/dashboard/users')
+const Like = require('./routes/blogs/likeBlog')
 
 const mongoose = require('mongoose')
 const cors = require('cors')
@@ -33,5 +34,6 @@ app.use('/dashboard', getBlogs)
 
 app.use('/blog', uploadBlog)
 app.use('/blog', uploadUser)
+app.use('/blog', Like)
 
 app.listen(5000)
