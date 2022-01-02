@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { FC, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCamera } from '@fortawesome/free-solid-svg-icons'
 import { validateEmail } from "../../utils/validateEmail"
@@ -14,7 +14,7 @@ interface formProps {
     repeatpass?: string
 }
 
-const Form = () => {
+const Form: FC<{showNavbar: () => void}> = ({showNavbar}) => {
     const [form, setForm] = useState<formProps>({
         image: '',
         name: '',
@@ -72,6 +72,7 @@ const Form = () => {
         }else {            
             axios.post('http://localhost:5000/signup', form)
             .then((res) => {
+                showNavbar()
                 localStorage.setItem('authToken', JSON.stringify(res.data["_id"]))              
                 if(res.status === 200){
                     navigate('/dashboard')

@@ -20,7 +20,7 @@ app.use(express.static('uploads'))
 
 const dbURL = 'mongodb+srv://callmenikk:polisjoxi0@cluster0.dvs5k.mongodb.net/blog-mongodb?retryWrites=true&w=majority'
 
-mongoose.connect(dbURL, { useNewUrlParser: true })
+mongoose.connect(dbURL, { useNewUrlParser: true }) 
 .then(() => {
     console.log("connected to mongoDB")
 })

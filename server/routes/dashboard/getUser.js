@@ -10,15 +10,18 @@ router.get("/getUser/:id", async (req, res) => {
       res.send({
         success: false,
         msg: err,
-      });
+      }); 
     } else {
       res.send({
+        key: result._id,
+        userId: id,
         email: result.email,
         name: result.name,
         image: result.image,
         surname: result.surname
       });
     }
+
   }).clone().catch(err => console.log(err))
 });
 

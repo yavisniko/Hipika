@@ -1,12 +1,12 @@
-import React from "react";
+import { FC } from "react";
 import Form from './Form'
 import "../../less/Signup-styles/style.css";
 
-const SignMain = () => {
+const SignMain: FC<{showNavbar: () => void}> = ({showNavbar}) => {
   return (
     <div className="container">
       <div className="signup-text">Sign up</div>
-      <Form />
+      <Form showNavbar={showNavbar}/>
     </div>
   );
 };

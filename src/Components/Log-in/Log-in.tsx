@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FC } from "react";
 import {useNavigate} from "react-router-dom"
 import "../../less/Login-styles/login-styles.css";
 import "../../less/Login-styles/loading.css"
@@ -8,7 +8,7 @@ const Loader = () => {
   return <span className="loader"></span>
 }
 
-const Login = () => {
+const Login: FC<{showNavbar: () => void}> = ({showNavbar}) => {
   const [login, setLogin] = useState({
     email: "",
     password: "",
@@ -47,6 +47,7 @@ const Login = () => {
         setCorrect(true) 
         setExist(false) 
       } else {
+        showNavbar()
         localStorage.setItem('authToken', JSON.stringify(response.data.user_info._id))
         navigate('/dashboard')
       }
