@@ -1,0 +1,104 @@
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf) format('truetype');
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+}
+body {
+  background: #1f1f1f;
+  min-height: 100vh;
+}
+.blured-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10.5px);
+  -webkit-backdrop-filter: blur(10.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100vh;
+  padding: 0 20px;
+}
+@media screen and (min-width: 448px) {
+  .blured-bg {
+    padding: 0 50px;
+  }
+}
+.blured-bg .liked-people {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 500px;
+  width: 100%;
+  height: 400px;
+  background: #535353;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.blured-bg .liked-people .text-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  color: #FFF;
+  position: relative;
+}
+.blured-bg .liked-people .text-area .close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-10px, 4px);
+  cursor: pointer;
+  transition: all 0.1s ease;
+  background: transparent;
+}
+.blured-bg .liked-people .text-area .close:hover {
+  background: #1f1f1f;
+}
+.blured-bg .liked-people .people-section {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr;
+  box-shadow: inset 0 0 10px;
+  gap: 10px 0;
+  width: 100%;
+  height: 100%;
+  padding: 0 5px;
+  padding-top: 10px;
+  overflow-y: auto;
+}

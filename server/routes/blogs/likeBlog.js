@@ -16,8 +16,10 @@ router.put('/:blogId/liked/:authId', async (req, res) => {
 
     if(likedIds.includes(authId)){ 
       model.blog.likes = likedIds.filter(e => e !== authId)
+      res.send({success: true, msg:"removed like"})
     }else {
       model.blog.likes.push(authId) 
+      res.send({success: true, msg:"added like"})
     } 
     model.save()
 

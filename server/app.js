@@ -8,9 +8,10 @@ const uploadBlog = require('./routes/blogs/uploadBlog')
 const uploadUser = require('./routes/blogs/userBlog')
 const Users = require('./routes/dashboard/users')
 const Like = require('./routes/blogs/likeBlog')
+const SpecificBlog = require('./routes/blogs/currect_blog')
 
 const mongoose = require('mongoose')
-const cors = require('cors')
+const cors = require('cors') 
 const bodyParser = require('body-parser')
 
 app.use(cors())
@@ -35,5 +36,6 @@ app.use('/dashboard', getBlogs)
 app.use('/blog', uploadBlog)
 app.use('/blog', uploadUser)
 app.use('/blog', Like)
+app.use('/blog', SpecificBlog)
 
 app.listen(5000)

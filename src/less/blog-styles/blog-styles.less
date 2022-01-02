@@ -1,0 +1,84 @@
+@import "../variables.less";
+
+main {
+  width: 100%;
+  min-height: 100%;
+  transform: translateY(60px);
+  .blog-photo {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 5px 20px;
+    .bottom-stuff{
+      .Center(space-between, center);
+      position: absolute;
+      height: 60px;
+      z-index: 9;
+      width: 100%;
+      bottom: 0;
+      h1 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 900;
+        color: #fff;
+        font-style: italic;
+        z-index: 9;
+        position: absolute;
+        bottom: 0;
+        font-style: italic;
+        font-size: 4rem;
+      }
+      .likes-container{
+        .Center(space-between, center);
+        width: 100%;
+        max-width: 150px;
+        height: 60px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        p{
+          color: #FFF;
+          font-size:1.2rem;
+          cursor: pointer;
+          text-decoration: underline;
+        }
+        button{
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          border: none;
+          cursor: pointer;
+        }
+      }
+    }
+    img {
+      background-size: cover;
+      -o-object-fit: cover;
+      object-fit: cover;
+      min-width: 100%;
+    }
+    .glass {
+      position: absolute;
+      transition: all 0.5s ease;
+      opacity: 1;
+      background: linear-gradient(
+        0deg,
+        rgb(0, 0, 0) 1%,
+        rgba(255, 255, 255, 0.2) 60%
+      );
+      width: 100%;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+  }
+  .main-text{
+    width: 100%;
+    .textarea{
+      margin-top: 40px;
+      width: 100%;
+      font-size: 2rem;
+      color: #FFF;
+    }
+  }
+}

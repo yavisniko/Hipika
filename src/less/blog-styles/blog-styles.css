@@ -1,0 +1,113 @@
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf) format('truetype');
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+}
+body {
+  background: #1f1f1f;
+  min-height: 100vh;
+}
+main {
+  width: 100%;
+  min-height: 100%;
+  transform: translateY(60px);
+}
+main .blog-photo {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 5px 20px;
+}
+main .blog-photo .bottom-stuff {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  height: 60px;
+  z-index: 9;
+  width: 100%;
+  bottom: 0;
+}
+main .blog-photo .bottom-stuff h1 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  color: #fff;
+  z-index: 9;
+  position: absolute;
+  bottom: 0;
+  font-style: italic;
+  font-size: 4rem;
+}
+main .blog-photo .bottom-stuff .likes-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 150px;
+  height: 60px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+main .blog-photo .bottom-stuff .likes-container p {
+  color: #FFF;
+  font-size: 1.2rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+main .blog-photo .bottom-stuff .likes-container button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+main .blog-photo img {
+  background-size: cover;
+  -o-object-fit: cover;
+  object-fit: cover;
+  min-width: 100%;
+}
+main .blog-photo .glass {
+  position: absolute;
+  transition: all 0.5s ease;
+  opacity: 1;
+  background: linear-gradient(0deg, #000000 1%, rgba(255, 255, 255, 0.2) 60%);
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+main .main-text {
+  width: 100%;
+}
+main .main-text .textarea {
+  margin-top: 40px;
+  width: 100%;
+  font-size: 2rem;
+  color: #FFF;
+}

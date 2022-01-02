@@ -1,8 +1,10 @@
 import { FC, useState, useEffect } from "react";
-import "../../less/dashboard-style/dashbaord.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "../../less/dashboard-style/dashbaord.css";
+import "../../less/dashboard-style/loader.css"
 
 export const tokenAuth: string = JSON.parse(localStorage.getItem("authToken")!);
 interface CardPorps {
@@ -12,8 +14,7 @@ interface CardPorps {
   liked: { _id: string }[];
   authorID: string;
   blogId: string;
-  likeSystem: (authorID: string, blogId: string) => void;
-  cancelLike: () => void
+  likeSystem: (blogId: string) => void;
 }
 
 const Card: FC<CardPorps> = ({
@@ -24,17 +25,15 @@ const Card: FC<CardPorps> = ({
   authorID,
   blogId,
   likeSystem,
-  cancelLike
 }) => {
   const [blogAuthor, setBlogAuthor] = useState<any>({
     id: "",
     name: "",
     image: "",
   });
+  const [loadLike, setLoadLike] = useState<boolean>(false)
   const [isLiked, setIstLiked] = useState(false);
-
-  const cancelToken = axios.CancelToken;
-  const source = cancelToken.source();
+  let navigate = useNavigate()
 
   useEffect(() => {
     for (let i = 0; i < liked.length; i++) {
@@ -53,20 +52,24 @@ const Card: FC<CardPorps> = ({
   }, []);
 
   const likeBlog = () => {
+    if(loadLike) return 
+
+    setLoadLike(true)
+    
     axios
-      .put(`http://localhost:5000/blog/${blogId}/liked/${tokenAuth}`)
-      .then((response) => response)
+    .put(`http://localhost:5000/blog/${blogId}/liked/${tokenAuth}`)
+    .then((response) => {
+       if(response.data.success) setLoadLike(false)
+      })
       .catch((err) => {
         console.log(err);
-
-        return () => source.cancel("axios request cancelled");
       });
-  };
+    };
 
   return (
     <div className="card">
       <img src={"/uploads/" + img} alt="" />
-      <div className="hover-box"></div>
+      <div className="hover-box" onClick={() => navigate(`/blog/${blogId}`)}></div>
       <div className="main-content">
         <h2>{title}</h2>
         <div className="blog-author">
@@ -84,13 +87,18 @@ const Card: FC<CardPorps> = ({
       <div
         className="like-wrapper" 
         onClick={() => {
-          cancelLike()
           likeBlog();
-          likeSystem(tokenAuth, blogId);
+          likeSystem(blogId);
         }}
       >
-        <p style={{ color: "#FFF" }}>{liked.length}</p>
-        <FontAwesomeIcon icon={faHeart} color={isLiked ? "#ff3737" : "#FFF"} />
+        {
+          !loadLike ? 
+          <>
+          <p style={{ color: "#FFF" }}>{liked.length}</p>
+          <FontAwesomeIcon icon={faHeart} color={isLiked ? "#ff3737" : "#FFF"} />
+          </>:
+           <span className="like-loader"></span>
+        }
       </div>
     </div>
   );

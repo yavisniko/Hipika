@@ -13,5 +13,8 @@
     },
     "[typescriptreact]": {
         "editor.tabSize": 2
+    },
+    "[less]": {
+        "editor.tabSize": 2
     }
 }

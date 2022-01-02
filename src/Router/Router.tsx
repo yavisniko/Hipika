@@ -5,6 +5,7 @@ import Login from '../Components/Log-in/Log-in'
 import Navbar from "../Components/Navbar";
 import CreateBlog from "../Components/CreateBlog/CreateBlog"
 import Dashboard from "../Components/Dashboard/dashboard";
+import Blog from "../Components/Blog/Blog";
 
 const Router = () => {
     const userAuth: string | null = localStorage.getItem('authToken')
@@ -18,6 +19,7 @@ const Router = () => {
                 <Route path="/log-in" element={<Login />}/>
                 <Route path="/create-blog" element={<CreateBlog />} />
                 <Route path="/dashboard" element={<Dashboard/>}/>
+                <Route path="/blog/:id" element={<Blog />}/>
             </Routes>
         </BrowserRouter>
     )

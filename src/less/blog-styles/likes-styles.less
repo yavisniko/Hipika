@@ -1,0 +1,66 @@
+@import '../../less/variables.less';
+
+.blured-bg{
+  .Center(center, center);
+  background: rgba( 0, 0, 0, 0.8 );
+  backdrop-filter: blur( 10.5px );
+  -webkit-backdrop-filter: blur( 10.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100vh;
+  padding: 0 20px;
+  @media screen and (min-width: 448px) {
+    padding: 0 50px;
+  }
+  .liked-people{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width:500px;
+    width: 100%;
+    height: 400px;
+    background: #535353;
+    border-radius: 10px;
+    overflow: hidden;
+    .text-area{
+      .Center(center, center);
+      width: 100%;
+      height: 40px;
+      color: #FFF;
+      position: relative;
+      .close{
+        .Center(center, center);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-10px, 4px);
+        cursor: pointer;
+        transition: all 0.1s ease;
+        background: transparent;
+        &:hover{
+          background: #1f1f1f;
+        }
+      }
+    }
+    .people-section{
+      display: grid;
+      place-items: center;
+      grid-template-columns: 1fr;
+      box-shadow: inset 0 0 10px;
+      gap: 10px 0;
+      width: 100%;
+      height: 100%;
+      padding: 0 5px;
+      padding-top: 10px;
+      overflow-y: auto;
+    }
+  }
+}
