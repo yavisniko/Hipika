@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import LikedContainer from "./LikedContainer";
+import LikedLists from "./LikedLists";
 import LikesContainer from "./LikesContainer";
 import "../../less/dashboard-style/loader.css";
 import "../../less/blog-styles/blog-styles.css";
@@ -58,7 +58,7 @@ const Blog = () => {
   return (
     <>
       {likedMenu ? (
-        <LikedContainer
+        <LikedLists
           toggleMenu={() => setLikedMenu(!likedMenu)}
           likes={currBlog.blog.likes}
         />

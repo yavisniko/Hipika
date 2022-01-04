@@ -44,7 +44,7 @@ const Navbar = () => {
                 <button className="blog-btn" onClick={() => navigate('/create-blog')}>Create Blog</button>
             }
             <div className="user-profile">
-                <img src={userProfile.image !== "" ? userProfile.image : emptyProfile} alt="" />
+                <img src={userProfile.image !== "" ? `/uploads/avatar/${userProfile.image}` : emptyProfile} alt="" />
             </div>
         </nav>
     )

@@ -3,14 +3,14 @@ const router = express.Router()
 const Users = require('../../models/userModel') 
 
 router.post('/signup', (req,res) => {
-    const {name, surname, email, password, image} = req.body
+    const {name, surname, email, password, path} = req.body
 
     const userData = new Users({
         name: name,
         surname: surname,
         email: email,
-        password: password,
-        image: image
+        password: password, 
+        image: path
     })
     userData.save()
     .then(result => {

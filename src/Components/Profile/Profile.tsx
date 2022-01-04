@@ -45,7 +45,7 @@ const Profile = () => {
     <div className="profile-section">
         <div className="profile-avatar">
           <div className="avatar-frame">
-              <img src={profileInfo.image} alt="avatar-img" />
+              <img src={'/uploads/avatar/'+profileInfo.image} alt="avatar-img" />
           </div>
         </div>
         <div className="profile-info">

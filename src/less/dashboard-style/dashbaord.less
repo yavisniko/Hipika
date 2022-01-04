@@ -83,12 +83,16 @@
       cursor: pointer;
       gap: 8px;
       .img-wrapper {
-        overflow: hidden;
-        border-radius: 50%;
+        display: inline-block;
+        position: relative;
         width: 30px;
         height: 30px;
+        overflow: hidden;
+        cursor: pointer;
+        border-radius: 50%;
         img {
-          width: 100%;
+          width: auto;
+          height: 100%;
         }
       }
     }

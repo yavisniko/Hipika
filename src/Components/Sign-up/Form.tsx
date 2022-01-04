@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { FC, useState } from 'react'
+import { ChangeEvent, FC, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCamera } from '@fortawesome/free-solid-svg-icons'
 import { validateEmail } from "../../utils/validateEmail"
@@ -10,20 +10,23 @@ interface formProps {
     surname: string,
     password: string,
     email: string
-    image: string,
-    repeatpass?: string
+    image?: string,
+    repeatpass?: string,
+    path: string
 }
 
 const Form: FC<{showNavbar: () => void}> = ({showNavbar}) => {
     const [form, setForm] = useState<formProps>({
-        image: '',
         name: '',
         surname: "",
         email: '',
+        path: '',
         password: "",
         repeatpass: "",
+        image: '',
     })
     let navigate = useNavigate()
+    const fileId: string = String(new Date().getTime())
 
     const inputHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const name: string = e.target.name
@@ -32,29 +35,25 @@ const Form: FC<{showNavbar: () => void}> = ({showNavbar}) => {
         setForm({...form, [name]: value})
     }
 
-      const getBase64 = (file: File, cb: (arg: string | ArrayBuffer | null) => void) => {
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-        cb(reader.result)
-    };
-    reader.onerror = (error) => {
-        console.log('Error: ', error);
-    };
-  }
+    const [fileHandler, setFileHandler] = useState<File | null>(null)
 
-  const fileUploadHandler = (e: any) => {
+    const fileUploadHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const fileSize: number = parseFloat(((e.target.files![0].size / 1024) /1024).toFixed(3))
     
-    if(fileSize > .200){
-      alert("File size is higher than 200Kb please choose somthing lower")
-    }else getBase64((e.target.files![0]), (result: any): void => setForm({...form, image: result}));
-  }
+    if(fileSize > 5){
+      alert("File size is higher than 5Mb please choose somthing lower")
+    }else {
+        const imageToURL: string = URL.createObjectURL(e.target.files![0])
+        setForm({...form, image: imageToURL, path: `${fileId}-${e.target.files![0].name}`})
+        setFileHandler(e.target.files![0])
+    }
+}
 
-    const formHandler = (e: React.FormEvent): void => {
-        e.preventDefault()
 
-        const formValues = Object.values(form).slice(1)
+const formHandler = async (e: React.FormEvent): Promise<void> => {
+    e.preventDefault()
+
+        const formValues = Object.values(form).slice(2)
 
         for(let i = 0; i < formValues.length; i++){
             if(formValues[i].trim() === ""){
@@ -70,15 +69,24 @@ const Form: FC<{showNavbar: () => void}> = ({showNavbar}) => {
         }else if(form.password.length < 8){
             alert("Your password mustn't be less than 8 charcters")
         }else {            
-            axios.post('http://localhost:5000/signup', form)
+
+            const fileData: any = new FormData()
+            fileData.append('file', fileHandler)
+
+            await axios.post('http://localhost:5000/signup', form)
             .then((res) => {
                 showNavbar()
-                localStorage.setItem('authToken', JSON.stringify(res.data["_id"]))              
+                localStorage.setItem('authToken', JSON.stringify(res.data._id))              
                 if(res.status === 200){
                     navigate('/dashboard')
                 }
             })
             .catch(err => console.log(err))
+
+            await axios.post(`http://localhost:5000/upload/avatar/${form.path.split('-')[0]}`, fileData)
+            .then((result) => console.log("success"))
+            .catch(err => console.log(`Some error detected`, err))
+
         }
     }
 
@@ -88,7 +96,7 @@ const Form: FC<{showNavbar: () => void}> = ({showNavbar}) => {
                 <div className="photo-circle">
                     <input type="file" accept="image/*" onChange={fileUploadHandler}/>
                     {
-                        form.image.trim() === "" ?
+                        form.image?.trim() === "" ?
                         <>
                             <FontAwesomeIcon icon={faCamera} size={'3x'} color={'#FFF'}/>
                             <p style={{color: "#FFF"}}>Upload Photo</p>

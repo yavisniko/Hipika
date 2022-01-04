@@ -138,13 +138,17 @@ body {
   gap: 8px;
 }
 .dashboard-container .card .blog-author .img-wrapper {
-  overflow: hidden;
-  border-radius: 50%;
+  display: inline-block;
+  position: relative;
   width: 30px;
   height: 30px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 50%;
 }
 .dashboard-container .card .blog-author .img-wrapper img {
-  width: 100%;
+  width: auto;
+  height: 100%;
 }
 .dashboard-container .card .hover-box {
   position: absolute;

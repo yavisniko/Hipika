@@ -17,7 +17,7 @@ const People: FC<PeopleProps> = ({userId, name, followers, image}) => {
     <div className="person-box">
       <div className="main-info" onClick={() => navigate(`/user/${userId}`)}>
         <div className="avatar">
-          <img src={image} alt="" />
+          <img src={`/uploads/avatar/`+image} alt="" />
         </div>
         <p>{name}</p>
       </div>

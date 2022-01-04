@@ -72,9 +72,9 @@ const Card: FC<CardPorps> = ({
       <div className="hover-box" onClick={() => navigate(`/blog/${blogId}`)}></div>
       <div className="main-content">
         <h2>{title}</h2>
-        <div className="blog-author">
+        <div className="blog-author" onClick={() => navigate(`/user/${authorID}`)}>
           <div className="img-wrapper">
-            <img src={blogAuthor!.image} alt="" />
+            <img src={'/uploads/avatar/'+blogAuthor!.image} alt="" />
           </div>
           <p>{blogAuthor!.name}</p>
         </div>

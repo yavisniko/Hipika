@@ -13,5 +13,5 @@ router.get('/user/:id', async (req, res) => {
     }))
     .catch(err => console.log(result))
 })
-
+   
 module.exports = router

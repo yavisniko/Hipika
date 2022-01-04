@@ -1,37 +1,40 @@
-@import '../variables.less';
+@import "../variables.less";
 
-nav{
-    display: flex;
-    z-index: 100;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    width: 100%;
-    position: fixed;
-    height: 60px;
-    background: rgba( 255, 255, 255, 0.2 );
-    box-shadow: 0 8px 32px 0 rgba(22, 24, 53, 0.37);
-    backdrop-filter: blur( 20px );
-    -webkit-backdrop-filter: blur( 20px );
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    .blog-btn{
-        border: none;
-        height: 30px;
-        background: @landing-color;
-        color: #FFF;
-        width: 120px;
-        border-radius: 5px;
-        cursor: pointer;
+nav {
+  display: flex;
+  z-index: 100;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  position: fixed;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(22, 24, 53, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  .blog-btn {
+    border: none;
+    height: 30px;
+    background: @landing-color;
+    color: #fff;
+    width: 120px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .user-profile {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid @landing-color;
+    img {
+      width: auto;
+      height: 100%;
     }
-    .user-profile{
-        width: 50px;
-        height: 50px;
-        cursor: pointer;
-        border: 1px solid @landing-color;
-        border-radius: 50%;
-        overflow: hidden;
-        img{
-            width: 100%;
-        }
-    }
+  }
 }
