@@ -11,7 +11,7 @@ router.get('/user/:id', async (req, res) => {
       image: result.image,
       id: id
     }))
-    .catch(err => console.log(result))
+    .catch(err => console.log(err))
 })
    
 module.exports = router

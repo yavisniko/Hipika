@@ -1,7 +1,6 @@
-const router = require("express").Router();
-const mongoose = require("mongoose");
+const router = require("express").Router() 
 const userModel = require("../../models/userModel");
-
+  
 router.get("/getUser/:id", async (req, res) => {
   const { id } = req.params;
 
@@ -18,7 +17,8 @@ router.get("/getUser/:id", async (req, res) => {
         email: result.email,
         name: result.name,
         image: result.image,
-        surname: result.surname
+        surname: result.surname,
+        followers: result.followers,
       });
     }
 

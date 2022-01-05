@@ -106,6 +106,7 @@ main .main-text {
   width: 100%;
 }
 main .main-text .textarea {
+  overflow-wrap: break-word;
   margin-top: 40px;
   width: 100%;
   font-size: 2rem;

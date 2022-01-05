@@ -11,8 +11,9 @@ router.put('/:blogId/liked/:authId', async (req, res) => {
     const likedIds = [] 
     
     for(let i= 0; i < likes.length; i++){
-      likedIds.push(likes[i]._id)
+      likedIds.push(likes[i]._id.toString())
     }
+
 
     if(likedIds.includes(authId)){ 
       model.blog.likes = likedIds.filter(e => e !== authId)

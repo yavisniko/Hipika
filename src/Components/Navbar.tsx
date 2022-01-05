@@ -13,9 +13,10 @@ const Navbar = () => {
      image: ""  
     })
     const [backHome, setBackHome] = useState<boolean>(false)
-
+    
     let navigate = useNavigate()
     const {pathname} = useLocation()
+    const userAuth: string = JSON.parse(localStorage.getItem('authToken')!) as string
 
     useEffect(() => {
         if(pathname === "/create-blog"){
@@ -24,7 +25,6 @@ const Navbar = () => {
     }, [pathname])
 
     const fetchUser = async () => {
-        const userAuth: string = JSON.parse(localStorage.getItem('authToken')!) as string
         
         await axios.get(`http://localhost:5000/dashboard/getUser/${userAuth}`)
         .then(result => {
@@ -38,15 +38,18 @@ const Navbar = () => {
     
     return (
         <nav>
+            <div>
+            <button className="blog-btn" onClick={() => navigate('/Dashboard')}>Home</button>:
             {
-                backHome ? 
-                <button className="blog-btn" onClick={() => navigate('/Dashboard')}>Dashboard</button>:
-                <button className="blog-btn" onClick={() => navigate('/create-blog')}>Create Blog</button>
+                !backHome ? 
+                <button className="blog-btn" onClick={() => navigate('/create-blog')}>Create Blog</button>:
+                null
             }
-            <div className="user-profile">
+            </div>
+            <div className="user-profile" onClick={() => navigate(`/user/${userAuth}`)}>
                 <img src={userProfile.image !== "" ? `/uploads/avatar/${userProfile.image}` : emptyProfile} alt="" />
             </div>
-        </nav>
+        </nav> 
     )
 }
 

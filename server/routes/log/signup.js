@@ -9,8 +9,9 @@ router.post('/signup', (req,res) => {
         name: name,
         surname: surname,
         email: email,
-        password: password, 
-        image: path
+        password: password,       
+        image: path,
+        followers: []
     })
     userData.save()
     .then(result => {

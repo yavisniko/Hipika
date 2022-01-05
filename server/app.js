@@ -6,18 +6,19 @@ const getBlogs = require('./routes/dashboard/blogs')
 const getUser = require('./routes/dashboard/getUser')
 const uploadBlog = require('./routes/blogs/uploadBlog')
 const uploadUser = require('./routes/blogs/userBlog')
-const Users = require('./routes/dashboard/users')
+const Users = require('./routes/dashboard/users')       
 const Like = require('./routes/blogs/likeBlog')
 const SpecificBlog = require('./routes/blogs/currect_blog')
 const avatar = require('./routes/log/avatar')
+const FollowUser = require('./routes/dashboard/followUser')
 
 const mongoose = require('mongoose')
 const cors = require('cors') 
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser')     
 
 app.use(cors())
 app.use(bodyParser.json()) 
-app.use(express.static('uploads'))
+app.use(express.static('uploads'))   
 
 const dbURL = 'mongodb+srv://callmenikk:polisjoxi0@cluster0.dvs5k.mongodb.net/blog-mongodb?retryWrites=true&w=majority'
 
@@ -34,6 +35,7 @@ app.use('/', avatar)
 
 app.use('/dashboard', getUser)
 app.use('/dashboard', getBlogs)
+app.use('/dashboard', FollowUser)
 
 app.use('/blog', uploadBlog)
 app.use('/blog', uploadUser)
