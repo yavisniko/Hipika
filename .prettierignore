@@ -1,0 +1,12 @@
+# dependencies
+node_modules
+
+# packages
+package.json
+package-lock.json
+
+#configs
+tsconfig.json
+
+#git
+.gitignore
