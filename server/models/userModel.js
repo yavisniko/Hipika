@@ -11,7 +11,7 @@ const signUpSchema = new Schema(
     followers: [{ _id: String }],
     following: [{ _id: String }]
   },
-  { strict: false }
+  { strict: false, timestamps: true }
 )
 
 module.exports = mongoose.model("users", signUpSchema)

@@ -10,6 +10,6 @@ const BlogSchema = new Schema({
     mainContent: { type: String, required: true },
     likes: [{ userId: String }],
   },
-})
+}, { timestamps: true })
 
 module.exports = mongoose.model("blogs", BlogSchema)

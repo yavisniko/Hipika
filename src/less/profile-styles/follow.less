@@ -1,0 +1,94 @@
+@import '../variables.less';
+
+.follow-background{
+  .Center(center, center);
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 909;
+  .follow-container{
+    width: 100%;
+    max-width: 420px;
+    background: #525252;
+    border-radius: 10px;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+    .close-btn{
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      z-index: 20;
+      transition: 0.1s ease;
+      &:hover{
+        background: #2e2e2e;
+      }
+    }
+    .title{
+      .Center(center, center);
+      position: relative;
+      color: #FFF;
+      width: 100%;
+      height: 40px;
+    }
+    .follower-lists{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 5px 10px;
+      overflow-y: auto;
+      padding: 0 10px;
+      padding-bottom: 50px;
+      padding-top: 20px;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      box-shadow: inset 0 0 10px #000;
+    }
+  }
+}
+
+.user-box{
+  .Center(space-between, center);
+  padding: 0 20px;
+  width: 100%;
+  height: 60px;
+  background: #303030;
+  border-radius: 6px;
+  .user-info{
+    .Center(space-between, center);
+    min-width: 160px;
+    cursor: pointer;
+    height: 100%;
+    .img-wrapper{
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      img{
+        height: 100%;
+        width: auto;
+      }
+    }
+  }
+  button{
+    width: 110px;
+    height: 35px;
+    cursor: pointer;
+    background: @landing-color;
+    color: #000;
+    border: none;
+    border-radius:5px;
+  }
+}

@@ -7,7 +7,7 @@ import axios from "axios";
 import "../../less/blog-styles/likes-styles.css";
 import "../../less/dashboard-style/loader.css";
 
-interface MappingProps extends PeopleProps {
+export interface MappingProps extends PeopleProps {
   _id: string;
 }
 

@@ -1,5 +1,5 @@
 import {FC} from 'react'
-import {ProfileProps} from "./Profile"
+import { ProfileProps, containerProps } from "./interfaces"
 import "../../less/profile-styles/loading.css"
 
 interface ProfileBodyProps {
@@ -8,12 +8,13 @@ interface ProfileBodyProps {
   isMine: boolean,
   iFollow: boolean,
   setNegative: () => void,
-  followLoad: boolean
+  followLoad: boolean,
+  setContainer: (prop: containerProps) => void
 }
 
-const ProfileBody: FC<ProfileBodyProps> = ({profileInfo, followUser, isMine, iFollow, setNegative, followLoad}) => {
+const ProfileBody: FC<ProfileBodyProps> = ({profileInfo, followUser, isMine, iFollow, setNegative, followLoad, setContainer}) => {
   return (
-    <>
+      <>
         <div className="profile-avatar">
           <div className="avatar-frame">
               <img src={'/uploads/avatar/'+profileInfo.image} alt="avatar-img" />
@@ -22,8 +23,20 @@ const ProfileBody: FC<ProfileBodyProps> = ({profileInfo, followUser, isMine, iFo
         <div className="profile-info">
           <h1>{profileInfo.name}</h1>
           {isMine ? <p>{profileInfo.email}</p> : null}
-          <h2>Followers: {profileInfo.followers.length}</h2>
-          <h2 style={{color: "#2986CC"}}>Following: {profileInfo.following.length}</h2>
+          <div className="follow-wrapper" style={{display: "flex",alignItems: 'center', justifyContent:'space-between', width: '300px' }}>
+            
+            <h2 onClick={() => setContainer({
+              from: profileInfo.name,
+              whatIs: 'followers',
+              whatToShow: profileInfo.followers
+            })}>Followers: {profileInfo.followers.length}</h2>
+            <h2 style={{color: "#2986CC"}}onClick={() => setContainer({
+              from: profileInfo.name,
+              whatIs: 'followings',
+              whatToShow: profileInfo.following
+            })}>Following: {profileInfo.following.length}</h2>
+
+          </div>
         </div>
         {
         !isMine ? <button className={!iFollow ? "follow-btn" : "follow-btn followed"} onClick={() => {
