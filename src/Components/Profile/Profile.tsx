@@ -12,6 +12,7 @@ export interface ProfileProps {
   image: string;
   email: string;
   followers: string[];
+  following: string[];
 }
 
 const defaultState: ProfileProps = {
@@ -20,6 +21,7 @@ const defaultState: ProfileProps = {
   image: "",
   email: "",
   followers: [],
+  following: [],
 };
 
 const Profile = () => {
@@ -44,6 +46,7 @@ const Profile = () => {
           image: response.data.image,
           email: response.data.email,
           followers: response.data.followers.map((e: { _id: string }) => e._id),
+          following: response.data.following.map((e: { _id: string }) => e._id),
         });
       });
   }, [id]);
@@ -61,10 +64,10 @@ const Profile = () => {
     axios
       .post(`http://localhost:5000/dashboard/follow/${id}/${tokenAuth}`)
       .then((response) => {
-        if (response) {
+        if (response.status === 200) {
           setIFollow(!iFollow);
-          setFollowLoad(false);
         }
+        setFollowLoad(false);
       })
       .catch((err) => console.log(err));
   };

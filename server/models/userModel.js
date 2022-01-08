@@ -9,6 +9,7 @@ const signUpSchema = new Schema(
     password: { type: String, required: true },
     image: { type: String },
     followers: [{ _id: String }],
+    following: [{ _id: String }]
   },
   { strict: false }
 )

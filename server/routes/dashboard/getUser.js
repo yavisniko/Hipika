@@ -20,6 +20,7 @@ router.get("/getUser/:id", async (req, res) => {
           image: result.image,
           surname: result.surname,
           followers: result.followers,
+          following: result.following,
         })
       }
     })

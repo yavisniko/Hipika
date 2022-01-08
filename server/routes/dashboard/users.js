@@ -2,10 +2,10 @@ const express = require("express")
 const UserSchema = require("../../models/userModel")
 const router = express.Router()
 
-router.get("/user/:id", async (req, res) => {
+router.get("/user/:id", (req, res) => {
   const { id } = req.params
 
-  await UserSchema.findById(id)
+  UserSchema.findById(id)
     .then((result) =>
       res.send({
         name: `${result.name} ${result.surname}`,

@@ -7,11 +7,12 @@ router.post("/signup", (req, res) => {
 
   const userData = new Users({
     name: name,
-    surname: surname,
+    surname: surname, 
     email: email,
     password: password,
     image: path,
     followers: [],
+    following: [],
   })
   userData
     .save()
