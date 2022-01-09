@@ -31,7 +31,6 @@ export const defaultTemplate: containerProps = {
 
 export const boolDefault = {
   load: false,
-  mine: false,
   followLoad: false,
   iFollow: false,
   showContainer: false

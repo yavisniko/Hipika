@@ -17,12 +17,13 @@ import '../../less/profile-styles/profile.css'
 const Profile = () => {
   const [profileInfo, setProfileInfo] = useState<ProfileProps>(defaultState)
   const [propBooleans, setPropBooleans] = useState(boolDefault)
+  const [isMine, setIsMine] = useState<boolean>(false)
   const [whatToShowInContainer, setWhatToShowInContainer] =
     useState<containerProps>(defaultTemplate)
   const { id } = useParams()
-
+  
   useEffect(() => {
-    if (id === tokenAuth) setPropBooleans({...propBooleans, mine: true})
+    tokenAuth === id ? setIsMine(true) : setIsMine(false)
     setPropBooleans({...propBooleans, load: true})
 
     axios.get(`http://localhost:5000/dashboard/getUser/${id}`).then((response) => {
@@ -85,7 +86,7 @@ const Profile = () => {
       ) : (
         <ProfileBody
           setContainer={setContainer}
-          isMine={propBooleans.mine}
+          isMine={isMine}
           profileInfo={profileInfo}
           iFollow={propBooleans.iFollow}
           followUser={followUser}

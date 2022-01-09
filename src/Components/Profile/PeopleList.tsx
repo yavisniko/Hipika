@@ -1,17 +1,61 @@
-import React from 'react'
+import { FC, useState, useEffect } from "react"
+import { PeopleProps } from "../Blog/People"
+import { tokenAuth } from "../Dashboard/Card"
+import { useNavigate } from "react-router-dom"
+import axios from "axios"
 
+interface PropWithClose extends PeopleProps {
+  close: () => void
+}
 
+const PeopleList: FC<PropWithClose> = ({
+  userId,
+  name,
+  image,
+  followers,
+  close,
+}) => {
+  const [iFollow, setIFollow] = useState(false)
+  const [awaitFollow, setAwaitFollow] = useState(false)
+  let navigate = useNavigate()
 
-const PeopleList = () => {
+  useEffect(() => {
+    followers.includes(tokenAuth) ? setIFollow(true) : setIFollow(false)
+  }, [])
+
+  const followUser = () => {
+    if (awaitFollow) return
+
+    setAwaitFollow(true)
+
+    axios
+      .post(`http://localhost:5000/dashboard/follow/${userId}/${tokenAuth}`)
+      .then((response) => {
+        if (response.status === 200) setIFollow(!iFollow)
+        setAwaitFollow(false)
+      })
+  }
+
   return (
     <div className="user-box">
-      <div className="user-info">
+      <div
+        className="user-info"
+        onClick={() => {
+          navigate(`/user/${userId}`)
+          close()
+        }}
+      >
         <div className="img-wrapper">
-          <img src="https://www.coogfans.com/uploads/db5902/original/3X/8/1/81173237ffa580ef710b0862fdddaac163274db1.jpeg" alt="" />
+          <img src={`/uploads/avatar/${image}`} alt="" />
         </div>
-        <p style={{marginLeft:"20px", color: "#FFF"}}>Kesha legion xd</p>
+        <p style={{ marginLeft: "20px", color: "#FFF" }}>{name}</p>
       </div>
-      <button>FOLLOW</button>
+      <button 
+      className={iFollow ? "follow-btn followed" : "follow-btn"}
+      onClick={followUser}
+      >
+        {iFollow ? "FOLLOWED" : "FOLLOW"}
+      </button>
     </div>
   )
 }
