@@ -1,3 +1,4 @@
+
 import { FC, useEffect, useState, useRef } from "react"
 import { containerProps } from "./interfaces"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -13,6 +14,7 @@ const Follow: FC<containerProps> = ({ from, whatIs, whatToShow, close }) => {
   const [followUser, setFollowUser] = useState<MappingProps[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const containerRef = useRef<HTMLDivElement>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const handleOutsideClick = (e: any) => {
     if (containerRef.current && !containerRef.current.contains(e.target)) {
@@ -33,7 +35,7 @@ const Follow: FC<containerProps> = ({ from, whatIs, whatToShow, close }) => {
 
     await axios.all(fetchingURL.map((user) => axios.get(user))).then((response) => {
       const fetchedUser: MappingProps[] = []
-      
+
       response.map((e) => {
         setIsLoading(true)
         fetchedUser.push({
@@ -74,7 +76,7 @@ const Follow: FC<containerProps> = ({ from, whatIs, whatToShow, close }) => {
                       name={followedUser.name}
                       image={followedUser.image}
                       followers={followedUser.followers}
-                      userId={followedUser.userId}
+                      id={followedUser.userId}
                       key={followedUser.userId}
                     />
                   )

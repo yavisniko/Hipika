@@ -10,6 +10,7 @@ interface ProfileBodyProps {
   setNegative: () => void,
   followLoad: boolean,
   setContainer: (prop: containerProps) => void
+  
 }
 
 const ProfileBody: FC<ProfileBodyProps> = ({profileInfo, followUser, isMine, iFollow, setNegative, followLoad, setContainer}) => {
