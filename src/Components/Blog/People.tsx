@@ -16,6 +16,8 @@ const People: FC<PeopleProps> = ({userId, name, image}) => {
   const [following, setFollowing] = useState(false)
   const [followLoad, setFollowLoad] = useState(false)
 
+  console.log(image)
+
   useEffect(() => {
     if(userId === tokenAuth) return
 
@@ -31,7 +33,7 @@ const People: FC<PeopleProps> = ({userId, name, image}) => {
     <div className="person-box">
       <div className="main-info" onClick={() => navigate(`/user/${userId}`)}>
         <div className="avatar">
-          <img src={`/uploads/avatar/`+image} alt="" />
+          <img src={`/uploads/avatar/${image}`} alt="" />
         </div>
         <p>{name}</p>
       </div>

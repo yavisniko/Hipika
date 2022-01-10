@@ -14,7 +14,7 @@ router.get("/getUser/:id", async (req, res) => {
       } else {
         res.send({
           key: result._id,
-          userId: id,
+          userId: result._id,
           email: result.email,
           name: result.name,
           image: result.image,

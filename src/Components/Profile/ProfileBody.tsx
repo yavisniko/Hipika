@@ -39,6 +39,7 @@ const ProfileBody: FC<ProfileBodyProps> = ({profileInfo, followUser, isMine, iFo
 
           </div>
         </div>
+
         {
         !isMine ? <button className={!iFollow ? "follow-btn" : "follow-btn followed"} onClick={() => {
           followUser();
