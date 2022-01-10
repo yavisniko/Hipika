@@ -45,6 +45,8 @@ const LikedContainer: FC<{ toggleMenu: () => void; likes: { _id: string }[] }> =
       });
     }, []);
 
+    console.log()
+
     const handleClickOutside = (event: any) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         toggleMenu();

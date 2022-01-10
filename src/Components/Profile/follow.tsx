@@ -3,6 +3,7 @@ import { containerProps } from './interfaces'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { MappingProps } from '../Blog/LikedLists'
+import { tokenAuth } from '../Dashboard/Card';
 import PeopleList from './PeopleList'
 import axios from 'axios'
 import '../../less/profile-styles/follow.css'
@@ -10,11 +11,12 @@ import '../../less/profile-styles/follow.css'
 const Follow: FC<containerProps> = ({from, whatIs, whatToShow, close}) => {
   const [followUser, setFollowUser] = useState<MappingProps[]>([])
   const containerRef = useRef<HTMLDivElement>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const handleOutsideClick = (e: any) => {
     if (containerRef.current && !containerRef.current.contains(e.target)) {
       close!()
-  }
+    }
   }
 
   useEffect(() => {
@@ -25,22 +27,29 @@ const Follow: FC<containerProps> = ({from, whatIs, whatToShow, close}) => {
   })
 
   const fetchUser = async (): Promise<void> => {
-    await axios.all(whatToShow.map(user => {
-      const fetchedUser: any[] = []
+    const fetchingURL: string[] = whatToShow.map(
+      (id) => `http://localhost:5000/dashboard/getUser/${id}`
+    )
 
-      axios.get(`http://localhost:5000/dashboard/getUser/${user}`)
-      .then(e => {
-        fetchedUser.push(e.data)
-      }).catch(err => {
-        console.log("some error occured:", err)
+    await axios.all(fetchingURL.map((user) => axios.get(user))).then((response) => {
+      const fetchedUser: MappingProps[] = []
+
+      response.map((e) => {
+        setIsLoading(true)
+        fetchedUser.push({
+          name: `${e.data.name} ${e.data.surname}`,
+          userId: e.data.userId,
+          image: e.data.image,
+          followers: e.data.followers.map((e: { _id: string }) => e._id),
+          _id: tokenAuth,
+        })
+        setFollowUser(fetchedUser)
+        setIsLoading(false)
       })
-
-      console.log(fetchedUser)
-    }))
+    })
   }
-  
   useEffect(() => {fetchUser()}, [])
-  
+  console.log(followUser)
   
   return (
     <div className="follow-background">
@@ -56,21 +65,22 @@ const Follow: FC<containerProps> = ({from, whatIs, whatToShow, close}) => {
           }
         </div>
         <div className="follower-lists">
-          <PeopleList />
-          <PeopleList />
-          <PeopleList />
-          <PeopleList />
-          <PeopleList />
-          <PeopleList />
-          <PeopleList />
-          <PeopleList />
-          <PeopleList />
-          <PeopleList />
-          <PeopleList />
-          <PeopleList />
-          <PeopleList />
-          <PeopleList />
-  
+        {
+            !isLoading
+              ? followUser.map((followedUser) => {
+                  return (
+                    <PeopleList
+                      close={() => close!()}
+                      name={followedUser.name}
+                      image={followedUser.image}
+                      followers={followedUser.followers}
+                      id={followedUser.userId}
+                      key={followedUser.userId}
+                    />
+                  )
+                })
+              : <span className="loader"></span>
+            }
         </div>
       </div>
     </div>
