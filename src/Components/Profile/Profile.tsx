@@ -2,6 +2,7 @@ import { useState, useEffect, Fragment } from "react"
 import { useParams } from "react-router-dom"
 import { tokenAuth } from "../Dashboard/Card"
 import ProfileBody from "./ProfileBody"
+import UserBlogs from "./UserBlogs"
 import Follow from "./follow"
 import axios from "axios"
 import {
@@ -97,6 +98,7 @@ const Profile = () => {
       )
       }
     </div>
+      <UserBlogs id={id!} name={profileInfo.name}/>
     </>
   )
 }

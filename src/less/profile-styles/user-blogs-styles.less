@@ -1,0 +1,24 @@
+@import "../variables.less";
+
+.user-blogs{
+  transform: translateY(70px);
+  width: 100%;
+  padding: 0 20px;
+  h1{
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    &::before{
+      content: '';
+      width: 800px;
+      height: 3px;
+      max-width: 100%;
+      background: #FFF;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, 35px);
+    }
+  }
+}
