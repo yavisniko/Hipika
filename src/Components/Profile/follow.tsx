@@ -20,6 +20,7 @@ const Follow: FC<containerProps> = ({ from, whatIs, whatToShow, close }) => {
     }
   }
 
+
   useEffect(() => {
     document.addEventListener("click", handleOutsideClick, true)
 
@@ -46,7 +47,7 @@ const Follow: FC<containerProps> = ({ from, whatIs, whatToShow, close }) => {
         setFollowUser(fetchedUser)
         setIsLoading(false)
       })
-    })
+    }) 
   }
 
   useEffect(() => {
