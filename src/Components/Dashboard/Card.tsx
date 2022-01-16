@@ -7,7 +7,7 @@ import "../../less/dashboard-style/dashbaord.css";
 import "../../less/dashboard-style/loader.css"
 
 export const tokenAuth: string = JSON.parse(localStorage.getItem("authToken")!);
-interface CardPorps {
+export interface CardPorps {
   title: string;
   img: string;
   mainContent: string;

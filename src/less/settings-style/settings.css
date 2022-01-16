@@ -1,0 +1,80 @@
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf) format('truetype');
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+}
+body {
+  background: #1f1f1f;
+  min-height: 100vh;
+}
+.root-settings {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+}
+.root-settings .catalog {
+  display: flex;
+  align-items: center;
+  gap: 10px 0;
+  padding: 10px 15px;
+  flex-direction: column;
+  width: 400px;
+  min-width: 400px;
+  position: relative;
+  height: calc(100vh - 60px);
+  transform: translateY(60px);
+  background: #333333;
+}
+.root-settings .catalog .logout-btn.catalog-btn {
+  background: #FF4141;
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 20px);
+  transform: translateY(-20px);
+}
+.root-settings .catalog .logout-btn.catalog-btn:hover {
+  background: #ff5252;
+}
+.root-settings .catalog .catalog-btn {
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  font-size: 1.2rem;
+  background: #414141;
+  border: none;
+  color: #FFF;
+  border-radius: 5px;
+}
+.root-settings .catalog .catalog-btn:hover {
+  background: #555555;
+}
+.root-settings .catalog .catalog-btn .fa-user-cog,
+.root-settings .catalog .catalog-btn .fa-lock {
+  transform: translateX(-20px);
+}

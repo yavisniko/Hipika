@@ -21,6 +21,7 @@ router.get("/getUser/:id", async (req, res) => {
           surname: result.surname,
           followers: result.followers,
           following: result.following,
+          password: result.password
         })
       }
     })

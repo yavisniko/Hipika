@@ -1,33 +1,30 @@
 @font-face {
-  font-family: "Noto Sans";
+  font-family: 'Noto Sans';
   font-style: italic;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf)
-    format("truetype");
+  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf) format('truetype');
 }
 @font-face {
-  font-family: "Quicksand";
+  font-family: 'Quicksand';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf)
-    format("truetype");
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf) format('truetype');
 }
 @font-face {
-  font-family: "Quicksand";
+  font-family: 'Quicksand';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf)
-    format("truetype");
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf) format('truetype');
 }
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Noto Sans", sans-serif;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 body {
   background: #1f1f1f;
@@ -35,7 +32,7 @@ body {
 }
 nav {
   display: flex;
-  z-index: 100;
+  z-index: 10;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
@@ -70,4 +67,31 @@ nav .user-profile {
 nav .user-profile img {
   width: auto;
   height: 100%;
+}
+nav .avatar-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 130px;
+  height: 70px;
+  background: #2e2e2e;
+  z-index: 30;
+  bottom: 0;
+  right: 0;
+  gap: 5px 0;
+  transform: translate(-60px, 60px);
+  box-shadow: 0 0 5px;
+  padding: 5px 0;
+}
+nav .avatar-menu button {
+  height: 100%;
+  background: #575757;
+  border: none;
+  color: #FFF;
+  border-radius: 5px;
+  cursor: pointer;
+}
+nav .avatar-menu button .fa-cog,
+nav .avatar-menu button .fa-user-circle {
+  transform: translateX(-5px);
 }
