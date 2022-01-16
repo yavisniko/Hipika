@@ -1,4 +1,4 @@
-import { useEffect, useState, FC, useRef } from "react"
+import { useEffect, useState, FC } from "react"
 import Card from "../Dashboard/Card"
 import axios from "axios"
 import "../../less/profile-styles/user-blogs-styles.css"
@@ -9,15 +9,14 @@ const UserBlogs: FC<{ id: string; name: string }> = ({ name, id }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   useEffect(() => {
-
-    let abortController = new AbortController();
+    let isMounted = true
 
     setIsLoading(true)
     axios
-      .get(`http://localhost:5000/blog/blog-user/${id}`,{
-        signal: abortController.signal
-      })
+      .get(`http://localhost:5000/blog/blog-user/${id}`)
       .then((response) => {
+          if(!isMounted) return
+
           setUserBlogs(
             response.data.map((blog: any) => {
               return {
@@ -35,10 +34,9 @@ const UserBlogs: FC<{ id: string; name: string }> = ({ name, id }) => {
       })
       .catch((err) => console.log(err))
       
-      abortController.abort()
-  }, [])
-
-  console.log(userBlogs)
+      isMounted = false
+      
+  }, [id])
 
   return (
     <div className="user-blogs">

@@ -112,7 +112,7 @@ const formHandler = async (e: React.FormEvent): Promise<void> => {
                 <input type="password" placeholder='Password' value={form.password} onChange={inputHandler} name="password"/>
                 <input type="password" placeholder='Repeat Password' value={form.repeatpass} onChange={inputHandler} name="repeatpass"/>
             <div className="button-wrapper">
-                <button type="submit">Sign up</button>
+                <button type="submit" >Sign up</button>
             </div>
             </form>
             <Link to="/log-in">Already have account?</Link>

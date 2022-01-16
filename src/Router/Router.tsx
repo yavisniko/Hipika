@@ -7,6 +7,7 @@ import Navbar from "../Components/Navbar";
 import CreateBlog from "../Components/CreateBlog/CreateBlog"
 import Dashboard from "../Components/Dashboard/dashboard";
 import Blog from "../Components/Blog/Blog";
+import UserSettings from "../Components/Settings/UserSettings";
 import Profile from '../Components/Profile/Profile'
 
 const Router = () => {
@@ -30,6 +31,7 @@ const Router = () => {
                 <Route path="/dashboard" element={<Dashboard/>}/>
                 <Route path="/blog/:id" element={<Blog />}/>
                 <Route path="/user/:id"element={<Profile />}/>
+                <Route path='/settings' element={<UserSettings />}/>
             </Routes>
         </BrowserRouter>
     )

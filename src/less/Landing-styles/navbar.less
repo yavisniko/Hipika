@@ -2,7 +2,7 @@
 
 nav {
   display: flex;
-  z-index: 100;
+  z-index: 10;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
@@ -35,6 +35,33 @@ nav {
     img {
       width: auto;
       height: 100%;
+    }
+  }
+  .avatar-menu{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 130px;
+    height: 70px;
+    background:#2e2e2e;
+    z-index: 30;
+    bottom: 0;
+    right: 0;
+    gap: 5px 0;
+    transform: translate(-60px, 60px);
+    box-shadow: 0 0 5px;
+    padding: 5px 0;
+    button{
+      height: 100%;
+      background: #575757;
+      border: none;
+      color: #FFF;
+      border-radius: 5px;
+      cursor: pointer;
+      .fa-cog,
+      .fa-user-circle {
+        transform: translateX(-5px);
+      }
     }
   }
 }

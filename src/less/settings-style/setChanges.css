@@ -1,0 +1,166 @@
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf) format('truetype');
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+}
+body {
+  background: #1f1f1f;
+  min-height: 100vh;
+}
+.set-changes-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 50px 10px;
+}
+.set-changes-container .changes-root {
+  width: inherit;
+  height: 100%;
+  overflow-y: auto;
+  background: #333333;
+  transform: translateY(30px);
+  border-radius: 15px;
+}
+.set-changes-container .changes-root h1 {
+  font-weight: 900;
+  width: 100%;
+  text-align: center;
+  color: #FFF;
+  font-size: 3em;
+}
+.set-changes-container .changes-root .changes-wrapper {
+  display: flex;
+  width: 100%;
+  height: calc(100% - 70px);
+}
+.set-changes-container .changes-root .changes-wrapper form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: calc(100% - 20px);
+  height: 100%;
+  text-align: center;
+  position: relative;
+  padding: 0 20px;
+  gap: 20px 0;
+}
+.set-changes-container .changes-root .changes-wrapper form .email-change-warn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: calc(100% - 44px);
+  border-radius: 5px;
+  color: #FFF;
+  min-height: 60px;
+  background: #ff1919;
+  top: 0;
+}
+.set-changes-container .changes-root .changes-wrapper form .btn-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  bottom: 30px;
+  display: none;
+}
+.set-changes-container .changes-root .changes-wrapper form .btn-wrapper.show {
+  display: block;
+}
+.set-changes-container .changes-root .changes-wrapper form .btn-wrapper .save-btn {
+  height: 100%;
+  width: 200px;
+  position: absolute;
+  border: none;
+  right: 0;
+  transform: translateX(-22px);
+  background: #ff4d4d;
+  border: block;
+  border-radius: 5px;
+  color: #FFF;
+  cursor: pointer;
+}
+.set-changes-container .changes-root .changes-wrapper form label {
+  color: #FFF;
+  width: 100%;
+  height: 0;
+  text-align: left;
+}
+.set-changes-container .changes-root .changes-wrapper form .forbidden-email {
+  cursor: not-allowed;
+  color: #49494978;
+  caret-color: transparent;
+}
+.set-changes-container .changes-root .changes-wrapper form input {
+  width: 100%;
+  height: 50px;
+  background: #1f1f1f;
+  border: none;
+  color: #Fff;
+  outline: none;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+.set-changes-container .changes-root .changes-wrapper form input:focus:not(.forbidden-email) {
+  border: 2px solid #ff4d4d;
+}
+.set-changes-container .changes-root .changes-wrapper .img-changer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  max-width: 100%;
+  height: 100%;
+  padding: 0 50px;
+}
+.set-changes-container .changes-root .changes-wrapper .img-changer .img-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  width: 400px;
+  height: 400px;
+  background: #1f1f1f;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.set-changes-container .changes-root .changes-wrapper .img-changer .img-circle img {
+  width: auto;
+  height: 100%;
+  cursor: pointer;
+  z-index: 1;
+}
+.set-changes-container .changes-root .changes-wrapper .img-changer .img-circle input[type="file"] {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  z-index: 99;
+  cursor: pointer;
+}
+.set-changes-container .changes-root .changes-wrapper .img-changer .img-circle h3 {
+  color: #FFF;
+}
