@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react'
-import { tokenAuth } from '../Dashboard/Card'
-import { CatalogType, defaultState, UserProps } from './interface'
+import { useState } from 'react'
+import { CatalogType } from '../interface'
 import SetChanges from './SetChanges'
-import Catalog from './Catalog'
-import axios from "axios"
-import '../../less/settings-style/settings.css'
+import Catalog from '../Catalog'
+import '../../../less/settings-style/settings.css'
+import Security from '../Security/Security'
 
 const UserSettings = () => {
   const [selectedCatalog, setSelectedCatalog] = useState<CatalogType>('user')
@@ -18,7 +17,9 @@ const UserSettings = () => {
       <Catalog changeCatalog={chooseCatalog}/>
       {
         selectedCatalog === 'user'
-        ? <SetChanges />
+        ? <SetChanges /> :
+        selectedCatalog === 'privacy'
+        ? <Security />
         : null
       }
     </div>

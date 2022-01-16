@@ -7,7 +7,7 @@ import Navbar from "../Components/Navbar";
 import CreateBlog from "../Components/CreateBlog/CreateBlog"
 import Dashboard from "../Components/Dashboard/dashboard";
 import Blog from "../Components/Blog/Blog";
-import UserSettings from "../Components/Settings/UserSettings";
+import UserSettings from "../Components/Settings/Profile Edit/UserSettings";
 import Profile from '../Components/Profile/Profile'
 
 const Router = () => {

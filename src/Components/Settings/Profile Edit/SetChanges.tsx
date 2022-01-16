@@ -1,13 +1,13 @@
 import React, { useState, ChangeEvent, useEffect } from "react"
-import { defaultState, UserProps } from "./interface"
-import { tokenAuth } from "../Dashboard/Card"
+import { defaultState, UserProps } from "../interface"
+import { tokenAuth } from "../../Dashboard/Card"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { isEqual } from "../../utils/isEqual"
+import { isEqual } from "../../../utils/isEqual"
 import { faCamera } from "@fortawesome/free-solid-svg-icons"
-import "../../less/settings-style/setChanges.css"
 import axios from "axios"
 import UserForm from "./UserForm"
-import Loading from "./Loading"
+import Loading from "../Loading"
+import "../../../less/settings-style/setChanges.css"
 
 const SetChanges = () => {
   const [updateUser, setUpdateUser] = useState<UserProps>(defaultState)

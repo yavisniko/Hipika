@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Security = () => {
+const PasswordinSecurity = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const Security = () => {
   )
 }
 
-export default Security
+export default PasswordinSecurity

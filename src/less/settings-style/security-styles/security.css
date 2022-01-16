@@ -1,0 +1,52 @@
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf) format('truetype');
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+}
+body {
+  background: #1f1f1f;
+  min-height: 100vh;
+}
+main {
+  width: calc(100% - 70px);
+  margin: 20px 10px 0 10px;
+  height: calc(100vh - 100px);
+  overflow-y: auto;
+  border-radius: 15px;
+  background: #363636;
+  padding: 0 20px;
+}
+main h1 {
+  width: 100%;
+  color: #FFF;
+  font-size: 3rem;
+  text-align: center;
+}
+main .security-main {
+  width: 100%;
+  height: 100px;
+  border: 1px solid red;
+}

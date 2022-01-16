@@ -1,5 +1,5 @@
 import { FC, ChangeEvent, FormEvent } from 'react'
-import { UserProps } from './interface'
+import { UserProps } from '../interface'
 import axios from 'axios'
 
 interface FormProps {
