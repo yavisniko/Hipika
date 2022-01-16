@@ -12,6 +12,7 @@ const SpecificBlog = require("./routes/blogs/currect_blog")
 const avatar = require("./routes/log/avatar")
 const FollowUser = require("./routes/dashboard/followUser")
 const BlogByUser = require('./routes/blogs/blogsByUserId')
+const ProfileChanges = require ('./routes/settings/profileChanges')
 
 const mongoose = require("mongoose")
 const cors = require("cors")
@@ -45,5 +46,7 @@ app.use("/blog", uploadUser)
 app.use("/blog", Like)
 app.use("/blog", SpecificBlog)
 app.use("/blog", BlogByUser) 
+
+app.use("/settings", ProfileChanges)
 
 app.listen(5000)

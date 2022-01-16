@@ -43,6 +43,12 @@ body {
   transform: translateY(30px);
   border-radius: 15px;
 }
+@media screen and (max-width: 1050px) {
+  .set-changes-container .changes-root {
+    padding: 100px 0;
+    transform: none;
+  }
+}
 .set-changes-container .changes-root h1 {
   font-weight: 900;
   width: 100%;
@@ -55,6 +61,11 @@ body {
   width: 100%;
   height: calc(100% - 70px);
 }
+@media screen and (max-width: 1050px) {
+  .set-changes-container .changes-root .changes-wrapper {
+    flex-direction: column;
+  }
+}
 .set-changes-container .changes-root .changes-wrapper form {
   display: flex;
   justify-content: center;
@@ -65,7 +76,14 @@ body {
   text-align: center;
   position: relative;
   padding: 0 20px;
+  margin-top: 50px;
   gap: 20px 0;
+}
+@media screen and (max-width: 1050px) {
+  .set-changes-container .changes-root .changes-wrapper form {
+    padding-top: 80px;
+    height: 120%;
+  }
 }
 .set-changes-container .changes-root .changes-wrapper form .email-change-warn {
   display: flex;
@@ -76,7 +94,7 @@ body {
   border-radius: 5px;
   color: #FFF;
   min-height: 60px;
-  background: #ff1919;
+  background: #ff4242;
   top: 0;
 }
 .set-changes-container .changes-root .changes-wrapper form .btn-wrapper {
@@ -85,6 +103,12 @@ body {
   height: 40px;
   bottom: 30px;
   display: none;
+}
+@media screen and (max-width: 1050px) {
+  .set-changes-container .changes-root .changes-wrapper form .btn-wrapper {
+    bottom: 0;
+    transform: translateY(60px);
+  }
 }
 .set-changes-container .changes-root .changes-wrapper form .btn-wrapper.show {
   display: block;
@@ -135,6 +159,11 @@ body {
   height: 100%;
   padding: 0 50px;
 }
+@media screen and (max-width: 1050px) {
+  .set-changes-container .changes-root .changes-wrapper .img-changer {
+    width: 100%;
+  }
+}
 .set-changes-container .changes-root .changes-wrapper .img-changer .img-circle {
   display: flex;
   justify-content: center;
@@ -146,6 +175,18 @@ body {
   background: #1f1f1f;
   overflow: hidden;
   border-radius: 50%;
+}
+@media screen and (max-width: 1050px) {
+  .set-changes-container .changes-root .changes-wrapper .img-changer .img-circle {
+    width: 300px;
+    height: 300px;
+  }
+}
+@media screen and (max-width: 430px) {
+  .set-changes-container .changes-root .changes-wrapper .img-changer .img-circle {
+    width: 200px;
+    height: 200px;
+  }
 }
 .set-changes-container .changes-root .changes-wrapper .img-changer .img-circle img {
   width: auto;
