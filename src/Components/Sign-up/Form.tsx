@@ -27,6 +27,7 @@ const Form: FC<{showNavbar: () => void}> = ({showNavbar}) => {
     })
     let navigate = useNavigate()
     const fileId: string = String(new Date().getTime())
+    const [fileHandler, setFileHandler] = useState<File | null>(null)
 
     const inputHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const name: string = e.target.name
@@ -35,7 +36,6 @@ const Form: FC<{showNavbar: () => void}> = ({showNavbar}) => {
         setForm({...form, [name]: value})
     }
 
-    const [fileHandler, setFileHandler] = useState<File | null>(null)
 
     const fileUploadHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const fileSize: number = parseFloat(((e.target.files![0].size / 1024) /1024).toFixed(3))
