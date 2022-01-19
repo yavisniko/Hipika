@@ -40,47 +40,46 @@ const SetChanges = () => {
       setUpdateUser({ ...updateUser, path: `${fileId}-${e.target.files![0].name}` })
     }
   }
-
+  
   useEffect(() => {
-    if(isLoading) return
 
     setIsLoading(true)
-
+    
     axios
-      .get(`http://localhost:5000/dashboard/getUser/${tokenAuth}/`)
-      .then((result) => {
-        const { name, image, surname, password, email } = result.data
-
-        setDisplayImage(image)
-
-        setUpdateUser({
-          name: name,
-          surname: surname,
-          email: email,
-          path: image,
-          password: password,
-        })
-
-        setUnChanged({
-          name: name,
-          surname: surname,
-          email: email,
-          path: image,
-          password: password,
-        })
-
-        setIsLoading(false)
+    .get(`http://localhost:5000/dashboard/getUser/${tokenAuth}/`)
+    .then((result) => {
+      const { name, image, surname, password, email } = result.data
+      
+      setDisplayImage(image)
+      
+      setUpdateUser({
+        name: name,
+        surname: surname,
+        email: email,
+        path: image,
+        password: password,
       })
-      .catch((err) => console.log(err))
+      
+      setUnChanged({
+        name: name,
+        surname: surname,
+        email: email,
+        path: image,
+        password: password,
+      })
+      
+      setIsLoading(false)
+    })
+    .catch((err) => console.log(err))
   }, [ ])
-
+  
   useEffect(() => {
-    if(isLoading) return
-
+    if(isLoading || updateUser.email === '') return
+    
     const isequal = isEqual<UserProps>(unChanged, updateUser)
-
+    
     if (isLoading || updateUser.email === "") return
-
+    
     if (!isequal) {
       setShowSave(true)
     } else setShowSave(false)

@@ -15,7 +15,7 @@ interface formProps {
     path: string
 }
 
-const Form: FC<{showNavbar: () => void}> = ({showNavbar}) => {
+const Form = () => {
     const [form, setForm] = useState<formProps>({
         name: '',
         surname: "",
@@ -75,7 +75,6 @@ const formHandler = async (e: React.FormEvent): Promise<void> => {
 
             await axios.post('http://localhost:5000/signup', form)
             .then((res) => {
-                showNavbar()
                 localStorage.setItem('authToken', JSON.stringify(res.data._id))              
                 if(res.status === 200){
                     navigate('/dashboard')

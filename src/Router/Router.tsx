@@ -22,13 +22,13 @@ const Router = () => {
 
     return (
         <BrowserRouter>
-        {showNavbar ? <Navbar />: null}
+        {showNavbar ? <Navbar setClose={() => setShowNavbar(false)} setOpen={() => setShowNavbar(true)}/>: null}
             <Routes>
                 <Route path="/" element={<Landing />} />
-                <Route path="/sign-up" element={<SignMain showNavbar={() => setShowNavbar(true)}/>} />
-                <Route path="/log-in" element={<Login showNavbar={() => setShowNavbar(true)}/>}/>
+                <Route path="/sign-up" element={<SignMain />} />
+                <Route path="/log-in" element={<Login />}/>
                 <Route path="/create-blog" element={<CreateBlog />} />
-                <Route path="/dashboard" element={<Dashboard/>}/>
+                <Route path="/dashboard" element={<Dashboard setOpen={() => setShowNavbar(true)}/>}/>
                 <Route path="/blog/:id" element={<Blog />}/>
                 <Route path="/user/:id"element={<Profile />}/>
                 <Route path='/settings' element={<UserSettings />}/>

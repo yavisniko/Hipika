@@ -1,15 +1,17 @@
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect, FC } from "react";
 import { tokenAuth } from "./Card";
 import Card from "./Card";
 import axios from "axios";
 import "../../less/dashboard-style/loader.css";
 import "../../less/dashboard-style/dashbaord.css";
+import { useLocation } from "react-router-dom";
 
 
-const Dashboard = () => {
+const Dashboard: FC<{setOpen: () => void}> = ({setOpen}) => {
   const [blogs, setBlogs] = useState<any>([]);
   const [isLoading, setIsloading] = useState<boolean>(false);
-  
+  const { pathname } = useLocation()
+
   const cancelToken = axios.CancelToken;
   const source = cancelToken.source();
 
@@ -57,6 +59,7 @@ const Dashboard = () => {
 
    useEffect(() => {
     fetchBlogs();
+    setOpen()
     return () => source.cancel("axios request cancelled");
   }, []);
 
