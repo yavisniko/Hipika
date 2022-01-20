@@ -37,8 +37,6 @@ Project is built with little packages such as [react-router-dom](https://github.
 		<img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E">
 		<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white">
 		<img src="https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E">
-		<img src="">
-		<img src="">
 <div>
 
 ## Getting Started
