@@ -1,7 +1,6 @@
-<div>
-[![GitHub contributors](https://img.shields.io/github/contributors/callmenikk/Hipika.svg)](https://GitHub.com/Naereen/badges/graphs/contributors/)
-[![GitHub issues](https://img.shields.io/github/issues/callmenikk/Hipika.svg)](https://GitHub.com/Naereen/StrapDown.js/issues/)
-
+<div style="display: flex">
+	<img src="https://img.shields.io/github/contributors/callmenikk/Blog-Express.svg">
+	<img src="https://img.shields.io/github/issues/callmenikk/Hipika.svg">
 </div>
 
 <div align="center">
