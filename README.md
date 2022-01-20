@@ -6,9 +6,6 @@
 <div align="center">
 	<img src="https://i.ibb.co/LrpX3g0/normal-text.png" width="400px">
 </div>
-<div align="center" style="font-weight: ">
-	Hipika is mini-social platform
-</div>
 
 ##  About Project
 
