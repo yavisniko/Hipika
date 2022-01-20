@@ -1,46 +1,86 @@
-# Getting Started with Create React App
+<div>
+[![GitHub contributors](https://img.shields.io/github/contributors/callmenikk/Hipika.svg)](https://GitHub.com/Naereen/badges/graphs/contributors/)
+[![GitHub issues](https://img.shields.io/github/issues/callmenikk/Hipika.svg)](https://GitHub.com/Naereen/StrapDown.js/issues/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+</div>
 
-## Available Scripts
+<div align="center">
+	<img src="https://i.ibb.co/LrpX3g0/normal-text.png" width="400px">
+</div>
+<div align="center" style="font-weight: ">
+	Hipika is mini-social platform
+</div>
 
-In the project directory, you can run:
+##  About Project
 
-### `npm start`
+this is mini social platform, what you can do there?
+* Create Account
+* Create Posts, Edit or Delete Them
+* Explore Others Posts
+* Follow User
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Built with
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Project is built with little packages such as [react-router-dom](https://github.com/remix-run/react-router) and many more but mainly in this project I used:
 
-### `npm test`
+* **[Typescript](https://github.com/microsoft/TypeScript)**
+* **[React.js](https://github.com/facebook/react)**
+* **[Node.js](https://github.com/nodejs/node) / [Express.js](https://github.com/expressjs/express)**
+* **[Less](https://github.com/less/less.js)**
+* **[Mongoose](https://github.com/Automattic/mongoose)**
+<div>
+	<img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">
+	<img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white">
+		<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
+		<img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white">
+		<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">
+		<img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white`">
+		<img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E">
+		<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white">
+		<img src="https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E">
+		<img src="">
+		<img src="">
+<div>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
+ Before you would start the React project, you must setup database in **MongoDB**
+create free **Cluster**, mention that in `.env` 
 
-### `npm run build`
+```HTML
+DATABASE_URL=mongodb+srv://<USERNAME>:<PASSWORD>@cluster0.dvs5k.mongodb.net/<CLUSTER_NAME>?retryWrites=true&w=majority
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+after that in project folder open **2** terminal, one for **React** and one for **Express**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+first one
+```js
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+second one
+```js
+cd server
+```
+```js
+npm start
+```
 
-### `npm run eject`
+afer a while you are free to go :) 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Contributing
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are  **greatly appreciated**.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Don't forget to give the project a star! Thanks again!
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b <branch_name>`)
+3.  Commit your Changes (`git commit -m "some cool stuff added"`)
+4.  Push to the Branch (`git push origin <branch_name>`)
+5.  Open a Pull Request
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contact
+> * **[Linkedin](https://www.linkedin.com/in/nikoloz-imerlishvili-576a43203/)**
+> * **Discord: callmenikk#0001**
+> * **[Twitter](https://twitter.com/callmenikkkk)**
+> * **Gmail: formyauto75@gmail.com**
