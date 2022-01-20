@@ -74,7 +74,7 @@ body {
   color: #9c9c9c;
 }
 .profile-section .profile-info h2 {
-  color: #ff4d4d;
+  color: -color;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -85,7 +85,7 @@ body {
   transform: translate(-20px, -20px);
   width: 200px;
   height: 50px;
-  background: #ff4d4d;
+  background: #5136C2;
   color: #FFF;
   font-size: 1.2rem;
   border: 2px solid #ad4c4c;

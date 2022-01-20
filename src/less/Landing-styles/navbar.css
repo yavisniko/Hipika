@@ -48,7 +48,7 @@ nav {
 nav .blog-btn {
   border: none;
   height: 30px;
-  background: #ff4d4d;
+  background: #5136C2;
   color: #fff;
   width: 120px;
   border-radius: 5px;
@@ -62,7 +62,7 @@ nav .user-profile {
   overflow: hidden;
   cursor: pointer;
   border-radius: 50%;
-  border: 1px solid #ff4d4d;
+  border: 1px solid #5136C2;
 }
 nav .user-profile img {
   width: auto;

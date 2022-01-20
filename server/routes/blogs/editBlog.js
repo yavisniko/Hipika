@@ -1,18 +1,19 @@
 const router = require('express').Router()
 const BlogScheme = require('../../models/blogSchema')
 
-router.put('/edit/:id/:editor_id', (req,res) => {
-  const {id, editor_id} = req.params
+router.put('/edit/submitChanges/:id/:token', (req,res) => {
+  const {id, token} = req.params
+  const {img, title, main_content} = req.body
 
   BlogScheme.findById(id, (err, model) => {
-    if(model.userID !== editor_id){
-      res.status(403).send({
-        msg: "invalid editor"
-      })
-    }else {
-      res.send(model)
-    }
-  })
+      model.blog.file = model.blog.file === img ? img : `${token}/${img}`, 
+      model.blog.title = title
+      model.blog.mainContent = main_content
+
+      model.save()
+
+      res.status(200).send({msg: 'changes saved'})
+    })
 })
 
-module.exports = router
+module.exports = router  
