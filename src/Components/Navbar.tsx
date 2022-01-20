@@ -97,7 +97,7 @@ const Navbar: FC<{
     return (
         <nav>
             <div>
-            <button className="blog-btn" onClick={() => navigate('/Dashboard')}>Home</button>:
+            <button className="blog-btn" onClick={() => navigate('/Dashboard')}>Home</button>
             {
                 !backHome ? 
                 <button className="blog-btn" onClick={() => navigate('/create-blog')}>Create Blog</button>:

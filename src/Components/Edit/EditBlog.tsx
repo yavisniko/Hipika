@@ -16,7 +16,6 @@ enum StatusCodes {
   NotFound,
 }
 
-
 const defaultState = {
   user_id: "",
   img: "",
@@ -36,10 +35,11 @@ const EditBlog = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [saveChanges, setSaveChanges] = useState<boolean>(false)
   const [isError, setIsError] = useState(false)
+  const [blobURL, setBlobURL] = useState('')
+  const [file, setFile] = useState<File | null>(null)
   const { id } = useParams()
   const user_id = JSON.parse(localStorage.getItem("authToken") as string)
   const navigate = useNavigate()
-
 
   const inputHandler = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const name = e.target.name
@@ -48,42 +48,47 @@ const EditBlog = () => {
     setEditBlog({ ...editBlog, [name]: value })
   }
 
-  useEffect(()=> {
-    if(unChanged.user_id === '' || isLoading) return 
+  const fileHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const file_id: string = new Date().getTime().toString()
 
-    const isequal = isEqual<typeof defaultState>(editBlog,unChanged)
+    setBlobURL(URL.createObjectURL(e.target.files![0]))
+    setEditBlog({...editBlog, img: `${file_id}-${e.target.files![0].name}`})
 
-    console.log(isequal);
+    setFile(e.target.files![0])
+  }
 
-    if(!isequal){
+  useEffect(() => {
+    if (unChanged.user_id === "" && isLoading) return
+
+    const isequal = isEqual<typeof defaultState>(editBlog, unChanged)
+
+    if (!isequal) {
       setSaveChanges(false)
-    }else {
+    } else {
       setSaveChanges(true)
     }
-
   }, [editBlog])
 
   useEffect(() => {
     setIsLoading(true)
     axios
-      .put(`http://localhost:5000/blog/edit/${id}/${user_id}`)
+      .get(`http://localhost:5000/blog/edit/${id}/${user_id}`)
       .then((result) => {
         if (result.status === StatusCodes.OK) {
           setEditBlog({
             user_id: result.data.userID,
-              img: result.data.blog.file,
-              title: result.data.blog.title,
-              main_content: result.data.blog.mainContent,
-              blog_id: result.data.blog._id,
+            img: result.data.blog.file,
+            title: result.data.blog.title,
+            main_content: result.data.blog.mainContent,
+            blog_id: result.data.blog._id,
           })
           setUnchanged({
             user_id: result.data.userID,
-  
-              img: result.data.blog.file,
-              title: result.data.blog.title,
-              main_content: result.data.blog.mainContent,
-              blog_id: result.data.blog._id,
-        })
+            img: result.data.blog.file,
+            title: result.data.blog.title,
+            main_content: result.data.blog.mainContent,
+            blog_id: result.data.blog._id,
+          })
           setIsLoading(false)
         }
       })
@@ -111,7 +116,16 @@ const EditBlog = () => {
     <div className="loader-container">
       <span className="loader"></span>
     </div>
-  ) : <ChangeBlog inputHandler={inputHandler} editBlogs={editBlog} showSave={saveChanges}/>
+  ) : (
+    <ChangeBlog
+      inputHandler={inputHandler}
+      editBlogs={editBlog}
+      showSave={saveChanges}
+      blobURL={blobURL}
+      fileHandler={fileHandler}
+      file={file}
+    />
+  )
 }
 
 export default EditBlog

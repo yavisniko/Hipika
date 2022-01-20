@@ -24,7 +24,7 @@ const UserForm:FC<FormProps> = ({ showSave, updateUser, inputHandler, file, chan
     
     
     if(file !== null){
-      const fileData: any = new FormData()
+      const fileData: FormData = new FormData()
       fileData.append('file', file)
 
       await axios.post(`http://localhost:5000/upload/avatar/${updateUser.path.split('-')[0]}`, fileData)

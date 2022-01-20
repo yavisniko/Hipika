@@ -64,7 +64,7 @@ main .blog-photo .edit-btn {
   cursor: pointer;
 }
 main .blog-photo .edit-btn:hover {
-  box-shadow: 0 0 10px #ff4d4d;
+  box-shadow: 0 0 10px #5136C2;
 }
 main .blog-photo .edit-btn .fa-edit {
   margin-left: 15px;
