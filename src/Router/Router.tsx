@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes,  } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Landing from '../Components/Landing/Landing'
 import SignMain from '../Components/Sign-up/SignMain'
@@ -9,6 +9,7 @@ import Dashboard from "../Components/Dashboard/dashboard";
 import Blog from "../Components/Blog/Blog";
 import UserSettings from "../Components/Settings/Profile Edit/UserSettings";
 import Profile from '../Components/Profile/Profile'
+import EditBlog from "../Components/Edit/EditBlog";
 
 const Router = () => {
     const userAuth: string | null = localStorage.getItem('authToken')
@@ -32,6 +33,7 @@ const Router = () => {
                 <Route path="/blog/:id" element={<Blog />}/>
                 <Route path="/user/:id"element={<Profile />}/>
                 <Route path='/settings' element={<UserSettings />}/>
+                <Route path='/edit/:id' element={<EditBlog />}></Route>
             </Routes>
         </BrowserRouter>
     )

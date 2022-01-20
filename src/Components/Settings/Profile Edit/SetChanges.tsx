@@ -78,8 +78,6 @@ const SetChanges = () => {
     
     const isequal = isEqual<UserProps>(unChanged, updateUser)
     
-    if (isLoading || updateUser.email === "") return
-    
     if (!isequal) {
       setShowSave(true)
     } else setShowSave(false)

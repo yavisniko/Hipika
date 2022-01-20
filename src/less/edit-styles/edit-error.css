@@ -1,0 +1,91 @@
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf) format('truetype');
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+}
+body {
+  background: #1f1f1f;
+  min-height: 100vh;
+}
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  text-align: center;
+}
+.error-container .btn {
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #ff4d4d;
+  border-radius: 0.6em;
+  color: #ff4d4d;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  margin: 20px;
+  padding: 1.2em 2.8em;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+.error-container .btn:hover,
+.error-container .btn:focus {
+  color: #fff;
+  outline: 0;
+}
+.error-container .err-btn {
+  border-color: #ff4d4d;
+  color: #fff;
+  background-image: linear-gradient(45deg, #ff4d4d 50%, transparent 50%);
+  background-position: 100%;
+  background-size: 400%;
+  transition: 300ms ease-in-out;
+}
+.error-container .err-btn:hover {
+  background-position: 0;
+}
+.error-container .warn-wrapper {
+  width: 300px;
+  height: 300px;
+}
+@media screen and (max-width: 380px) {
+  .error-container .warn-wrapper {
+    width: 180px;
+    height: 180px;
+  }
+}
+.error-container .warn-wrapper img {
+  width: 100%;
+}

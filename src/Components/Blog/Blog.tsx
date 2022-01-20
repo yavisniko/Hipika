@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import LikedLists from "./LikedLists";
 import LikesContainer from "./LikesContainer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import "../../less/dashboard-style/loader.css";
 import "../../less/blog-styles/blog-styles.css";
 
@@ -17,7 +19,7 @@ interface blogProps {
   };
 }
 
-const defaultState: blogProps = {
+export const defaultState: blogProps = {
   user_id: "",
   blog: {
     img: "",
@@ -33,6 +35,8 @@ const Blog = () => {
   const [currBlog, setCurrBlogs] = useState<blogProps>(defaultState);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [likedMenu, setLikedMenu] = useState<boolean>(false);
+  const authToken = JSON.parse(localStorage.getItem('authToken') as string)
+  const navigate = useNavigate()
 
   useEffect(() => {
     setIsLoading(true);
@@ -71,6 +75,14 @@ const Blog = () => {
         <main>
           <div className="blog-photo">
             <img src={`/uploads/${currBlog.blog.img}`} alt="" />
+            {
+              currBlog.user_id === authToken ?
+              <button className="edit-btn" onClick={() => navigate(`/edit/${currBlog.blog.blog_id}`)}>
+                Edit
+                <FontAwesomeIcon icon={faEdit}/>
+              </button>
+            : null
+            }
             <div className="glass"></div>
             <LikesContainer
               toggleMenu={() => setLikedMenu(!likedMenu)}

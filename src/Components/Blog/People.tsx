@@ -16,8 +16,6 @@ const People: FC<PeopleProps> = ({userId, name, image}) => {
   const [following, setFollowing] = useState(false)
   const [followLoad, setFollowLoad] = useState(false)
 
-  console.log(image)
-
   useEffect(() => {
     if(userId === tokenAuth) return
 

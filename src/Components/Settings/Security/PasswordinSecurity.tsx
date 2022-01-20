@@ -41,7 +41,7 @@ const PasswordinSecurity: FC<{ goBack: () => void }> = ({ goBack }) => {
 
     if(currPassword !== newPassword.curr_password){
       alert(`your inputed password doesn't equal the current one`)
-    }else if(currPassword === newPassword.password){
+    }else if(currPassword === newPassword.password){  
       alert('new password and current can`t be same')
     }
     else if(newPassword.password !== newPassword.repeat_password){

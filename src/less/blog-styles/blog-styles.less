@@ -10,6 +10,32 @@ main {
     overflow: hidden;
     position: relative;
     box-shadow: 0 5px 20px;
+    .edit-btn{
+      .Center(center, center);
+      transform: translate(-10px, 10px);
+      background: rgba( 255, 255, 255, 0.4 );
+      backdrop-filter: blur( 20px );
+      -webkit-backdrop-filter: blur( 20px );
+      border-radius: 10px;
+      border: 1px solid rgba( 255, 255, 255, 0.18 ); 
+      font-size: 1rem;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 130px;
+      height: 40px;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #FFF;
+      z-index: 20;
+      &:hover{
+        box-shadow: 0 0 10px @landing-color;
+      }
+      cursor: pointer;
+      .fa-edit{
+        margin-left: 15px;
+      }
+    }
     .bottom-stuff{
       .Center(space-between, center);
       position: absolute;

@@ -8,18 +8,6 @@ const SecurityDashboard:FC<{moveToPass: () => void}> = ({
 }) => {
   const token: string = JSON.parse(localStorage.getItem('authToken')!)
 
-  const generateNewToken = () => {
-    const new_token: string = newToken()
-
-    axios.put(`http://localhost:5000/settings/change-token/${token}/${new_token}`)
-    .then(result => {
-      if(result.data.msg === 'token changed successfully'){
-        localStorage.setItem('authToken', JSON.stringify(new_token))
-      }
-    })
-    .catch(err => console.log('err occured', err))
-  }
-
   return (
       <>
       <div className="security-main">
@@ -31,10 +19,6 @@ const SecurityDashboard:FC<{moveToPass: () => void}> = ({
           Hover over to show your token
         </div>
         {token}
-      </div>
-      <div className="security-main">
-        <p>If your token got leaked, there is 100% chance to get hacked! change it immediantely</p>
-        <button className="password-btn" onClick={() => generateNewToken()}>Regenrate Token</button>
       </div>
       </>
   )

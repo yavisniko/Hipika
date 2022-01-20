@@ -71,7 +71,10 @@ const Card: FC<CardPorps> = ({
       <img src={"/uploads/" + img} alt="" />
       <div className="hover-box" onClick={() => navigate(`/blog/${blogId}`)}></div>
       <div className="main-content">
-        <h2>{title}</h2>
+        <h2>{title.length > 15 
+        ? `${title.slice(0, 15).trim()}...`
+        : title
+      }</h2>
         <div className="blog-author" onClick={() => navigate(`/user/${authorID}`)}>
           <div className="img-wrapper">
             <img src={'/uploads/avatar/'+blogAuthor!.image} alt="" />

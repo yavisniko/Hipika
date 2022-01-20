@@ -31,7 +31,6 @@ const LikedContainer: FC<{ toggleMenu: () => void; likes: { _id: string }[] }> =
         let likedPeople: MappingProps[] = []
 
         response.map((e) => {
-
           likedPeople.push({
             userId: e.data.userId,
             name: `${e.data.name} ${e.data.surname}`,

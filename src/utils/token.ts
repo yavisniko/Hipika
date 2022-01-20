@@ -1,7 +1,8 @@
 const rand = () => {
-  return Math.random().toString(36).substr(2);
+  const string_length = 24
+  return [...Array(string_length)].map(i=>(~~(Math.random()*36)).toString(36)).join('')
 };
 
 export const token = (): string => {
-  return rand() + rand();
+  return rand();
 };
