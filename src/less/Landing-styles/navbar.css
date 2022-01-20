@@ -91,6 +91,9 @@ nav .avatar-menu button {
   border-radius: 5px;
   cursor: pointer;
 }
+nav .avatar-menu button:hover {
+  background: #313131;
+}
 nav .avatar-menu button .fa-cog,
 nav .avatar-menu button .fa-user-circle {
   transform: translateX(-5px);

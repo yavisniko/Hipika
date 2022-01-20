@@ -1,0 +1,105 @@
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf) format('truetype');
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+}
+body {
+  background: #1f1f1f;
+  min-height: 100vh;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v15/pxiDyp8kv8JHgFVrJJLm81xlEA.ttf) format('truetype');
+}
+.edit-blog-container {
+  width: 100%;
+  min-height: 100vh;
+}
+.edit-blog-container .img-banner {
+  width: inherit;
+  height: 350px;
+  overflow: hidden;
+  position: relative;
+}
+.edit-blog-container .img-banner img {
+  width: 100%;
+}
+.edit-blog-container .img-banner input.title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100px;
+  font-size: 4rem;
+  color: #FFF;
+  font-family: 'Poppins', sans-serif;
+}
+.edit-blog-container .change-main_content {
+  margin-top: 50px;
+  height: 300px;
+  font-size: 1.2rem;
+  color: #FFF;
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  border-radius: 5px;
+  background: #141414;
+}
+.edit-blog-container .change-main_content:focus {
+  border: 3px solid #ff4d4d;
+}
+.edit-btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.edit-btn-wrapper .btn {
+  font-size: 1.2rem;
+  width: 170px;
+  height: 60px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  color: #FFF;
+  border: none;
+}
+.edit-btn-wrapper .delete {
+  background: #ff1f1f;
+}
+.edit-btn-wrapper .cancel {
+  background: #131313;
+}
+.edit-btn-wrapper .save {
+  background: #30ff52;
+}

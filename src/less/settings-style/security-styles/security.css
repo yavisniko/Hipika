@@ -1,0 +1,98 @@
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf) format('truetype');
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+}
+body {
+  background: #1f1f1f;
+  min-height: 100vh;
+}
+.main {
+  width: calc(100% - 20px);
+  margin: 20px 20px 0 10px;
+  height: calc(100vh - 100px);
+  overflow-y: auto;
+  border-radius: 15px;
+  background: #363636;
+  padding: 0 20px;
+}
+.main h1 {
+  width: 100%;
+  color: #FFF;
+  font-size: 3rem;
+  text-align: center;
+}
+.main .token-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  max-width: 100%;
+  height: 60px;
+  position: relative;
+  color: #ff3e3e;
+  transition-delay: 1s;
+  transition: 0.2s;
+}
+.main .token-wrapper:hover .blurer {
+  display: none;
+}
+.main .token-wrapper .blurer {
+  position: absolute;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  color: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main .security-main {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.main .security-main p {
+  color: #FFF;
+}
+.main .security-main .password-btn {
+  background: #59ff4a;
+  border: none;
+  width: 160px;
+  padding: 0 20px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.main .security-main .password-btn:hover {
+  border: 2px solid #000;
+}

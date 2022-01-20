@@ -8,7 +8,7 @@ const Loader = () => {
   return <span className="loader"></span>
 }
 
-const Login: FC<{showNavbar: () => void}> = ({showNavbar}) => {
+const Login = () => {
   const [login, setLogin] = useState({
     email: "",
     password: "",
@@ -47,7 +47,6 @@ const Login: FC<{showNavbar: () => void}> = ({showNavbar}) => {
         setCorrect(true) 
         setExist(false) 
       } else {
-        showNavbar()
         localStorage.setItem('authToken', JSON.stringify(response.data.user_info._id))
         navigate('/dashboard')
       }

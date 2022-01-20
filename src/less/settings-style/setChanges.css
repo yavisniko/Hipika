@@ -46,7 +46,6 @@ body {
 @media screen and (max-width: 1050px) {
   .set-changes-container .changes-root {
     padding: 100px 0;
-    transform: none;
   }
 }
 .set-changes-container .changes-root h1 {

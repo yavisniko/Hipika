@@ -1,33 +1,30 @@
 @font-face {
-  font-family: "Noto Sans";
+  font-family: 'Noto Sans';
   font-style: italic;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf)
-    format("truetype");
+  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf) format('truetype');
 }
 @font-face {
-  font-family: "Quicksand";
+  font-family: 'Quicksand';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf)
-    format("truetype");
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf) format('truetype');
 }
 @font-face {
-  font-family: "Quicksand";
+  font-family: 'Quicksand';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf)
-    format("truetype");
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf) format('truetype');
 }
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Noto Sans", sans-serif;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 body {
   background: #1f1f1f;
@@ -44,6 +41,33 @@ main .blog-photo {
   overflow: hidden;
   position: relative;
   box-shadow: 0 5px 20px;
+}
+main .blog-photo .edit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-10px, 10px);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 1rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 130px;
+  height: 40px;
+  transition: 0.2s;
+  color: #FFF;
+  z-index: 20;
+  cursor: pointer;
+}
+main .blog-photo .edit-btn:hover {
+  box-shadow: 0 0 10px #ff4d4d;
+}
+main .blog-photo .edit-btn .fa-edit {
+  margin-left: 15px;
 }
 main .blog-photo .bottom-stuff {
   display: flex;
@@ -77,7 +101,7 @@ main .blog-photo .bottom-stuff .likes-container {
   right: 0;
 }
 main .blog-photo .bottom-stuff .likes-container p {
-  color: #fff;
+  color: #FFF;
   font-size: 1.2rem;
   cursor: pointer;
   text-decoration: underline;
@@ -113,5 +137,5 @@ main .main-text .textarea {
   margin-top: 40px;
   width: 100%;
   font-size: 2rem;
-  color: #fff;
+  color: #FFF;
 }

@@ -13,6 +13,8 @@ const avatar = require("./routes/log/avatar")
 const FollowUser = require("./routes/dashboard/followUser")
 const BlogByUser = require('./routes/blogs/blogsByUserId')
 const ProfileChanges = require ('./routes/settings/profileChanges')
+const passChange = require('./routes/settings/changePassword')
+const editBlog = require('./routes/blogs/editBlog')
 
 const mongoose = require("mongoose")
 const cors = require("cors")
@@ -29,13 +31,13 @@ mongoose
   .connect(dbURL, { useNewUrlParser: true })
   .then(() => {
     console.log("connected to mongoDB")
-  })
+  })  
   .catch((err) => console.log(err))
 
 app.use("/", userAuth)
 app.use("/", Login)
 app.use("/", Users)
-app.use("/", avatar)
+app.use("/", avatar)    
 
 app.use("/dashboard", getUser)
 app.use("/dashboard", getBlogs)
@@ -46,7 +48,9 @@ app.use("/blog", uploadUser)
 app.use("/blog", Like)
 app.use("/blog", SpecificBlog)
 app.use("/blog", BlogByUser) 
+app.use("/blog", editBlog)
 
 app.use("/settings", ProfileChanges)
+app.use('/settings', passChange)
 
 app.listen(5000)
