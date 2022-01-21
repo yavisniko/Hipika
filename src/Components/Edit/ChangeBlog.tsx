@@ -1,6 +1,7 @@
-import { FC, ChangeEvent } from "react"
+import { FC, ChangeEvent, useState } from "react"
 import { defaultStateV2 } from "./EditBlog"
 import { useNavigate, useParams } from "react-router-dom"
+import ConfirmRequest from "./ConfirmRequest"
 import axios from "axios"
 
 interface ChangeBlogProps {
@@ -10,6 +11,7 @@ interface ChangeBlogProps {
   blobURL: string
   fileHandler: (e: ChangeEvent<HTMLInputElement>) => void
   file: File | null
+  setLoad: () => void
 }
 
 const ChangeBlog: FC<ChangeBlogProps> = ({
@@ -17,12 +19,27 @@ const ChangeBlog: FC<ChangeBlogProps> = ({
   inputHandler,
   showSave,
   fileHandler,
+  setLoad,
   blobURL,
   file
 }) => {
   let navigate = useNavigate()
   const { id } = useParams()
   const user_id = JSON.parse(localStorage.getItem("authToken") as string)
+  const [confirm, setConfirm] = useState<boolean>(false)
+
+  const deleteBlog = () => {
+    setLoad()
+
+    axios.delete(`http://localhost:5000/blog/delete/${id}`)
+    .then(response => {
+      if(response.data.msg = 'deleted'){
+        alert("post deleted")
+        navigate('/dashboard')
+      }
+    })
+    .catch(err => console.log(err))
+  }
 
 
   const submitChanges = async () => {
@@ -62,11 +79,11 @@ const ChangeBlog: FC<ChangeBlogProps> = ({
         })
       .catch(err => console.log(err))
     }
-
   }
 
   return (
     <>
+      {confirm && <ConfirmRequest blog_name={editBlogs.title} closeAlert={() => setConfirm(false)} deleteBlog={deleteBlog}/>}
       <div className="edit-blog-container">
         <div className="img-banner">
           <input type="file" accept="image/*" onChange={fileHandler} />
@@ -93,10 +110,10 @@ const ChangeBlog: FC<ChangeBlogProps> = ({
               <button className="btn cancel" onClick={() => navigate(`/blog/${id}`)}>
                 Cancel
               </button>
-              <button className="btn delete">Delete</button>
+              <button className="btn delete" onClick={() => setConfirm(true)}>Delete</button>
             </div>
             <div>
-              {!showSave ? <button className="btn save" onClick={() => submitChanges()}>Save Changes</button> : null}
+              {!showSave && <button className="btn save" onClick={() => submitChanges()}>Save Changes</button>}
             </div>
           </div>
         </div>

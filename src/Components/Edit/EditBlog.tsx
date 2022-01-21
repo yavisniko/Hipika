@@ -124,6 +124,7 @@ const EditBlog = () => {
       blobURL={blobURL}
       fileHandler={fileHandler}
       file={file}
+      setLoad={() => setIsLoading(true)}
     />
   )
 }
