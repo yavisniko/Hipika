@@ -1,0 +1,106 @@
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf) format('truetype');
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+}
+body {
+  background: #1f1f1f;
+  min-height: 100vh;
+}
+@font-face {
+  font-family: 'Poppins';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v15/pxiDyp8kv8JHgFVrJJLm81xlEA.ttf) format('truetype');
+}
+.confirm-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0 20px;
+  z-index: 99;
+  backdrop-filter: blur(8px);
+}
+.confirm-container .confirm-box {
+  width: 100%;
+  max-width: 500px;
+  height: 300px;
+  background: #3b3b3b;
+  border-radius: 10px;
+  position: relative;
+}
+.confirm-container .confirm-box .buttons-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+.confirm-container .confirm-box .buttons-wrapper button {
+  width: 150px;
+  height: 40px;
+  margin: 0 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  color: #FFF;
+}
+.confirm-container .confirm-box .buttons-wrapper button:nth-child(1) {
+  background: #1a1a1a;
+}
+.confirm-container .confirm-box .buttons-wrapper button:nth-child(2) {
+  background: #ff3a3a;
+}
+.confirm-container .confirm-box .alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: calc(100% - 70px);
+  text-align: center;
+}
+.confirm-container .confirm-box .alert p {
+  color: #FFF;
+  font-size: 1.3rem;
+}
+.confirm-container .confirm-box .alert p #blog-name {
+  color: #5136C2;
+  font-weight: 900;
+  font-style: italic;
+  font-family: 'Poppins', sans-serif;
+}
+.confirm-container .confirm-box .alert p #delete {
+  color: #ff3a3a;
+}

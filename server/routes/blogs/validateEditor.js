@@ -6,6 +6,11 @@ router.get('/edit/:id/:editor_id', (req,res) => {
 
   BlogScheme.findById(id, (err, model) => {
 
+    if(err){
+      console.log(err)
+      return
+    }
+
     if(model.userID !== editor_id){
       res.status(403).send({
         msg: "invalid editor"

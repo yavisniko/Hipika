@@ -9,14 +9,14 @@ const UserBlogs: FC<{ id: string; name: string }> = ({ name, id }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   useEffect(() => {
-    let isMounted = true
-
+    //! unmounted component error, I tried everything
+    let unmouted = true
     setIsLoading(true)
+
     axios
       .get(`http://localhost:5000/blog/blog-user/${id}`)
       .then((response) => {
-          if(!isMounted) return
-
+        if (!unmouted) {
           setUserBlogs(
             response.data.map((blog: any) => {
               return {
@@ -25,38 +25,41 @@ const UserBlogs: FC<{ id: string; name: string }> = ({ name, id }) => {
                 liked: blog.blog.likes,
                 mainContent: blog.blog.mainContent,
                 authorID: blog.userID,
-                blogId: blog.blog._id
+                blogId: blog.blog._id,
               }
             })
           )
+        }
         
-        setIsLoading(false)
       })
       .catch((err) => console.log(err))
       
-      isMounted = false
-      
+    setIsLoading(false)
+    
+    return () => {
+      unmouted = true
+    }
   }, [id])
 
   return (
     <div className="user-blogs">
       <h1>{name}'s blogs</h1>
       <div className="dashboard-container">
-      {
-          userBlogs.map((blog: any) => {
-            return (
-              <Card
-                title={blog.title}
-                img={blog.img}
-                liked={blog.likes}
-                mainContent={blog.mainContent}
-                authorID={blog.userId}
-                blogId={blog._id}
-                likeSystem={() => {}}
-              />)
-            }
+        {
+        userBlogs.length !== 0 && userBlogs.map((blog: any) => {
+          return (
+            <Card
+              title={blog.title}
+              img={blog.img}
+              liked={blog.likes}
+              mainContent={blog.mainContent}
+              authorID={blog.userId}
+              blogId={blog._id}
+              key={blog._id}
+              likeSystem={() => {}}
+            />
           )
-        }
+        })}
       </div>
     </div>
   )

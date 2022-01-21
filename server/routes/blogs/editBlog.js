@@ -9,7 +9,7 @@ router.put('/edit/submitChanges/:id/:token', (req,res) => {
       model.blog.file = model.blog.file === img ? img : `${token}/${img}`, 
       model.blog.title = title
       model.blog.mainContent = main_content
-
+ 
       model.save()
 
       res.status(200).send({msg: 'changes saved'})
