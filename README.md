@@ -78,3 +78,6 @@ If you have a suggestion that would make this better, please fork the repo and c
 > * **Discord: callmenikk#0001**
 > * **[Twitter](https://twitter.com/callmenikkkk)**
 > * **Gmail: formyauto75@gmail.com**
+	
+## Contributor
+* **[@callmenikk](https://github.com/callmenikk)**
