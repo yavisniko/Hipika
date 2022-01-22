@@ -1,21 +1,20 @@
-const router = require('express').Router()
-const BlogScheme = require('../../models/blogSchema')
+const router = require("express").Router()
+const BlogScheme = require("../../models/blogSchema")
 
-router.get('/edit/:id/:editor_id', (req,res) => {
-  const {id, editor_id} = req.params
+router.get("/edit/:id/:editor_id", (req, res) => {
+  const { id, editor_id } = req.params
 
   BlogScheme.findById(id, (err, model) => {
-
-    if(err){
+    if (err) {
       console.log(err)
       return
     }
 
-    if(model.userID !== editor_id){
+    if (model.userID !== editor_id) {
       res.status(403).send({
-        msg: "invalid editor"
+        msg: "invalid editor",
       })
-    }else {
+    } else {
       res.send(model)
     }
   }).clone()

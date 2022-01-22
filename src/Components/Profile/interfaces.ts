@@ -1,10 +1,10 @@
 export interface ProfileProps {
-  name: string;
-  surname: string;
-  image: string;
-  email: string;
-  followers: string[];
-  following: string[];
+  name: string
+  surname: string
+  image: string
+  email: string
+  followers: string[]
+  following: string[]
 }
 
 export const defaultState: ProfileProps = {
@@ -14,10 +14,10 @@ export const defaultState: ProfileProps = {
   email: "",
   followers: [],
   following: [],
-};
+}
 
 export interface containerProps {
-  from: string,
+  from: string
   whatIs: "followers" | "followings"
   whatToShow: string[]
   close?: () => void
@@ -25,7 +25,7 @@ export interface containerProps {
 
 export const defaultTemplate: containerProps = {
   from: "",
-  whatIs: 'followers',
+  whatIs: "followers",
   whatToShow: [],
 }
 
@@ -33,5 +33,5 @@ export const boolDefault = {
   load: false,
   followLoad: false,
   iFollow: false,
-  showContainer: false
+  showContainer: false,
 }

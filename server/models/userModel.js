@@ -8,8 +8,8 @@ const signUpSchema = new Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     image: { type: String },
-    followers: [{ _id: {type: String} }],
-    following: [{ _id: {type: String} }]
+    followers: [{ _id: { type: String } }],
+    following: [{ _id: { type: String } }],
   },
   { strict: false, timestamps: true }
 )

@@ -1,16 +1,16 @@
-const router = require('express').Router()
-const UserModel = require('../../models/userModel')
+const router = require("express").Router()
+const UserModel = require("../../models/userModel")
 
-router.put('/user-changes/:id', (req, res) => {
+router.put("/user-changes/:id", (req, res) => {
   const { id } = req.params
   const { name, surname, path } = req.body
 
   UserModel.findById(id, (err, model) => {
-    if(err) {
+    if (err) {
       cosnole.log(err)
       return
     }
-  
+
     model.name = name
     model.surname = surname
     model.image = path
@@ -18,9 +18,8 @@ router.put('/user-changes/:id', (req, res) => {
     model.save()
 
     res.send({
-      success: true
+      success: true,
     })
-
   })
 })
 

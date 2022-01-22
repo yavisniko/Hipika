@@ -7,23 +7,24 @@
 	<img src="https://i.ibb.co/LrpX3g0/normal-text.png" width="400px">
 </div>
 
-##  About Project
+## About Project
 
 this is mini social platform, what you can do there?
-* Create Account
-* Create Posts, Edit or Delete Them
-* Explore Others Posts
-* Follow User
+
+- Create Account
+- Create Posts, Edit or Delete Them
+- Explore Others Posts
+- Follow User
 
 ## Built with
 
 Project is built with little packages such as [react-router-dom](https://github.com/remix-run/react-router) and many more but mainly in this project I used:
 
-* **[Typescript](https://github.com/microsoft/TypeScript)**
-* **[React.js](https://github.com/facebook/react)**
-* **[Node.js](https://github.com/nodejs/node) / [Express.js](https://github.com/expressjs/express)**
-* **[Less](https://github.com/less/less.js)**
-* **[Mongoose](https://github.com/Automattic/mongoose)**
+- **[Typescript](https://github.com/microsoft/TypeScript)**
+- **[React.js](https://github.com/facebook/react)**
+- **[Node.js](https://github.com/nodejs/node) / [Express.js](https://github.com/expressjs/express)**
+- **[Less](https://github.com/less/less.js)**
+- **[Mongoose](https://github.com/Automattic/mongoose)**
 <div>
 	<img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">
 	<img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white">
@@ -37,8 +38,9 @@ Project is built with little packages such as [react-router-dom](https://github.
 <div>
 
 ## Getting Started
- Before you would start the React project, you must setup database in **MongoDB**
-create free **Cluster**, mention that in `.env` 
+
+Before you would start the React project, you must setup database in **MongoDB**
+create free **Cluster**, mention that in `.env`
 
 ```HTML
 DATABASE_URL=mongodb+srv://<USERNAME>:<PASSWORD>@cluster0.dvs5k.mongodb.net/<CLUSTER_NAME>?retryWrites=true&w=majority
@@ -47,23 +49,26 @@ DATABASE_URL=mongodb+srv://<USERNAME>:<PASSWORD>@cluster0.dvs5k.mongodb.net/<CLU
 after that in project folder open **2** terminal, one for **React** and one for **Express**
 
 first one
+
 ```js
 npm start
 ```
 
 second one
+
 ```js
 cd server
 ```
+
 ```js
 npm start
 ```
 
-afer a while you are free to go :) 
+afer a while you are free to go :)
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are  **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Don't forget to give the project a star! Thanks again!
 
@@ -74,10 +79,12 @@ If you have a suggestion that would make this better, please fork the repo and c
 5.  Open a Pull Request
 
 ## Contact
-> * **[Linkedin](https://www.linkedin.com/in/nikoloz-imerlishvili-576a43203/)**
-> * **Discord: callmenikk#0001**
-> * **[Twitter](https://twitter.com/callmenikkkk)**
-> * **Gmail: formyauto75@gmail.com**
-	
+
+> - **[Linkedin](https://www.linkedin.com/in/nikoloz-imerlishvili-576a43203/)**
+> - **Discord: callmenikk#0001**
+> - **[Twitter](https://twitter.com/callmenikkkk)**
+> - **Gmail: formyauto75@gmail.com**
+
 ## Contributor
-* **[@callmenikk](https://github.com/callmenikk)**
+
+- **[@callmenikk](https://github.com/callmenikk)**

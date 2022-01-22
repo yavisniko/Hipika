@@ -1,30 +1,33 @@
 @font-face {
-  font-family: 'Noto Sans';
+  font-family: "Noto Sans";
   font-style: italic;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf)
+    format("truetype");
 }
 @font-face {
-  font-family: 'Quicksand';
+  font-family: "Quicksand";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf)
+    format("truetype");
 }
 @font-face {
-  font-family: 'Quicksand';
+  font-family: "Quicksand";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf)
+    format("truetype");
 }
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Noto Sans', sans-serif;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Noto Sans", sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 body {
   background: #1f1f1f;
@@ -52,7 +55,7 @@ body {
   font-weight: 900;
   width: 100%;
   text-align: center;
-  color: #FFF;
+  color: #fff;
   font-size: 3em;
 }
 .set-changes-container .changes-root .changes-wrapper {
@@ -91,7 +94,7 @@ body {
   position: absolute;
   width: calc(100% - 44px);
   border-radius: 5px;
-  color: #FFF;
+  color: #fff;
   min-height: 60px;
   background: #ff4242;
   top: 0;
@@ -119,14 +122,14 @@ body {
   border: none;
   right: 0;
   transform: translateX(-22px);
-  background: #5136C2;
+  background: #5136c2;
   border: block;
   border-radius: 5px;
-  color: #FFF;
+  color: #fff;
   cursor: pointer;
 }
 .set-changes-container .changes-root .changes-wrapper form label {
-  color: #FFF;
+  color: #fff;
   width: 100%;
   height: 0;
   text-align: left;
@@ -141,13 +144,17 @@ body {
   height: 50px;
   background: #1f1f1f;
   border: none;
-  color: #Fff;
+  color: #fff;
   outline: none;
   font-size: 1.2rem;
   border-radius: 5px;
 }
-.set-changes-container .changes-root .changes-wrapper form input:focus:not(.forbidden-email) {
-  border: 2px solid #5136C2;
+.set-changes-container
+  .changes-root
+  .changes-wrapper
+  form
+  input:focus:not(.forbidden-email) {
+  border: 2px solid #5136c2;
 }
 .set-changes-container .changes-root .changes-wrapper .img-changer {
   display: flex;
@@ -193,7 +200,12 @@ body {
   cursor: pointer;
   z-index: 1;
 }
-.set-changes-container .changes-root .changes-wrapper .img-changer .img-circle input[type="file"] {
+.set-changes-container
+  .changes-root
+  .changes-wrapper
+  .img-changer
+  .img-circle
+  input[type="file"] {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -202,5 +214,5 @@ body {
   cursor: pointer;
 }
 .set-changes-container .changes-root .changes-wrapper .img-changer .img-circle h3 {
-  color: #FFF;
+  color: #fff;
 }
