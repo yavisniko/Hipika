@@ -1,13 +1,12 @@
-const UserScheme = require('../../models/userModel')
-const router = require('express').Router()
+const UserScheme = require("../../models/userModel")
+const router = require("express").Router()
 
-
-router.put('/change-password/:password/:user_id', (req, res) => {
-  const {password, user_id} = req.params
+router.put("/change-password/:password/:user_id", (req, res) => {
+  const { password, user_id } = req.params
 
   UserScheme.findById(user_id, (err, model) => {
-    if(err){
-      console.log(err);
+    if (err) {
+      console.log(err)
       return
     }
 
@@ -15,7 +14,7 @@ router.put('/change-password/:password/:user_id', (req, res) => {
     model.save()
 
     res.send({
-      msg: 'successfuly saved'
+      msg: "successfuly saved",
     })
   })
 })

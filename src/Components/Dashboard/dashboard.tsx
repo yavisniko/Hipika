@@ -1,4 +1,4 @@
-import { useState, useEffect, FC, useRef } from "react"
+import { useState, useEffect, FC, useRef, useCallback } from "react"
 import { tokenAuth } from "./Card"
 import Card from "./Card"
 import axios from "axios"
@@ -10,7 +10,7 @@ const Dashboard: FC<{ setOpen: () => void }> = ({ setOpen }) => {
   const [isLoading, setIsloading] = useState<boolean>(false)
   const [page, setPage] = useState<number>(0)
   const [cancelFetch, setCancelFetch] = useState<boolean>(false)
-  const observer = useRef<HTMLDivElement>(null)
+  const loader = useRef<any>(null)
 
   const remoeOrAddLike = (blogId: string): void => {
     let currBlog: number = blogs.findIndex((e: any) => e.blog.blogId === blogId)
@@ -28,23 +28,30 @@ const Dashboard: FC<{ setOpen: () => void }> = ({ setOpen }) => {
     }
   }
 
-  const windowScroll = () => {
-    if(cancelFetch || isLoading) return
-    
-    if ((window.innerHeight + window.scrollY) > document.body.offsetHeight) {
-      setPage(prev => prev + 1)
-    }
 
-  }
+  const handleObserver = useCallback(
+    (entries) => {
+        const target = entries[0]
+        if(target.isIntersecting){
+          setPage((prev) => prev + 1) 
+        }
+    },
+    [setPage]
+  )
 
   useEffect(() => {
+    if(cancelFetch) return
 
-    window.addEventListener('scroll', windowScroll)
+    const option = {
+      root: null,
+      rootMargin: "20px",
+      threshold: 1,
+  }
 
-    return () => {
-      window.removeEventListener("scroll", windowScroll)
-    }
-  })
+  const observer = new IntersectionObserver(handleObserver, option)
+  if(loader.current) observer.observe(loader.current)
+
+  }, [handleObserver])
 
   useEffect(() => {
     if(cancelFetch) return
@@ -57,7 +64,9 @@ const Dashboard: FC<{ setOpen: () => void }> = ({ setOpen }) => {
     axios
       .get(`http://localhost:5000/dashboard/blogs/page/${page}`)
       .then((result) => {
-        
+        if(result.data.msg === 'no more'){
+          setCancelFetch(true)
+        }
         
         if(!unmouted){
           fetchedBlogs = result.data.result.map((e: any) => {
@@ -72,10 +81,7 @@ const Dashboard: FC<{ setOpen: () => void }> = ({ setOpen }) => {
               }
             }
           })
-          setBlogs((prev: any) => [ ...prev, ...fetchedBlogs])
-        }
-        if(result.data.msg === 'no more'){
-          setCancelFetch(true)
+          setBlogs((prev: any) => [...fetchedBlogs, ...prev])
         }
       }) 
       .catch((err) => {
@@ -92,7 +98,7 @@ const Dashboard: FC<{ setOpen: () => void }> = ({ setOpen }) => {
 
   return (
     <>
-    <div className="dashboard-container" ref={observer}>
+    <div className="dashboard-container">
       {blogs.length > 0
         ? blogs.reverse().map((blog: any) => {
             return (
@@ -114,12 +120,8 @@ const Dashboard: FC<{ setOpen: () => void }> = ({ setOpen }) => {
               There is not any blogs uploaded yet, upload it and be first 🎉
             </h1>
           )}
+    <div className="triger" ref={loader} style={{position: 'absolute', bottom: 0, height: '50px', width: '100%'}}/>
     </div>
-    {isLoading && (
-        <div className="loader-container">
-          <span className="loader"></span>
-        </div>
-      )}
     </>
   )
 }

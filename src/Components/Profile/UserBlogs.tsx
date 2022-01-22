@@ -8,38 +8,38 @@ const UserBlogs: FC<{ id: string; name: string }> = ({ name, id }) => {
   const [userBlogs, setUserBlogs] = useState<any>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  useEffect(() => {
-    //! unmounted component error, I tried everything
-    let unmouted = true
-    setIsLoading(true)
+  // useEffect(() => {
+  //   //! unmounted component error, I tried everything
+  //   let unmouted = true
+  //   setIsLoading(true)
 
-    axios
-      .get(`http://localhost:5000/blog/blog-user/${id}`)
-      .then((response) => {
-        if (!unmouted) {
-          setUserBlogs(
-            response.data.map((blog: any) => {
-              return {
-                title: blog.blog.title,
-                img: blog.blog.file,
-                liked: blog.blog.likes,
-                mainContent: blog.blog.mainContent,
-                authorID: blog.userID,
-                blogId: blog.blog._id,
-              }
-            })
-          )
-        }
+  //   axios
+  //     .get(`http://localhost:5000/blog/blog-user/${id}`)
+  //     .then((response) => {
+  //       if (!unmouted) {
+  //         setUserBlogs(
+  //           response.data.map((blog: any) => {
+  //             return {
+  //               title: blog.blog.title,
+  //               img: blog.blog.file,
+  //               liked: blog.blog.likes,
+  //               mainContent: blog.blog.mainContent,
+  //               authorID: blog.userID,
+  //               blogId: blog.blog._id,
+  //             }
+  //           })
+  //         )
+  //       }
         
-      })
-      .catch((err) => console.log(err))
+  //     })
+  //     .catch((err) => console.log(err))
       
-    setIsLoading(false)
+  //   setIsLoading(false)
     
-    return () => {
-      unmouted = true
-    }
-  }, [id])
+  //   return () => {
+  //     unmouted = true
+  //   }
+  // }, [id])
 
   return (
     <div className="user-blogs">

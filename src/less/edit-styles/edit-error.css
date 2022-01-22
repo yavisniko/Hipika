@@ -1,30 +1,33 @@
 @font-face {
-  font-family: 'Noto Sans';
+  font-family: "Noto Sans";
   font-style: italic;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf)
+    format("truetype");
 }
 @font-face {
-  font-family: 'Quicksand';
+  font-family: "Quicksand";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf)
+    format("truetype");
 }
 @font-face {
-  font-family: 'Quicksand';
+  font-family: "Quicksand";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf)
+    format("truetype");
 }
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Noto Sans', sans-serif;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Noto Sans", sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 body {
   background: #1f1f1f;
@@ -43,9 +46,9 @@ body {
   box-sizing: border-box;
   appearance: none;
   background-color: transparent;
-  border: 2px solid #5136C2;
+  border: 2px solid #5136c2;
   border-radius: 0.6em;
-  color: #5136C2;
+  color: #5136c2;
   cursor: pointer;
   display: flex;
   align-self: center;
@@ -57,7 +60,7 @@ body {
   text-decoration: none;
   text-align: center;
   text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 700;
 }
 .error-container .btn:hover,
@@ -66,9 +69,9 @@ body {
   outline: 0;
 }
 .error-container .err-btn {
-  border-color: #5136C2;
+  border-color: #5136c2;
   color: #fff;
-  background-image: linear-gradient(45deg, #5136C2 50%, transparent 50%);
+  background-image: linear-gradient(45deg, #5136c2 50%, transparent 50%);
   background-position: 100%;
   background-size: 400%;
   transition: 300ms ease-in-out;
