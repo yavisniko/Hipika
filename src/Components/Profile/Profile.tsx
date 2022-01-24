@@ -29,7 +29,8 @@ const Profile = () => {
     setPropBooleans({...propBooleans, load: true})
 
     axios.get(`http://localhost:5000/dashboard/getUser/${id}`).then((response) => {
-      setPropBooleans({...propBooleans, load: false})
+      setPropBooleans({...propBooleans, load: false})      
+
       setProfileInfo({
         name: `${response.data.name} ${response.data.surname}`,
         surname: response.data.surname,
@@ -37,16 +38,23 @@ const Profile = () => {
         email: response.data.email,
         followers: response.data.followers.map((e: { _id: string }) => e._id),
         following: response.data.following.map((e: { _id: string }) => e._id),
+        verified: response.data.verified,
+        tester: response.data.tester,
+        early_access: response.data.early_access,
+        developer: response.data.developer,
       })
     })
+
   }, [id])
 
   useEffect(() => {
+    document.title = `Profile - ${profileInfo.name}`
+
     profileInfo.followers.includes(tokenAuth)
     ? setPropBooleans({...propBooleans, iFollow: true})
     : setPropBooleans({...propBooleans, iFollow: false}) 
   }, [profileInfo])
-
+  
   const followUser = () => {
     if (propBooleans.followLoad) return
 

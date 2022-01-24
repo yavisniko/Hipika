@@ -5,6 +5,10 @@ export interface ProfileProps {
   email: string
   followers: string[]
   following: string[]
+  verified: boolean
+  early_access: boolean,
+  tester: boolean,
+  developer: boolean
 }
 
 export const defaultState: ProfileProps = {
@@ -14,6 +18,10 @@ export const defaultState: ProfileProps = {
   email: "",
   followers: [],
   following: [],
+  verified: false,
+  early_access: false,
+  tester: false,
+  developer: false
 }
 
 export interface containerProps {
