@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCog, faLock, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import { CatalogType } from "./interface"
@@ -7,6 +7,10 @@ import { useNavigate } from 'react-router-dom'
 const Catalog:FC<{changeCatalog: (curr: CatalogType) => void}>= ({changeCatalog}) => {
   let navigate = useNavigate()
   
+  useEffect(() => {
+    document.title = "Hipika - Settings"
+  }, [])
+
   return (
     <div className='catalog'>
       <button className='catalog-btn' onClick={() => changeCatalog('user')}>

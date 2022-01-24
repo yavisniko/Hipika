@@ -40,12 +40,16 @@ const Dashboard: FC<{ setOpen: () => void }> = ({ setOpen }) => {
   )
 
   useEffect(() => {
+    document.title = "Hipika - Dashboard"
+  }, [])
+
+  useEffect(() => {
     if(cancelFetch) return
 
     const option = {
       root: null,
-      rootMargin: "20px",
-      threshold: 1,
+      rootMargin: "10px",
+      threshold: 0,
   }
 
   const observer = new IntersectionObserver(handleObserver, option)
@@ -120,7 +124,7 @@ const Dashboard: FC<{ setOpen: () => void }> = ({ setOpen }) => {
               There is not any blogs uploaded yet, upload it and be first 🎉
             </h1>
           )}
-    <div className="triger" ref={loader} style={{position: 'absolute', bottom: 0, height: '50px', width: '100%'}}/>
+        <div className="triger" ref={loader} style={{position: 'absolute', bottom: 0, height: '20px', width: '100%'}}/>
     </div>
     </>
   )

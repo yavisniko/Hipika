@@ -15,6 +15,10 @@ router.post("/signup", (req, res) => {
     image: path,
     followers: [],
     following: [],
+    verified: false,
+    early_access: false,
+    tester: false,
+    developer: false
   })
   userData
     .save()

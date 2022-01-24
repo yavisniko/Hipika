@@ -59,6 +59,10 @@ const Blog = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  useEffect(() => {
+    document.title = currBlog.blog.title === '' ? "Hipika" : `Hipika - ${currBlog.blog.title}`
+  }, [currBlog])
+
   return (
     <>
       {likedMenu ? (

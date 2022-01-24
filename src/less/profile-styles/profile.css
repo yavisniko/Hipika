@@ -1,33 +1,30 @@
 @font-face {
-  font-family: "Noto Sans";
+  font-family: 'Noto Sans';
   font-style: italic;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf)
-    format("truetype");
+  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf) format('truetype');
 }
 @font-face {
-  font-family: "Quicksand";
+  font-family: 'Quicksand';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf)
-    format("truetype");
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf) format('truetype');
 }
 @font-face {
-  font-family: "Quicksand";
+  font-family: 'Quicksand';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf)
-    format("truetype");
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf) format('truetype');
 }
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Noto Sans", sans-serif;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 body {
   background: #1f1f1f;
@@ -67,6 +64,19 @@ body {
   height: 100%;
   padding: 20px 0;
 }
+.profile-section .profile-info .badges {
+  width: 200px;
+  display: flex;
+  align-items: center;
+}
+.profile-section .profile-info .badges .badge {
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+}
+.profile-section .profile-info .badges .badge img {
+  width: 100%;
+}
 .profile-section .profile-info h1 {
   font-family: "Poppins", sans-serif;
   font-weight: 900;
@@ -88,10 +98,10 @@ body {
   transform: translate(-20px, -20px);
   width: 200px;
   height: 50px;
-  background: #5136c2;
-  color: #fff;
+  background: #5136C2;
+  color: #FFF;
   font-size: 1.2rem;
-  border: 2px solid #ad4c4c;
+  border: 2px solid #1a1433;
   cursor: pointer;
   border-radius: 5px;
 }

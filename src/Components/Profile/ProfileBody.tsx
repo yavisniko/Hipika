@@ -1,57 +1,121 @@
-import {FC} from 'react'
+import { FC } from "react"
 import { ProfileProps, containerProps } from "./interfaces"
 import "../../less/profile-styles/loading.css"
+import EarclyAccess from "./assets/access.png"
+import Developer from "./assets/devloper.png"
+import Tester from "./assets/tester.png"
+import Verified from "./assets/verified.png"
 
 interface ProfileBodyProps {
-  profileInfo: ProfileProps,
-  followUser: () => void,
-  isMine: boolean,
-  iFollow: boolean,
-  setNegative: () => void,
-  followLoad: boolean,
+  profileInfo: ProfileProps
+  followUser: () => void
+  isMine: boolean
+  iFollow: boolean
+  setNegative: () => void
+  followLoad: boolean
   setContainer: (prop: containerProps) => void
-  
 }
 
-const ProfileBody: FC<ProfileBodyProps> = ({profileInfo, followUser, isMine, iFollow, setNegative, followLoad, setContainer}) => {
+const ProfileBody: FC<ProfileBodyProps> = ({
+  profileInfo,
+  followUser,
+  isMine,
+  iFollow,
+  setNegative,
+  followLoad,
+  setContainer,
+}) => {
+  console.log(profileInfo)
   return (
-      <>
-        <div className="profile-avatar">
-          <div className="avatar-frame">
-              <img src={'/uploads/avatar/'+profileInfo.image} alt="avatar-img" />
-          </div>
+    <>
+      <div className="profile-avatar">
+        <div className="avatar-frame">
+          <img src={"/uploads/avatar/" + profileInfo.image} alt="avatar-img" />
         </div>
-        <div className="profile-info">
-          <h1>{profileInfo.name}</h1>
-          {isMine ? <p>{profileInfo.email}</p> : null}
-          <div className="follow-wrapper" style={{display: "flex",alignItems: 'center', justifyContent:'space-between', width: '300px' }}>
-            
-            <h2 onClick={() => setContainer({
-              from: profileInfo.name,
-              whatIs: 'followers',
-              whatToShow: profileInfo.followers
-            })}>Followers: {profileInfo.followers.length}</h2>
-            <h2 style={{color: "#2986CC"}}onClick={() => setContainer({
-              from: profileInfo.name,
-              whatIs: 'followings',
-              whatToShow: profileInfo.following
-            })}>Following: {profileInfo.following.length}</h2>
-
-          </div>
+      </div>
+      <div className="profile-info">
+        <h1>{profileInfo.name}</h1>
+        <div className="badges">
+          {profileInfo.developer && (
+            <div className="badge">
+              <img src={Developer} alt="" />
+            </div>
+          )}
+          {profileInfo.tester && (
+            <div className="badge">
+              <img src={Tester} alt="" />
+            </div>
+          )}
+          {profileInfo.early_access && (
+            <div className="badge">
+              <img src={EarclyAccess} alt="" />
+            </div>
+          )}
+          {profileInfo.verified && (
+            <div className="badge">
+              <img src={Verified} alt="" />
+            </div>
+          )}
         </div>
+        {isMine ? <p>{profileInfo.email}</p> : null}
+        <div
+          className="follow-wrapper"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            width: "300px",
+          }}
+        >
+          <h2
+            onClick={() =>
+              setContainer({
+                from: profileInfo.name,
+                whatIs: "followers",
+                whatToShow: profileInfo.followers,
+              })
+            }
+          >
+            Followers: {profileInfo.followers.length}
+          </h2>
+          <h2
+            style={{ color: "#2986CC" }}
+            onClick={() =>
+              setContainer({
+                from: profileInfo.name,
+                whatIs: "followings",
+                whatToShow: profileInfo.following,
+              })
+            }
+          >
+            Following: {profileInfo.following.length}
+          </h2>
+        </div>
+      </div>
 
-        {
-        !isMine ? <button className={!iFollow ? "follow-btn" : "follow-btn followed"} onClick={() => {
-          followUser();
-          setNegative()
-        }}>{
-          followLoad ?
-          <div className="pfp-loader-container">
-            <span className="profile-loader" style={{width: "10px", height: "10px", border: "2px solid #FFF"}}></span>
-          </div> : 
-          !iFollow ? "Follow" : "Following"
-        }</button> : null}
-        </>
+      {!isMine ? (
+        <button
+          className={!iFollow ? "follow-btn" : "follow-btn followed"}
+          onClick={() => {
+            followUser()
+            setNegative()
+          }}
+        >
+          {followLoad ? (
+            <div className="pfp-loader-container">
+              <span
+                className="profile-loader"
+                style={{ width: "10px", height: "10px", border: "2px solid #FFF" }}
+              ></span>
+            </div>
+          ) : !iFollow ? (
+            "Follow"
+          ) : (
+            "Following"
+          )}
+        </button>
+      ) : null}
+    </>
   )
 }
 
