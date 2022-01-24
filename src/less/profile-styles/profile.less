@@ -32,11 +32,15 @@
       width: 200px;
       display: flex;
       align-items: center;
-      
       .badge{
+        position: relative;
         width:30px;
+
         height: 30px;
         margin: 0 10px;
+        &:hover > .box{
+          opacity: 1;
+        }
         img{
           width: 100%;
         }
@@ -76,4 +80,49 @@
     }
   } 
 }
- 
+
+.box {
+  #Developer{
+    color: #f831ff;
+    text-shadow: 0 0 5px #f831ff;
+  }
+  #Tester{
+    color: #5bff76;
+    text-shadow: 0 0 5px #5bff76;
+  }
+  #Early_Access{
+    color: #ffe13a;
+    text-shadow: 0 0 5px #ffe13a;
+  }
+  #Verified{
+    color: #46a5ff;
+    text-shadow: 0 0 5px #46a5ff;
+  }
+  width: 150px;
+  text-align: center;
+  min-height: 55px;
+  background: #FFF;
+  z-index: 99;
+  color: #000;
+  position: absolute;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: .7rem;
+  transform: translate(-60px, -75px);
+  opacity: 0;
+  transition: 0.2s;
+  top: 0;
+  left: 0;
+}
+
+.box.arrow-bottom:after {
+  content: " ";
+  position: absolute;
+  right: 50%;
+  transform: translateX(50%);
+  bottom: -15px;
+  border-top: 15px solid #FFF;
+  border-right: 15px solid transparent;
+  border-left: 15px solid transparent;
+  border-bottom: none;
+}

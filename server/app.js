@@ -1,5 +1,7 @@
 const express = require("express")
 const app = express()
+const helmet = require('helmet')
+
 const userAuth = require("./routes/log/signup")
 const Login = require("./routes/log/login")
 const getBlogs = require("./routes/dashboard/blogs")
@@ -11,20 +13,24 @@ const Like = require("./routes/blogs/likeBlog")
 const SpecificBlog = require("./routes/blogs/currect_blog")
 const avatar = require("./routes/log/avatar")
 const FollowUser = require("./routes/dashboard/followUser")
-const BlogByUser = require("./routes/blogs/blogsByUserId")
+const BlogByUser = require("./routes/blogs/blogsByUserId") 
 const ProfileChanges = require("./routes/settings/profileChanges")
 const passChange = require("./routes/settings/changePassword")
 const validateEditor = require("./routes/blogs/validateEditor")
 const submitChanges = require("./routes/blogs/editBlog")
 const deleteBlog = require("./routes/blogs/deleteBlog")
+const userByEmail = require("./routes/log/getEmail")
 
 const mongoose = require("mongoose")
 const cors = require("cors")
 const bodyParser = require("body-parser")
 
+
 app.use(cors())
 app.use(bodyParser.json())
 app.use(express.static("uploads"))
+app.use(helmet())
+app.disable('x-')
 
 const dbURL =
   "mongodb+srv://callmenikk:polisjoxi0@cluster0.dvs5k.mongodb.net/blog-mongodb?retryWrites=true&w=majority"
@@ -40,6 +46,7 @@ app.use("/", userAuth)
 app.use("/", Login)
 app.use("/", Users)
 app.use("/", avatar)
+app.use("/", userByEmail)
 
 app.use("/dashboard", getUser)
 app.use("/dashboard", getBlogs)

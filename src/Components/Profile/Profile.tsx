@@ -18,7 +18,6 @@ import '../../less/profile-styles/profile.css'
 const Profile = () => {
   const [profileInfo, setProfileInfo] = useState<ProfileProps>(defaultState)
   const [propBooleans, setPropBooleans] = useState(boolDefault)
-
   const [isMine, setIsMine] = useState<boolean>(false)
   const [whatToShowInContainer, setWhatToShowInContainer] =
     useState<containerProps>(defaultTemplate)

@@ -13,8 +13,6 @@ router.get("/getUser/:id", async (req, res) => {
         })
         return
       } 
-        
-      
         res.send({
           key: result._id,
           userId: result._id,
