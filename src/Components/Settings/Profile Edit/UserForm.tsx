@@ -42,7 +42,6 @@ const UserForm:FC<FormProps> = ({ showSave, updateUser, inputHandler, file, chan
       await axios.put(`http://localhost:5000/settings/user-changes/${token}`, updateUser)
       .then(result => { 
         if(result.data.success){
-          console.log(result) 
           changeFalse()
         }
       })

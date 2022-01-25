@@ -1,5 +1,5 @@
 import { useState, useEffect, Fragment } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { tokenAuth } from "../Dashboard/Card"
 import ProfileBody from "./ProfileBody"
 import UserBlogs from "./UserBlogs"
@@ -18,17 +18,19 @@ import '../../less/profile-styles/profile.css'
 const Profile = () => {
   const [profileInfo, setProfileInfo] = useState<ProfileProps>(defaultState)
   const [propBooleans, setPropBooleans] = useState(boolDefault)
-
   const [isMine, setIsMine] = useState<boolean>(false)
   const [whatToShowInContainer, setWhatToShowInContainer] =
     useState<containerProps>(defaultTemplate)
   const { id } = useParams()
+  let navigate = useNavigate()
   
   useEffect(() => {
     tokenAuth === id ? setIsMine(true) : setIsMine(false)
     setPropBooleans({...propBooleans, load: true})
+    const token_validate = JSON.parse(sessionStorage.getItem('qw') as string )
+    const requestor = JSON.parse(localStorage.getItem('authToken')!)
 
-    axios.get(`http://localhost:5000/dashboard/getUser/${id}`).then((response) => {
+    axios.get(`http://localhost:5000/dashboard/getUser/${id}/${requestor}/${token_validate}`).then((response) => {
       setPropBooleans({...propBooleans, load: false})      
 
       setProfileInfo({
@@ -43,7 +45,14 @@ const Profile = () => {
         early_access: response.data.early_access,
         developer: response.data.developer,
       })
-    })
+    }).catch(err => {
+      if(err.response.status === 403 && err.response.data.msg === 'invalid user'){
+          localStorage.removeItem('authToken')
+          sessionStorage.removeItem('qw')
+
+          navigate('/')
+      }
+  })
 
   }, [id])
 

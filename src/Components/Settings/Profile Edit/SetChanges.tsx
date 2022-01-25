@@ -8,6 +8,8 @@ import axios from "axios"
 import UserForm from "./UserForm"
 import Loading from "../Loading"
 import "../../../less/settings-style/setChanges.css"
+import { useNavigate } from "react-router-dom"
+import { request } from "https"
 
 const SetChanges = () => {
   const [updateUser, setUpdateUser] = useState<UserProps>(defaultState)
@@ -17,6 +19,8 @@ const SetChanges = () => {
   const [showSave, setShowSave] = useState(false)
   const [unChanged, setUnChanged] = useState<UserProps>(defaultState)
   const fileId: string = String(new Date().getTime())
+  let navigate = useNavigate()
+
 
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name
@@ -44,9 +48,16 @@ const SetChanges = () => {
   useEffect(() => {
 
     setIsLoading(true)
+    const token_validate = JSON.parse(sessionStorage.getItem('qw') as string )
+    const requestor = JSON.parse(localStorage.getItem('authToken')!)
+
+        if(token_validate === null || requestor === null){
+            navigate('/')
+            return
+        }
     
     axios
-    .get(`http://localhost:5000/dashboard/getUser/${tokenAuth}/`)
+    .get(`http://localhost:5000/dashboard/getUser/${tokenAuth}/${requestor}/${token_validate}`)
     .then((result) => {
       const { name, image, surname, password, email } = result.data
       
@@ -70,7 +81,14 @@ const SetChanges = () => {
       
       setIsLoading(false)
     })
-    .catch((err) => console.log(err))
+    .catch(err => {
+      if(err.response.status === 403 && err.response.data.msg === 'invalid user'){
+          localStorage.removeItem('authToken')
+          sessionStorage.removeItem('qw')
+
+          navigate('/')
+      }
+  })
   }, [ ])
   
   useEffect(() => {

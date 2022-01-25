@@ -1,10 +1,16 @@
 const express = require("express")
 const router = express.Router()
 const userAuth = require("../../models/userModel")
+const CRYPTOJS = require("crypto-js")
+
+const decrypt = (user_pw) => {
+  const byte = CRYPTOJS.AES.decrypt(user_pw, process.env.HASH_SECRET)
+  return byte.toString(CRYPTOJS.enc.Utf8) 
+}
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body
-
+  
   await userAuth
     .findOne({ email: email }, (err, user) => {
       if (err) {
@@ -12,21 +18,21 @@ router.post("/login", async (req, res) => {
           status: 0,
           msg: err,
         })
-      }
+      } 
       if (!user) {
         res.send({
           status: 0,
           msg: "user not found",
         })
-      } else if (user.password !== password) {
+      } else if (decrypt(user.password) !== password) {
         res.send({
           status: 0,
           msg: "password is incorrect",
         })
       } else {
         res.send({
-          status: 200,
-          user_info: user,
+          token: user._id,   
+          tokenValidator: user.token_validate
         })
       }
     })

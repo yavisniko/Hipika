@@ -23,6 +23,7 @@ const Catalog:FC<{changeCatalog: (curr: CatalogType) => void}>= ({changeCatalog}
       </button>
       <button className='logout-btn catalog-btn' onClick={() => {
         localStorage.removeItem('authToken')
+        sessionStorage.removeItem('qw')
         navigate('/')
       }}>
       <FontAwesomeIcon icon={faSignOutAlt}/>

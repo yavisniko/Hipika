@@ -1,11 +1,12 @@
 const router = require("express").Router()
 const userModel = require("../../models/userModel")
+const { tokenValidator } = require('../middleware/tokenValidator') 
 
-router.get("/getUser/:id", async (req, res) => {
+router.get("/getUser/:id/:requstor/:tokenValidate", tokenValidator, async (req, res) => {
   const { id } = req.params
 
   await userModel
-    .findById(id, (err, result) => {
+    .findById(id, (err, result) => { 
       if (err) {
         res.send({
           success: false,
@@ -13,10 +14,8 @@ router.get("/getUser/:id", async (req, res) => {
         })
         return
       } 
-        
-      
         res.send({
-          key: result._id,
+          key: result._id,  
           userId: result._id,
           email: result.email,
           name: result.name,
@@ -24,7 +23,6 @@ router.get("/getUser/:id", async (req, res) => {
           surname: result.surname,
           followers: result.followers,
           following: result.following,
-          password: result.password,
           verified: result.verified,
           tester: result.tester,
           early_access: result.early_access,

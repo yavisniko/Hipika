@@ -25,7 +25,6 @@ const ProfileBody: FC<ProfileBodyProps> = ({
   followLoad,
   setContainer,
 }) => {
-  console.log(profileInfo)
   return (
     <>
       <div className="profile-avatar">
@@ -38,22 +37,34 @@ const ProfileBody: FC<ProfileBodyProps> = ({
         <div className="badges">
           {profileInfo.developer && (
             <div className="badge">
-              <img src={Developer} alt="" />
+              <div className="box arrow-bottom">
+                <span id="Developer">Developer</span> badge means, this person made this platform
+              </div>
+              <img src={Developer} alt="developer-badge" />
             </div>
           )}
           {profileInfo.tester && (
             <div className="badge">
-              <img src={Tester} alt="" />
+              <div className="box arrow-bottom">
+                <span id="Tester">Beta Tester</span> badge means, this person was helping developer to catch some bugs,
+              </div>
+              <img src={Tester} alt="tester-badge" />
             </div>
           )}
           {profileInfo.early_access && (
             <div className="badge">
-              <img src={EarclyAccess} alt="" />
+              <div className="box arrow-bottom">
+                <span id="Early_Access">Early Access</span> badge means, this person could use this website before publishing platform
+              </div>
+              <img src={EarclyAccess} alt="earcly access badge" />
             </div>
           )}
           {profileInfo.verified && (
             <div className="badge">
-              <img src={Verified} alt="" />
+              <div className="box arrow-bottom">
+                <span id="Verified">Verified</span> badge means, This person is public figure or someone special idk
+              </div>
+              <img src={Verified} alt="verified-badge" />
             </div>
           )}
         </div>
