@@ -1,4 +1,4 @@
-const UserScheme = require('../../models/userModel')
+const UserScheme = require('../models/userModel')
 
 const tokenValidator = async (req, res, next) => {
   const {requstor, tokenValidate} = req.params
