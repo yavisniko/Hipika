@@ -1,7 +1,8 @@
-import axios from "axios"
 import { FC, useState, ChangeEvent, useLayoutEffect, FormEvent } from "react"
+import axios from "axios"
 import { tokenAuth } from "../../Dashboard/Card"
 import "../../../less//settings-style/security-styles/password.css"
+import { useNavigate } from "react-router-dom"
 
 const PasswordinSecurity: FC<{ goBack: () => void }> = ({ goBack }) => {
   const [newPassword, setNewPassword] = useState({
@@ -11,12 +12,34 @@ const PasswordinSecurity: FC<{ goBack: () => void }> = ({ goBack }) => {
   })
   const [currPassword, setCurrPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  let navigate = useNavigate()
 
   useLayoutEffect(() => {
+    const token_validate = JSON.parse(sessionStorage.getItem("qw") as string)
+    const requestor = JSON.parse(localStorage.getItem("authToken")!)
+
+    if (token_validate === null || requestor === null) {
+      navigate("/")
+      return
+    }
+
     axios
-      .get(`http://localhost:5000/dashboard/getUser/${tokenAuth}`)
+      .get(
+        `http://localhost:5000/dashboard/getUser/${tokenAuth}/${requestor}/${token_validate}`
+      )
       .then((resp) => {
         setCurrPassword(resp.data.password)
+      })
+      .catch((err) => {
+        if (
+          err.response.status === 403 &&
+          err.response.data.msg === "invalid user"
+        ) {
+          localStorage.removeItem("authToken")
+          sessionStorage.removeItem("qw")
+
+          navigate("/dashboard")
+        }
       })
   }, [])
 
@@ -30,38 +53,40 @@ const PasswordinSecurity: FC<{ goBack: () => void }> = ({ goBack }) => {
   const changePassword = (e: FormEvent) => {
     e.preventDefault()
 
-    if(isLoading) return
+    if (isLoading) return
 
     const objValues = Object.values(newPassword)
 
-    for(let i of objValues){
-      if(i === '') alert('please fill blank fields')
+    for (let i of objValues) {
+      if (i === "") alert("please fill blank fields")
       break
     }
 
-    if(currPassword !== newPassword.curr_password){
+    if (currPassword !== newPassword.curr_password) {
       alert(`your inputed password doesn't equal the current one`)
-    }else if(currPassword === newPassword.password){  
-      alert('new password and current can`t be same')
-    }
-    else if(newPassword.password !== newPassword.repeat_password){
+    } else if (currPassword === newPassword.password) {
+      alert("new password and current can`t be same")
+    } else if (newPassword.password !== newPassword.repeat_password) {
       alert(`repeated password doesn't match what you inputed as new one`)
-    }else if(newPassword.password.length < 8){
-      alert('Your password is lower than 8 character MAKE IT BIGGER') 
-    }else {
+    } else if (newPassword.password.length < 8) {
+      alert("Your password is lower than 8 character MAKE IT BIGGER")
+    } else {
       setIsLoading(true)
 
-      axios.put(`http://localhost:5000/settings/change-password/${newPassword.password}/${tokenAuth}`)
-      .then(result => {
-        if(result.data.msg === "successfuly saved"){
-          setIsLoading(true)
-          alert('password changed successfuly')
-          goBack()
-        }
-      }).catch(err => {
-        console.log(`some error has occured`, err);
-        
-      })
+      axios
+        .put(
+          `http://localhost:5000/settings/change-password/${newPassword.password}/${tokenAuth}`
+        )
+        .then((result) => {
+          if (result.data.msg === "successfuly saved") {
+            setIsLoading(true)
+            alert("password changed successfuly")
+            goBack()
+          }
+        })
+        .catch((err) => {
+          console.log(`some error has occured`, err)
+        })
     }
   }
 
@@ -99,13 +124,15 @@ const PasswordinSecurity: FC<{ goBack: () => void }> = ({ goBack }) => {
         style={
           newPassword.repeat_password !== "" &&
           newPassword.password !== newPassword.repeat_password
-          ? {border: "3px solid #FF4141"}
-          : newPassword.repeat_password === ""
-          ? {border: "none"}
-          : {border: "3px solid #7EFF42"}
+            ? { border: "3px solid #FF4141" }
+            : newPassword.repeat_password === ""
+            ? { border: "none" }
+            : { border: "3px solid #7EFF42" }
         }
       />
-      <button type="submit" className="change-btn">{isLoading ? <span className="loader"></span>: "Change"}</button>
+      <button type="submit" className="change-btn">
+        {isLoading ? <span className="loader"></span> : "Change"}
+      </button>
     </form>
   )
 }

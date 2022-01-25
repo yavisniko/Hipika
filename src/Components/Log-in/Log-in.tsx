@@ -37,7 +37,6 @@ const Login = () => {
 
     await axios.post('http://localhost:5000/login', login)
     .then(response => {
-      console.log(response)
       setIsLoading(false)
       if(response.data.msg === 'user not found'){
         setCorrect(false) 
@@ -47,7 +46,8 @@ const Login = () => {
         setCorrect(true) 
         setExist(false) 
       } else {
-        localStorage.setItem('authToken', JSON.stringify(response.data.user_info._id))
+        localStorage.setItem('authToken', JSON.stringify(response.data.token))
+        sessionStorage.setItem('qw', JSON.stringify(response.data.tokenValidator))
         navigate('/dashboard')
       }
     })

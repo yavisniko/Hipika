@@ -17,14 +17,29 @@ const People: FC<PeopleProps> = ({userId, name, image}) => {
   const [followLoad, setFollowLoad] = useState(false)
 
   useEffect(() => {
+    const token_validate = JSON.parse(sessionStorage.getItem('qw') as string )
+    const requestor = JSON.parse(localStorage.getItem('authToken')!)
+    
+        if(token_validate === null || requestor === null){
+            navigate('/')
+            return
+        }
+
     if(userId === tokenAuth) return
 
-    axios.get(`http://localhost:5000/dashboard/getUser/${userId}`)
+    axios.get(`http://localhost:5000/dashboard/getUser/${userId}/${requestor}/${token_validate}`)
     .then(response => {
       const followers = response.data.followers.map((e: {_id: string}) => e._id)
       if(followers.includes(tokenAuth)) setFollowing(true)
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      if(err.response.status === 403 && err.response.data.msg === 'invalid user'){
+          localStorage.removeItem('authToken')
+          sessionStorage.removeItem('qw')
+
+          navigate('/')
+      }
+  })
   }, [])
 
   return (

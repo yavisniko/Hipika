@@ -22,7 +22,7 @@ router.get("/email/:email", (req, res) => {
       early_access: model.early_access,
       developer: model.developer,
     })
-  })
+  }).clone()
 })
 
 module.exports= router 

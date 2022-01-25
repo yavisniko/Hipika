@@ -52,16 +52,15 @@ const Form = () => {
 
 const formHandler = async (e: React.FormEvent): Promise<void> => {
     e.preventDefault()
-
-        const formValues = Object.values(form).slice(2)
-
+    const formValues = Object.values(form).slice(2)
+    
         for(let i = 0; i < formValues.length; i++){
             if(formValues[i].trim() === ""){
                 alert("Please fill blank fields")
                 break
             }
         }
-
+        
         if(validateEmail(form.email) === false){
             alert('Please Input Email')
         }else if(form.password !== form.repeatpass){
@@ -69,16 +68,20 @@ const formHandler = async (e: React.FormEvent): Promise<void> => {
         }else if(form.password.length < 8){
             alert("Your password mustn't be less than 8 charcters")
         }else {            
-
+            
             const fileData: any = new FormData()
             fileData.append('file', fileHandler)
-
+            
             await axios.post('http://localhost:5000/signup', form)
-            .then((res) => {
-                localStorage.setItem('authToken', JSON.stringify(res.data._id))              
-                if(res.status === 200){
-                    navigate('/dashboard')
+            .then((res) => {                
+                if(res.status === 200 && res.data.msg === "email exists"){
+                    alert(`${form.email} already exists`)
+                }else{
+                    localStorage.setItem('authToken', JSON.stringify(res.data.token))   
+                    sessionStorage.setItem('qw', JSON.stringify(res.data.token_validate))           
+                    navigate('/dashboard') 
                 }
+                
             })
             .catch(err => console.log(err))
 
@@ -105,9 +108,9 @@ const formHandler = async (e: React.FormEvent): Promise<void> => {
                 </div>
             </div>
             <form className="inputs" onSubmit={formHandler}>
-                <input type="text" placeholder='Name' value={form.name} onChange={inputHandler} name="name"/>
-                <input type="text" placeholder='Surname'value={form.surname} onChange={inputHandler} name="surname"/>
-                <input type="text" placeholder="Email" value={form.email} onChange={inputHandler} name="email"/>
+                <input type="text" placeholder='Name' value={form.name} onChange={inputHandler} name="name" autoComplete='off'/>
+                <input type="text" placeholder='Surname'value={form.surname} onChange={inputHandler} name="surname" autoComplete='off'/>
+                <input type="text" placeholder="Email" value={form.email} onChange={inputHandler} name="email" autoComplete='off'/>
                 <input type="password" placeholder='Password' value={form.password} onChange={inputHandler} name="password"/>
                 <input type="password" placeholder='Repeat Password' value={form.repeatpass} onChange={inputHandler} name="repeatpass"/>
             <div className="button-wrapper">

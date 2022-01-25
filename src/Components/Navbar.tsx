@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle, faCog } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
+import Dashboard from './Dashboard/dashboard'
 
 const emptyProfile: string = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
 
@@ -83,14 +84,31 @@ const Navbar: FC<{
     }, [pathname])
 
     const fetchUser = async () => {
-        
-        await axios.get(`http://localhost:5000/dashboard/getUser/${userAuth}`)
+        const token_validate = JSON.parse(sessionStorage.getItem('qw')!)
+        const requestor = JSON.parse(localStorage.getItem('authToken')!)
+
+        await axios.get(`http://localhost:5000/dashboard/getUser/${userAuth}/${requestor}/${token_validate}`) 
         .then(result => {
             setUserProfile(result.data)
-        }).catch(err => console.log(err))
+        }).catch(err => {
+            if(err.response.status === 403 && err.response.data.msg === 'invalid user'){
+                localStorage.removeItem('authToken')
+                sessionStorage.removeItem('qw')
+
+                navigate('/')
+            }
+        })
     }
 
     useEffect(() => {
+        const token_validate = sessionStorage.getItem('qw')
+        const requestor = localStorage.getItem('authToken')
+        
+        if(token_validate === null || requestor === null){
+            navigate('/')
+            return
+        }
+        
         fetchUser()
     }, []) 
     
