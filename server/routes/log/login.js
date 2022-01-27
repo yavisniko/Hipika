@@ -1,12 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const userAuth = require("../../models/userModel")
-const CRYPTOJS = require("crypto-js")
-
-const decrypt = (user_pw) => {
-  const byte = CRYPTOJS.AES.decrypt(user_pw, process.env.HASH_SECRET)
-  return byte.toString(CRYPTOJS.enc.Utf8) 
-}
+const { decrypt } = require('../../middleware/decrypt')
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body

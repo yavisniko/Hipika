@@ -10,7 +10,6 @@ const PasswordinSecurity: FC<{ goBack: () => void }> = ({ goBack }) => {
     password: "",
     repeat_password: "",
   })
-  const [currPassword, setCurrPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   let navigate = useNavigate()
 
@@ -27,9 +26,7 @@ const PasswordinSecurity: FC<{ goBack: () => void }> = ({ goBack }) => {
       .get(
         `http://localhost:5000/dashboard/getUser/${tokenAuth}/${requestor}/${token_validate}`
       )
-      .then((resp) => {
-        setCurrPassword(resp.data.password)
-      })
+      .then(() => {})
       .catch((err) => {
         if (
           err.response.status === 403 &&
@@ -62,31 +59,40 @@ const PasswordinSecurity: FC<{ goBack: () => void }> = ({ goBack }) => {
       break
     }
 
-    if (currPassword !== newPassword.curr_password) {
-      alert(`your inputed password doesn't equal the current one`)
-    } else if (currPassword === newPassword.password) {
-      alert("new password and current can`t be same")
-    } else if (newPassword.password !== newPassword.repeat_password) {
-      alert(`repeated password doesn't match what you inputed as new one`)
-    } else if (newPassword.password.length < 8) {
+    if (newPassword.password.length < 8) {
       alert("Your password is lower than 8 character MAKE IT BIGGER")
     } else {
       setIsLoading(true)
 
+      const client_secret = JSON.parse(sessionStorage.getItem('qw')!)
+
       axios
         .put(
-          `http://localhost:5000/settings/change-password/${newPassword.password}/${tokenAuth}`
+          `http://localhost:5000/settings/change-password/${newPassword.curr_password}/${newPassword.password}/${tokenAuth}/${client_secret}`
         )
         .then((result) => {
+          console.log(result.data.msg);
+          
           if (result.data.msg === "successfuly saved") {
             setIsLoading(true)
+            sessionStorage.setItem('qw', JSON.stringify(result.data.new_token))
+            console.log(result.data.new_token);
+            
             alert("password changed successfuly")
             goBack()
+          }else if(result.data.msg = 'invalid password'){
+            alert("password doesn't match")
+            setIsLoading(false)
           }
         })
-        .catch((err) => {
-          console.log(`some error has occured`, err)
-        })
+        .catch(err => {
+          if(err.response.status === 403 && err.response.data.msg === 'invalid user'){
+              localStorage.removeItem('authToken')
+              sessionStorage.removeItem('qw')
+
+              navigate('/')
+          }
+      })
     }
   }
 

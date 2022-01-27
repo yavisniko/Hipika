@@ -1,8 +1,8 @@
 const router = require("express").Router()
 const userModel = require("../../models/userModel")
-const { tokenValidator } = require('../middleware/tokenValidator') 
+const { tokenValidator } = require('../../middleware/tokenValidator') 
 
-router.get("/getUser/:id/:requstor/:tokenValidate", tokenValidator, async (req, res) => {
+router.get("/getUser/:id/:requestor/:tokenValidate", tokenValidator, async (req, res) => {
   const { id } = req.params
 
   await userModel
