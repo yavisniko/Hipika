@@ -1,12 +1,10 @@
-import axios from 'axios'
 import { FC } from 'react'
 import '../../../less/Login-styles/loading.css'
-import { token as newToken} from "../../../utils/token"
 
 const SecurityDashboard:FC<{moveToPass: () => void}> = ({
   moveToPass
 }) => {
-  const token: string = JSON.parse(localStorage.getItem('authToken')!)
+  const token: string = JSON.parse(sessionStorage.getItem('qw')!)
 
   return (
       <>

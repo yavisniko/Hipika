@@ -1,11 +1,10 @@
 const UserScheme = require('../models/userModel')
 
 const tokenValidator = async (req, res, next) => {
-  const {requstor, tokenValidate} = req.params
+  const {requestor, tokenValidate} = req.params
   
-
   try {
-    await UserScheme.findById(requstor, (err, model) => {
+    await UserScheme.findById(requestor, (err, model) => {
       if(model.token_validate === tokenValidate){
         next()
       }else{  

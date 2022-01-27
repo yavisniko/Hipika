@@ -18,7 +18,9 @@ const Landing = () => {
 
     useEffect(() => {
         const userAuth: string = localStorage.getItem('authToken')!
-        if(userAuth !== null) navigate('/dashboard')
+        const client_secret: string = localStorage.getItem('qw')!
+        
+        if(userAuth !== null && client_secret !== null) navigate('/dashboard')
 
         document.title = "Hipika"
     }, [])

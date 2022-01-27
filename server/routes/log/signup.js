@@ -4,11 +4,11 @@ const Users = require("../../models/userModel")
 const mongoose = require("mongoose")
 const CRYPTOJS = require("crypto-js")
 
-var rand = function() {
+const rand = () => {
   return Math.random().toString(36).substr(2); 
 };
 
-var token = function() {
+const token = () => {
   return rand() + rand(); 
 };
 
