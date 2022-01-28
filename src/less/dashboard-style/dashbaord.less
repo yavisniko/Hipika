@@ -4,12 +4,14 @@
 .dashboard-container {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr;
+  place-items: normal center;
   transform: translateY(70px);
   gap: 1rem;
   min-height: 100vh;
   .card {
-    width: 100%;
+    max-width: 100%;
+    width: 600px;
     height: 400px;
     border-radius: 10px;
     overflow: hidden;

@@ -1,6 +1,5 @@
 import { FC, useState, ChangeEvent, useLayoutEffect, FormEvent } from "react"
 import axios from "axios"
-import { tokenAuth } from "../../Dashboard/Card"
 import "../../../less//settings-style/security-styles/password.css"
 import { useNavigate } from "react-router-dom"
 
@@ -11,6 +10,7 @@ const PasswordinSecurity: FC<{ goBack: () => void }> = ({ goBack }) => {
     repeat_password: "",
   })
   const [isLoading, setIsLoading] = useState(false)
+  const tokenAuth = JSON.parse(localStorage.getItem("authToken")!)
   let navigate = useNavigate()
 
   useLayoutEffect(() => {
@@ -24,7 +24,7 @@ const PasswordinSecurity: FC<{ goBack: () => void }> = ({ goBack }) => {
 
     axios
       .get(
-        `http://localhost:5000/dashboard/getUser/${tokenAuth}/${requestor}/${token_validate}`
+        `http://localhost:5000/dashboard/getUser/${requestor}/${requestor}/${token_validate}`
       )
       .then(() => {})
       .catch((err) => {

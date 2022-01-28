@@ -11,7 +11,6 @@ import { ThemeProvider, createMuiTheme } from "@mui/material/styles"
 import "../../less/Signup-styles/style.css"
 import { Checkbox } from "@mui/material"
 import axios from "axios"
-import "../../less/Login-styles/login-styles.css"
 
 const themeDark = createMuiTheme({
   palette: {
@@ -44,6 +43,9 @@ const CssTextField = styled(TextField)({
     "&::-webkit-input-placeholder": {
       color: "#5136C2",
     },
+    "&::placeholder": {
+      color: "#5136C2",
+    }
   },
 })
 

@@ -1,33 +1,30 @@
 @font-face {
-  font-family: "Noto Sans";
+  font-family: 'Noto Sans';
   font-style: italic;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosans/v21/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf)
-    format("truetype");
+  src: url(https://fonts.gstatic.com/s/notosans/v25/o-0TIpQlx3QUlC5A4PNr4Az5ZtyE.ttf) format('truetype');
 }
 @font-face {
-  font-family: "Quicksand";
+  font-family: 'Quicksand';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf)
-    format("truetype");
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkM0o18E.ttf) format('truetype');
 }
 @font-face {
-  font-family: "Quicksand";
+  font-family: 'Quicksand';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf)
-    format("truetype");
+  src: url(https://fonts.gstatic.com/s/quicksand/v24/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkBgv18E.ttf) format('truetype');
 }
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Noto Sans", sans-serif;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 body {
   background: #1f1f1f;
@@ -37,8 +34,8 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Noto Sans", sans-serif;
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 body {
   background: #1f1f1f;
@@ -48,6 +45,13 @@ body {
   width: 100%;
   min-height: 100vh;
 }
+@media screen and (max-width: 480px) {
+  .containerr {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
 .containerr .start-text {
   display: flex;
   justify-content: center;
@@ -55,8 +59,13 @@ body {
   width: 100%;
   min-height: 100%;
 }
+@media screen and (max-width: 480px) {
+  .containerr .start-text {
+    text-align: center;
+  }
+}
 .containerr .start-text h1 {
-  color: #fff;
+  color: #FFF;
 }
 .containerr .start-text .wrapper {
   flex-direction: column;
@@ -65,7 +74,7 @@ body {
   font-size: 4rem;
 }
 .containerr .start-text .wrapper h1:nth-child(2) {
-  color: #5136c2;
+  color: #5136C2;
 }
 .containerr .land-btns {
   display: flex;
@@ -80,7 +89,7 @@ body {
   width: 250px;
   height: 80px;
   cursor: pointer;
-  background: #5136c2;
+  background: #5136C2;
   color: #000;
   border: 0px;
   border-radius: 10px;

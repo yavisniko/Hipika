@@ -15,6 +15,7 @@ import axios from "axios"
 import { styled } from "@mui/material/styles"
 
 import "../../less/Signup-styles/style.css"
+import { setTimeout } from "timers/promises"
 
 const themeDark = createMuiTheme({
   palette: {
@@ -129,7 +130,8 @@ const SignUp = () => {
           } else {
             localStorage.setItem("authToken", JSON.stringify(res.data.token))
             sessionStorage.setItem("qw", JSON.stringify(res.data.token_validate))
-            navigate("/dashboard")
+            
+            window.setTimeout(() => navigate("/dashboard"), 500)
           }
         })
         .catch((err) => console.log(err))
@@ -208,11 +210,12 @@ const SignUp = () => {
               <CssTextField
                   label="Password"
                   id="custom-css-outlined-input"
-                  value={form.surname}
+                  value={form.password}
                   style={{ width: "100%" }}
                   onChange={inputHandler}
                   autoComplete="off"
-                  name="password"
+                  name="password" 
+                  type="password"
                 />
                 <Grid item xs={12}>
                    <CssTextField
@@ -223,6 +226,8 @@ const SignUp = () => {
                   onChange={inputHandler}
                   autoComplete="off"
                   name="repeatpass"
+                  type="password"
+
                 />
                 </Grid>
               </Grid>
@@ -236,7 +241,7 @@ const SignUp = () => {
               }}
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              Sign up
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>

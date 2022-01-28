@@ -79,7 +79,15 @@ const Blog = () => {
         <main>
           <div className="blog-photo">
             <img src={`/uploads/${currBlog.blog.img}`} alt="" />
-            {
+            <div className="glass"></div>
+            <LikesContainer
+              toggleMenu={() => setLikedMenu(!likedMenu)}
+              likes={currBlog.blog.likes}
+              blogId={currBlog.blog.blog_id}
+            />
+          </div>
+          <div className="main-text">
+          {
               currBlog.user_id === authToken ?
               <button className="edit-btn" onClick={() => navigate(`/edit/${currBlog.blog.blog_id}`)}>
                 Edit
@@ -87,15 +95,7 @@ const Blog = () => {
               </button>
             : null
             }
-            <div className="glass"></div>
-            <LikesContainer
-              toggleMenu={() => setLikedMenu(!likedMenu)}
-              title={currBlog.blog.title}
-              likes={currBlog.blog.likes}
-              blogId={currBlog.blog.blog_id}
-            />
-          </div>
-          <div className="main-text">
+                  <h1>{currBlog.blog.title}</h1>
             <p className="textarea">{currBlog.blog.main_content}</p>
           </div>
         </main>

@@ -16,10 +16,18 @@ body{
     display: flex;
     width: 100%;
     min-height: 100vh;
+    @media screen and(max-width: 480px){
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
     .start-text{
         .Center(center, center);
         width: 100%;
         min-height: 100%;
+        @media screen and(max-width: 480px){
+            text-align: center;
+        }
         h1{color: #FFF};
         .wrapper{
             flex-direction: column;

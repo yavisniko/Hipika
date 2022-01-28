@@ -1,18 +1,17 @@
 import { FC, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { tokenAuth } from "../Dashboard/Card";
 import axios from "axios";
 
 interface LikeProps {
   likes: { _id: string }[];
-  title: string;
   blogId: string;
   toggleMenu: () => void;
 }
 
-const LikesContainer: FC<LikeProps> = ({ likes, title, blogId, toggleMenu }) => {
+const LikesContainer: FC<LikeProps> = ({ likes, blogId, toggleMenu }) => {
   const [userLiked, setUserLiked] = useState(false);
+  const tokenAuth: string = JSON.parse(localStorage.getItem('authToken')!)
 
   useEffect(() => {
     if (likes.some((e) => e._id === tokenAuth)) setUserLiked(true);
@@ -20,7 +19,6 @@ const LikesContainer: FC<LikeProps> = ({ likes, title, blogId, toggleMenu }) => 
 
   return (
     <div className="bottom-stuff">
-      <h1>{title}</h1>
       <div className="likes-container">
         <p onClick={toggleMenu}>
           Likes:{" "}

@@ -1,6 +1,5 @@
 import { useState, useEffect, Fragment } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { tokenAuth } from "../Dashboard/Card"
 import ProfileBody from "./ProfileBody"
 import UserBlogs from "./UserBlogs"
 import Follow from "./follow"
@@ -23,6 +22,7 @@ const Profile = () => {
     useState<containerProps>(defaultTemplate)
   const { id } = useParams()
   let navigate = useNavigate()
+  const tokenAuth: string = JSON.parse(localStorage.getItem('authToken')!)
   
   useEffect(() => {
     tokenAuth === id ? setIsMine(true) : setIsMine(false)

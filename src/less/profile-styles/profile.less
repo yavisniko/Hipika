@@ -4,8 +4,11 @@
   .Center(none, center);
   transform: translateY(60px);
   position: relative;
+  @media screen and(max-width: 720px){
+    flex-direction: column;
+  }
   width: 100%;
-  height: 500px;
+  min-height: 500px;
   background: #303030;
   .profile-avatar {
     .Center(center, center);
@@ -18,6 +21,14 @@
       height: 400px;
       overflow: hidden;
       border-radius: 50%;
+      @media screen and(max-width: 720px){
+        width: 250px;
+      height: 250px;
+      }
+      @media screen and(max-width: 300px){
+        width: 200px;
+      height: 200px;
+      }
       img {
         width: auto;
         height: 100%;
@@ -32,6 +43,10 @@
       width: 200px;
       display: flex;
       align-items: center;
+      @media screen and(max-width: 720px){
+        width: 100%;
+        justify-content: center;
+      }
       .badge{
         position: relative;
         width:30px;
@@ -51,13 +66,22 @@
       font-weight: 900;
       color: #fff;
       font-size: 3rem;
+      @media screen and(max-width: 720px){
+        font-size: 2rem;
+        text-align: center;
+      }
     }
     p {
       color: #9c9c9c;
+      @media screen and(max-width: 720px){
+        text-align: center;
+      }
     }
     h2{
       color:  -color;
-      text-decoration: underline;
+      &:hover{
+        text-decoration: underline;
+      }
       cursor: pointer
     }
   }
@@ -113,6 +137,17 @@
   transition: 0.2s;
   top: 0;
   left: 0;
+}
+
+.follow-wrapper{
+  @media screen and(max-width: 720px){
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100% !important;
+    align-items: center;
+    margin-top: 20px;
+  }
 }
 
 .box.arrow-bottom:after {

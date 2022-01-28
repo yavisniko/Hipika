@@ -2,39 +2,17 @@
 
 main {
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
+  display: flex;
+  @media screen and (max-width: 630px){
+    flex-direction: column;
+  }
   .blog-photo {
     width: 100%;
-    height: 400px;
+    height: 100vh;
     overflow: hidden;
     position: relative;
     box-shadow: 0 5px 20px;
-    .edit-btn{
-      .Center(center, center);
-      transform: translate(-10px, 10px);
-      background: rgba( 255, 255, 255, 0.4 );
-      backdrop-filter: blur( 20px );
-      -webkit-backdrop-filter: blur( 20px );
-      border-radius: 10px;
-      border: 1px solid rgba( 255, 255, 255, 0.18 ); 
-      font-size: 1rem;
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 130px;
-      height: 40px;
-      cursor: pointer;
-      transition: 0.2s;
-      color: #FFF;
-      z-index: 20;
-      &:hover{
-        box-shadow: 0 0 10px @landing-color; 
-      }
-      cursor: pointer;
-      .fa-edit{
-        margin-left: 15px;
-      }
-    }
     .bottom-stuff{
       .Center(space-between, center);
       position: absolute;
@@ -42,17 +20,6 @@ main {
       z-index: 9;
       width: 100%;
       bottom: 0;
-      h1 {
-        font-family: "Poppins", sans-serif;
-        font-weight: 900;
-        color: #fff;
-        font-style: italic;
-        z-index: 9;
-        position: absolute;
-        bottom: 0;
-        font-style: italic;
-        font-size: 4rem;
-      }
       .likes-container{
         .Center(space-between, center);
         width: 100%;
@@ -90,20 +57,56 @@ main {
         0deg,
         rgb(0, 0, 0) 1%, 
         rgba(255, 255, 255, 0.2) 60%
-      );
-      width: 100%;
-      top: 0;
-      left: 0;
-      height: 100%;
+        );
+        width: 100%;
+        top: 0;
+        left: 0;
+        height: 100%;
+      }
     }
-  }
-  .main-text{
-    width: 100%;
+    .main-text{
+      width: 100%;
+      padding: 0 10px;
+      .edit-btn{
+        margin-top: 70px;
+        .Center(center, center);
+        background: rgba( 255, 255, 255, 0.4 );
+        backdrop-filter: blur( 20px );
+        -webkit-backdrop-filter: blur( 20px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 ); 
+        font-size: 1rem;
+        top: 0;
+        right: 0;
+        width: 130px;
+        height: 40px;
+        cursor: pointer;
+        transition: 0.2s;
+        color: #FFF;
+        z-index: 20;
+        &:hover{
+          box-shadow: 0 0 10px @landing-color; 
+        }
+        cursor: pointer;
+        .fa-edit{
+          margin-left: 15px;
+        }
+      }
+      h1 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 900;
+        color: #fff;
+        margin-top: 70px;
+        font-style: italic;
+        z-index: 9;
+        font-style: italic;
+        font-size: 4rem;
+      }
     .textarea{
       overflow-wrap: break-word;
       margin-top: 40px;
       width: 100%;
-      font-size: 2rem;
+      font-size: 1.4rem;
       color: #FFF;
     }
   }
