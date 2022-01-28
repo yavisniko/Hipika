@@ -2,7 +2,6 @@ import { FC, useEffect, useState, useRef } from "react"
 import { containerProps } from "./interfaces"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTimes } from "@fortawesome/free-solid-svg-icons"
-import { tokenAuth } from "../Dashboard/Card"
 import { MappingProps } from "../Blog/LikedLists"
 import PeopleList from "./PeopleList"
 import axios from "axios"
@@ -15,6 +14,7 @@ const Follow: FC<containerProps> = ({ from, whatIs, whatToShow, close }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const containerRef = useRef<HTMLDivElement>(null)
   let navigate = useNavigate()
+  const tokenAuth: string = JSON.parse(localStorage.getItem('authToken')!)
 
   const handleOutsideClick = (e: any) => {
     if (containerRef.current && !containerRef.current.contains(e.target)) {

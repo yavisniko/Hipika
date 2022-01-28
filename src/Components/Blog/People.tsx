@@ -1,5 +1,4 @@
 import {FC, useEffect, useState} from "react"
-import { tokenAuth } from "../Dashboard/Card"
 import { useNavigate } from "react-router-dom"
 import '../../less/blog-styles/person.css'
 import axios from "axios"
@@ -15,6 +14,7 @@ const People: FC<PeopleProps> = ({userId, name, image}) => {
   let navigate = useNavigate()
   const [following, setFollowing] = useState(false)
   const [followLoad, setFollowLoad] = useState(false)
+  const tokenAuth: string = JSON.parse(localStorage.getItem('authToken')!)
 
   useEffect(() => {
     const token_validate = JSON.parse(sessionStorage.getItem('qw') as string )

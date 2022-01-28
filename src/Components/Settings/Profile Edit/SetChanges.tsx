@@ -1,6 +1,5 @@
 import React, { useState, ChangeEvent, useEffect } from "react"
 import { defaultState, UserProps } from "../interface"
-import { tokenAuth } from "../../Dashboard/Card"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { isEqual } from "../../../utils/isEqual"
 import { faCamera } from "@fortawesome/free-solid-svg-icons"
@@ -19,6 +18,7 @@ const SetChanges = () => {
   const [showSave, setShowSave] = useState(false)
   const [unChanged, setUnChanged] = useState<UserProps>(defaultState)
   const fileId: string = String(new Date().getTime())
+  const tokenAuth = JSON.parse(localStorage.getItem("authToken")!)
   let navigate = useNavigate()
 
 

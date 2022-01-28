@@ -1,5 +1,4 @@
 import { useState, useEffect, FC, useRef, useCallback } from "react"
-import { tokenAuth } from "./Card"
 import Card from "./Card"
 import axios from "axios"
 import "../../less/dashboard-style/loader.css"
@@ -11,6 +10,7 @@ const Dashboard: FC<{ setOpen: () => void }> = ({ setOpen }) => {
   const [page, setPage] = useState<number>(0)
   const [cancelFetch, setCancelFetch] = useState<boolean>(false)
   const loader = useRef<any>(null)
+  const tokenAuth: string = JSON.parse(localStorage.getItem('authToken')!)
 
   const remoeOrAddLike = (blogId: string): void => {
     let currBlog: number = blogs.findIndex((e: any) => e.blog.blogId === blogId)
