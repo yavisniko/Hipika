@@ -1,57 +1,14 @@
 @import "../variables.less";
 
-.login-container{
-    .Center(center, center);
-    width: 100%;
-    flex-direction: column;
-    min-height: 100vh;
-    .text{
-        width: 100%;
-        text-align: center;
-        color: #FFF;
-        font-size: 1.7rem;
-
-    }
-    form{
-        .alertbox{
-            width: 100%;
-            height: 70px;
-            border-radius: 9px;
-            background: #ff4141;
-            .Center(center, center);
-            color: #FFF;
-        }
-        .Center(center, center);
-        max-width: 600px;
-        width: 100%;
-        background: #383838;
-        height: 450px;
-        border-radius: 10px;
-        position: relative;
-        flex-direction: column;
-        gap: 50px;
-        padding: 0 20px;
-        input:not(input[type="checkbox"]){
-            width: 100%;
-            height: 60px;
-            border-radius: 5px;
-            border: none;
-            background: @bg-color;
-            color: #FFF;
-            font-size: 1.2rem;
-            &:focus{
-                outline: 2px solid #47ff56;
-            }
-        }
-        button{
-            .Center(center, center);
-            width: 200px;
-            height: 60px;
-            font-size: 1.3rem;
-            cursor: pointer;
-            background: #47ff56;
-            border: none;
-            border-radius: 5px;
-        }
-    }
-}
+::placeholder {
+    color: red;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: red;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+   color: red;
+  }

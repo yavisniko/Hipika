@@ -5,27 +5,27 @@ import TextField from "@mui/material/TextField"
 import { Link, useNavigate } from "react-router-dom"
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
-import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
-import { createTheme, ThemeProvider, createMuiTheme } from "@mui/material/styles"
-import { makeStyles } from "@mui/styles"
+import { ThemeProvider, createMuiTheme } from "@mui/material/styles"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCamera } from "@fortawesome/free-solid-svg-icons"
 import "../../less/Signup-styles/style.css"
 import { validateEmail } from "../../utils/validateEmail"
 import axios from "axios"
+import { styled } from "@mui/material/styles"
 
 import "../../less/Signup-styles/style.css"
 
-function Copyright(props: any) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {"Copyright © "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  )
-}
+const themeDark = createMuiTheme({
+  palette: {
+    background: {
+      default: "#222222",
+    },
+    text: {
+      primary: "#ffffff",
+    },
+  },
+})
 
 interface formProps {
   name: string
@@ -37,29 +37,29 @@ interface formProps {
   path: string
 }
 
-const useStyles = makeStyles({
-  circle: {
-    height: "200px",
-    width: "200px",
-    borderRadius: "50%",
-    border: "1px solid #5136C2",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    overflow: "hidden",
-  }
+const CssTextField = styled(TextField)({
+  "& label.Mui-focused": {
+    color: "#5136C2",
+  },
+  "& .MuiInput-underline:after": {
+    borderBottomColor: "#5136C2",
+  },
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "#5136C2",
+    },
+    "&:hover fieldset": {
+      borderColor: "#5136C2",
+    },
+    "&.Mui-focused fieldset": {
+      borderColor: "#5136C2",
+    },
+      '&::placeholder': {
+        textOverflow: 'ellipsis !important',
+        color: '#5136C2'
+      }
+  },
 })
-
-const theme = createMuiTheme({
-  palette: {
-    background: {
-      //@ts-ignore
-      xs: "red",
-      sm: "blue",
-      md: "green"
-    }
-  }
-});
 
 const SignUp = () => {
   const [form, setForm] = useState<formProps>({
@@ -144,9 +144,8 @@ const SignUp = () => {
     }
   }
 
-  const signStyles = useStyles()
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={themeDark}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -157,7 +156,7 @@ const SignUp = () => {
             alignItems: "center",
           }}
         >
-          <div className={signStyles.circle}>
+          <div className='circle'>
             <input
               type="file"
               accept="image/*"
@@ -173,69 +172,58 @@ const SignUp = () => {
           <Box component="form" noValidate onSubmit={formHandler} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="off"
-                  name="name"
-                  required
-                  onChange={inputHandler}
-                  fullWidth
-                  id="firstName"
+                <CssTextField
                   label="First Name"
-                  autoFocus
+                  id="custom-css-outlined-input"
                   value={form.name}
+                  style={{ width: "100%" }}
+                  onChange={inputHandler}
+                  name="name"
+                  autoComplete="off"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
+                <CssTextField
                   label="Last Name"
-                  onChange={inputHandler}
-                  name="surname"
-                  autoComplete="off"
+                  id="custom-css-outlined-input"
                   value={form.surname}
+                  style={{ width: "100%" }}
+                  onChange={inputHandler}
+                  autoComplete="off"
+                  name="surname"
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                  required
-                  onChange={inputHandler}
-                  fullWidth
-                  id="email"
+                 <CssTextField
                   label="Email Address"
-                  name="email"
-                  autoComplete="off"
+                  id="custom-css-outlined-input"
                   value={form.email}
+                  style={{ width: "100%" }}
+                  onChange={inputHandler}
+                  autoComplete="off"
+                  name="email"
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
+              <CssTextField
                   label="Password"
-                  type="password"
+                  id="custom-css-outlined-input"
+                  value={form.surname}
+                  style={{ width: "100%" }}
                   onChange={inputHandler}
-                  id="password"
                   autoComplete="off"
-                  value={form.password}
+                  name="password"
                 />
                 <Grid item xs={12}>
-                  <TextField
-                    style={{
-                      marginTop: "10px",
-                    }}
-                    required
-                    fullWidth
-                    name="repeatpass"
-                    label="Reapeat password"
-                    type="password"
-                    id="password"
-                    autoComplete="off"
-                    value={form.repeatpass}
-                    onChange={inputHandler}
-                  />
+                   <CssTextField
+                  label="Reapeat Password"
+                  id="custom-css-outlined-input"
+                  value={form.repeatpass}
+                  style={{ width: "100%",marginTop: "10px", }}
+                  onChange={inputHandler}
+                  autoComplete="off"
+                  name="repeatpass"
+                />
                 </Grid>
               </Grid>
             </Grid>
@@ -259,7 +247,6 @@ const SignUp = () => {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   )
