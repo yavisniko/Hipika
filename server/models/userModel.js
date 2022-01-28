@@ -5,7 +5,7 @@ const signUpSchema = new Schema(
   {
     name: { type: String, required: true },
     surname: { type: String, required: true },
-    email: { type: String, required: true },
+    email: { type: String, required: true, ordered:false },
     password: { type: String, required: true },
     image: { type: String },
     followers: [{ _id: { type: String } }],
