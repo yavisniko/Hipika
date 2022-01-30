@@ -1,9 +1,9 @@
 const express = require("express")
 const app = express()
-const helmet = require('helmet')
+const helmet = require("helmet")
 
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()   
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config()
 }
 
 const userAuth = require("./routes/log/signup")
@@ -11,16 +11,16 @@ const Login = require("./routes/log/login")
 const getBlogs = require("./routes/dashboard/blogs")
 const getUser = require("./routes/dashboard/getUser")
 const uploadBlog = require("./routes/blogs/uploadBlog")
-const uploadUser = require("./routes/blogs/userBlog") 
+const uploadUser = require("./routes/blogs/userBlog")
 const Users = require("./routes/dashboard/users")
-const Like = require("./routes/blogs/likeBlog") 
+const Like = require("./routes/blogs/likeBlog")
 const SpecificBlog = require("./routes/blogs/currect_blog")
 const avatar = require("./routes/log/avatar")
 const FollowUser = require("./routes/dashboard/followUser")
-const BlogByUser = require("./routes/blogs/blogsByUserId") 
+const BlogByUser = require("./routes/blogs/blogsByUserId")
 const ProfileChanges = require("./routes/settings/profileChanges")
 const passChange = require("./routes/settings/changePassword")
-const validateEditor = require("./routes/blogs/validateEditor") 
+const validateEditor = require("./routes/blogs/validateEditor")
 const submitChanges = require("./routes/blogs/editBlog")
 const deleteBlog = require("./routes/blogs/deleteBlog")
 const userByEmail = require("./routes/log/getEmail")

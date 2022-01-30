@@ -90,7 +90,7 @@ const CreateBlog = () => {
   return (
     <form className="createBlog-container" onSubmit={uploadBlog}>
       <div className="blog-edit">
-        <h1 style={{ color: "#FFF" }}>Create your Blog</h1>
+        <h1 style={{ color: "#FFF" }}>Create your Post</h1>
         <div className="banner-img" style={{ color: "#FFF" }}>
           <input type="file" accept="image/*" onChange={imageUploadHandler} />
           {blogContent.image?.trim() === "" ? (
@@ -105,14 +105,14 @@ const CreateBlog = () => {
         <input
           type="text"
           value={blogContent.title}
-          placeholder="Blog Title"
+          placeholder="Post Title"
           onChange={inputHandler}
           name="title"
         />
         <textarea
           value={blogContent.mainContent}
           name="mainContent"
-          placeholder="mainContent"
+          placeholder="Tell us something cool about this post"
           onChange={inputHandler}
         />
       </div>

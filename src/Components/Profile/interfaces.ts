@@ -6,8 +6,8 @@ export interface ProfileProps {
   followers: string[]
   following: string[]
   verified: boolean
-  early_access: boolean,
-  tester: boolean,
+  early_access: boolean
+  tester: boolean
   developer: boolean
 }
 
@@ -21,7 +21,7 @@ export const defaultState: ProfileProps = {
   verified: false,
   early_access: false,
   tester: false,
-  developer: false
+  developer: false,
 }
 
 export interface containerProps {

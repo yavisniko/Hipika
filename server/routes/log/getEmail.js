@@ -25,4 +25,4 @@ router.get("/email/:email", (req, res) => {
   }).clone()
 })
 
-module.exports= router 
+module.exports = router

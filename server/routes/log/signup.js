@@ -5,30 +5,29 @@ const mongoose = require("mongoose")
 const CRYPTOJS = require("crypto-js")
 
 const rand = () => {
-  return Math.random().toString(36).substr(2); 
-};
+  return Math.random().toString(36).substr(2)
+}
 
 const token = () => {
-  return rand() + rand(); 
-};
-
+  return rand() + rand()
+}
 
 router.post("/signup", (req, res) => {
   const { name, surname, email, password, path } = req.body
   const encrypt = CRYPTOJS.AES.encrypt(password, process.env.HASH_SECRET)
   let addNew = false
 
-  Users.findOne({email: email}, (err, model) => {
-    if(model){
+  Users.findOne({ email: email }, (err, model) => {
+    if (model) {
       res.send({
-        msg: "email exists"
+        msg: "email exists",
       })
       return
     }
   })
-  
+
   const userData = new Users({
-    _id: mongoose.Types.ObjectId(),  
+    _id: mongoose.Types.ObjectId(),
     name: name,
     surname: surname,
     email: email,
@@ -40,7 +39,7 @@ router.post("/signup", (req, res) => {
     verified: false,
     early_access: false,
     tester: false,
-    developer: false
+    developer: false,
   })
 
   userData
@@ -48,7 +47,7 @@ router.post("/signup", (req, res) => {
     .then((result) => {
       res.send({
         token: result._id,
-        token_validate: result.token_validate
+        token_validate: result.token_validate,
       })
     })
     .catch((err) => console.log(err))
