@@ -5,12 +5,12 @@ const CRYPTOJS = require("crypto-js")
 const { decrypt } = require("../../middleware/decrypt")
 
 const rand = () => {
-  return Math.random().toString(36).substr(2); 
-};
+  return Math.random().toString(36).substr(2)
+}
 
 const token = () => {
-  return rand() + rand(); 
-};
+  return rand() + rand()
+}
 
 router.put(
   "/change-password/:old_pass/:password/:requestor/:tokenValidate",
@@ -38,9 +38,8 @@ router.put(
 
         res.send({
           msg: "successfuly saved",
-          new_token: new_client_secret
+          new_token: new_client_secret,
         })
-        
       }
     })
   }

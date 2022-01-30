@@ -1,21 +1,21 @@
-const UserScheme = require('../models/userModel')
+const UserScheme = require("../models/userModel")
 
 const tokenValidator = async (req, res, next) => {
-  const {requestor, tokenValidate} = req.params
-  
+  const { requestor, tokenValidate } = req.params
+
   try {
     await UserScheme.findById(requestor, (err, model) => {
-      if(model.token_validate === tokenValidate){
+      if (model.token_validate === tokenValidate) {
         next()
-      }else{  
+      } else {
         res.status(403).send({
-          msg: "invalid user"
+          msg: "invalid user",
         })
         return
       }
     }).clone()
-  }catch(err) {
-    console.log('error occred', err);
+  } catch (err) {
+    console.log("error occred", err)
   }
 }
 

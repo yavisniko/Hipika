@@ -1,11 +1,11 @@
 const express = require("express")
 const router = express.Router()
 const userAuth = require("../../models/userModel")
-const { decrypt } = require('../../middleware/decrypt')
+const { decrypt } = require("../../middleware/decrypt")
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body
-  
+
   await userAuth
     .findOne({ email: email }, (err, user) => {
       if (err) {
@@ -13,7 +13,7 @@ router.post("/login", async (req, res) => {
           status: 0,
           msg: err,
         })
-      } 
+      }
       if (!user) {
         res.send({
           status: 0,
@@ -26,8 +26,8 @@ router.post("/login", async (req, res) => {
         })
       } else {
         res.send({
-          token: user._id,   
-          tokenValidator: user.token_validate
+          token: user._id,
+          tokenValidator: user.token_validate,
         })
       }
     })

@@ -9,53 +9,45 @@ const Dashboard: FC<{ setOpen: () => void }> = ({ setOpen }) => {
   const [isLoading, setIsloading] = useState<boolean>(false)
   const [page, setPage] = useState<number>(0)
   const [cancelFetch, setCancelFetch] = useState<boolean>(false)
-  const loader = useRef<any>(null)
   const tokenAuth: string = JSON.parse(localStorage.getItem('authToken')!)
-
+  
   const remoeOrAddLike = (blogId: string): void => {
     let currBlog: number = blogs.findIndex((e: any) => e.blog.blogId === blogId)
     let newBlogs = blogs
     const userExist: boolean = newBlogs[currBlog].blog.liked.some(
       (e: any) => e._id === tokenAuth
-    )
-
-    if (userExist) {
-      newBlogs[currBlog].blog.liked.filter((e: any) => e._id !== tokenAuth)
-      setBlogs(newBlogs)
-    } else {
-      newBlogs[currBlog].blog.liked.push({ _id: tokenAuth })
+      )
+      
+      if (userExist) {
+        newBlogs[currBlog].blog.liked.filter((e: any) => e._id !== tokenAuth)
+        setBlogs(newBlogs)
+      } else {
+        newBlogs[currBlog].blog.liked.push({ _id: tokenAuth })
       setBlogs(newBlogs)
     }
   }
-
-
-  const handleObserver = useCallback(
-    (entries) => {
-        const target = entries[0]
-        if(target.isIntersecting){
-          setPage((prev) => prev + 1) 
-        }
-    },
-    [setPage]
-  )
-
+  
   useEffect(() => {
     document.title = "Hipika - Dashboard"
   }, [])
 
-  useEffect(() => {
-    if(cancelFetch) return
+  
+  
+  const observer = useRef<any>(null)
 
-    const option = {
-      root: null,
-      rootMargin: "10px",
-      threshold: 0,
-  }
+  const lastPost = useCallback((node) => {
+    if (isLoading) return;
+    if (observer.current) observer.current.disconnect();
+  
+    observer.current = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && !cancelFetch) {
+        setPage((prev) => prev + 1);
+      }
+    });
 
-  const observer = new IntersectionObserver(handleObserver, option)
-  if(loader.current) observer.observe(loader.current)
-
-  }, [handleObserver])
+    if (node) observer.current.observe(node);
+  }, [isLoading, cancelFetch])
+  
 
   useEffect(() => {
     if(cancelFetch) return
@@ -107,6 +99,7 @@ const Dashboard: FC<{ setOpen: () => void }> = ({ setOpen }) => {
         ? blogs.reverse().map((blog: any) => {
             return (
               <Card
+                refs={lastPost}
                 title={blog.blog.title}
                 img={blog.blog.img}
                 liked={blog.blog.liked}
@@ -118,13 +111,11 @@ const Dashboard: FC<{ setOpen: () => void }> = ({ setOpen }) => {
               />
             )
           })
-        : blogs.length === 0 &&
-          !isLoading && (
+        : !isLoading && (
             <h1 style={{ color: "#FFF", width: "100%", textAlign: "center" }}>
               There is not any blogs uploaded yet, upload it and be first 🎉
             </h1>
           )}
-        <div className="triger" ref={loader} style={{position: 'absolute', bottom: 0, height: '20px', width: '100%'}}/>
     </div>
     </>
   )

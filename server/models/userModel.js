@@ -5,7 +5,7 @@ const signUpSchema = new Schema(
   {
     name: { type: String, required: true },
     surname: { type: String, required: true },
-    email: { type: String, required: true, ordered:false },
+    email: { type: String, required: true, ordered: false },
     password: { type: String, required: true },
     image: { type: String },
     followers: [{ _id: { type: String } }],
@@ -14,7 +14,7 @@ const signUpSchema = new Schema(
     early_access: { type: Boolean, required: true },
     tester: { type: Boolean, required: true },
     developer: { type: Boolean, required: true },
-    token_validate: {type: String, required: true, unique: true }
+    token_validate: { type: String, required: true, unique: true },
   },
   { strict: false, timestamps: true }
 )

@@ -1,21 +1,24 @@
 const router = require("express").Router()
 const userModel = require("../../models/userModel")
-const { tokenValidator } = require('../../middleware/tokenValidator') 
+const { tokenValidator } = require("../../middleware/tokenValidator")
 
-router.get("/getUser/:id/:requestor/:tokenValidate", tokenValidator, async (req, res) => {
-  const { id } = req.params
+router.get(
+  "/getUser/:id/:requestor/:tokenValidate",
+  tokenValidator,
+  async (req, res) => {
+    const { id } = req.params
 
-  await userModel
-    .findById(id, (err, result) => { 
-      if (err) {
+    await userModel
+      .findById(id, (err, result) => {
+        if (err) {
+          res.send({
+            success: false,
+            msg: err,
+          })
+          return
+        }
         res.send({
-          success: false,
-          msg: err,
-        })
-        return
-      } 
-        res.send({
-          key: result._id,  
+          key: result._id,
           userId: result._id,
           email: result.email,
           name: result.name,
@@ -26,12 +29,12 @@ router.get("/getUser/:id/:requestor/:tokenValidate", tokenValidator, async (req,
           verified: result.verified,
           tester: result.tester,
           early_access: result.early_access,
-          developer: result.developer
+          developer: result.developer,
         })
-      
-    })
-    .clone()
-    .catch((err) => console.log(err))
-})
+      })
+      .clone()
+      .catch((err) => console.log(err))
+  }
+)
 
 module.exports = router

@@ -48,16 +48,17 @@ const UserBlogs: FC<{ id: string; name: string }> = ({ name, id }) => {
         {
         userBlogs.length !== 0 && userBlogs.map((blog: any) => {
           return (
-            <Card
-              title={blog.title}
-              img={blog.img}
-              liked={blog.likes}
-              mainContent={blog.mainContent}
-              authorID={blog.userId}
-              blogId={blog._id}
-              key={blog._id}
-              likeSystem={() => {}}
-            />
+            // <Card
+            //   title={blog.title}
+            //   img={blog.img}
+            //   liked={blog.likes}
+            //   mainContent={blog.mainContent}
+            //   authorID={blog.userId}
+            //   blogId={blog._id}
+            //   key={blog._id}
+            //   likeSystem={() => {}}
+            // />
+            <div></div>
           )
         })}
       </div>
