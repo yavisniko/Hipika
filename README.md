@@ -24,7 +24,7 @@ Project is built with little packages such as [react-router-dom](https://github.
 - **[React.js](https://github.com/facebook/react)**
 - **[Node.js](https://github.com/nodejs/node) / [Express.js](https://github.com/expressjs/express)**
 - **[Less](https://github.com/less/less.js)**
-- **[Mongoose](https://github.com/Automattic/mongoose)**
+- **[Mongoose](https://github.com/Automattic/mongoose)** 
 <div>
 	<img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white">
 	<img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white">
