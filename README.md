@@ -13,7 +13,7 @@ this is mini social platform, what you can do there?
 
 - Create Account
 - Create Posts, Edit or Delete Them
-- Explore Others Posts
+- Explore Others Posts 
 - Follow User
 
 ## Built with
