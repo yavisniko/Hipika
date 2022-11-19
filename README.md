@@ -9,7 +9,7 @@
 
 ## About Project
 
-this is mini social platform, what you can do there?
+this is mini social platform, what you can do there? 
 
 - Create Account
 - Create Posts, Edit or Delete Them
